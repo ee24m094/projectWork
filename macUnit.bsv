@@ -111,7 +111,7 @@ module mkMac_Unit(macUnit_ifc);
 
 	//function to convert bf16 to fp32
 	function Bit#(32) bf16_to_fp32(Bit#(16) bf16);
-		Bit#(32) fp32 = zeroExtend(bf16[15] )<< 31; //sign
+		Bit#(32) fp32 = zeroExtend(bf16[15]) << 31; //sign
 		fp32 = fp32 | (zeroExtend(bf16[14:7])) << 23; // exponent
 		fp32 = fp32 | (zeroExtend(bf16[6:0])) << 16; //mantissa
 		return fp32;
@@ -144,7 +144,7 @@ module mkMac_Unit(macUnit_ifc);
 		end
 
 		//Exponent addition using bitwise addition
-		Bit#(8) exponent_sum = bitwise_Addition_int32(exponent_A, exponent_B,0) -127;
+		Bit#(8) exponent_sum = bitwise_Addition_int32(exponent_A, exponent_B,0)-127;
 		
 		//handling mantissa overflow after rounding
 		if(mantissa_rounded[23]) begin

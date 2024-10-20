@@ -11,6 +11,6 @@ EXTRA_ARGS = --trace --trace-structs
 
 TOPLEVEL = mkMacUnit
 
-MODULE :=test_counter
+MODULE :=test_mkMacUnit
 
 include $(shell cocotb-config --makefiles)/Makefile.sim

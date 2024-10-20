@@ -1,5 +1,6 @@
 import os
-import pathlib import Path
+import pathlib 
+import path
 
 
 import cocotb
@@ -50,7 +51,7 @@ async def test_macunit(dut):
 		if abs(mac_Result - expected_Out) <= tolerance:
 			passed_Tests +=1
 		else:
-			cocotb.log.error(f"Test{i} failed: a={a_Data[i], b={b_Data[i]}, c={c_Data[i]}," f"Expected={expected_Out}, Got={mac_Result}")
+			cocotb.log.error(f"Test{i} failed: a={a_Data[i]}, b={b_Data[i]}, c={c_Data[i]}," f"Expected={expected_Out}, Got={mac_Result}")
 
 	#summary
 	cocotb.log.info(f"Passed {passed_Tests}/{num_Tests} tests")
