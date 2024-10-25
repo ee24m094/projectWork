@@ -1,0 +1,55 @@
+=== Generated schedule for mkMacUnitTop ===
+
+Method schedule
+---------------
+Method: load_A
+Ready signal: True
+Conflict-free: load_B, load_C
+Sequenced before: load_s1_or_s2
+Sequenced before (restricted): load_A
+Sequenced after (restricted): get_MAC
+ 
+Method: load_B
+Ready signal: True
+Conflict-free: load_A, load_C
+Sequenced before: load_s1_or_s2
+Sequenced before (restricted): load_B
+Sequenced after (restricted): get_MAC
+ 
+Method: load_C
+Ready signal: True
+Conflict-free: load_A, load_B
+Sequenced before: load_s1_or_s2
+Sequenced before (restricted): load_C
+Sequenced after (restricted): get_MAC
+ 
+Method: load_s1_or_s2
+Ready signal: True
+Sequenced before (restricted): load_s1_or_s2
+Sequenced after: load_A, load_B, load_C
+Sequenced after (restricted): get_MAC
+ 
+Method: get_MAC
+Ready signal: True
+Conflict-free: get_MAC
+Sequenced before (restricted): load_A, load_B, load_C, load_s1_or_s2
+ 
+Rule schedule
+-------------
+Rule: int_Mac_rl_Compute_Int_Mac
+Predicate: True
+Blocking rules: (none)
+ 
+Rule: rl_select_mac_output
+Predicate: True
+Blocking rules: (none)
+ 
+Logical execution order: get_MAC,
+			 rl_select_mac_output,
+			 int_Mac_rl_Compute_Int_Mac,
+			 load_A,
+			 load_B,
+			 load_C,
+			 load_s1_or_s2
+
+============================================
