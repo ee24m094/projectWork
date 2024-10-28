@@ -33,7 +33,7 @@ void Vtop::eval_step() {
             Verilated::debug(1);
             __Vchange = _change_request(vlSymsp);
             Verilated::debug(__Vsaved_debug);
-            VL_FATAL_MT("/home/shakti/Executeprograms/bluespec_demo_examples/git-ws/projectWork/verilog/mkMacUnitTop.v", 44, "",
+            VL_FATAL_MT("/home/shakti/Executeprograms/bluespec_demo_examples/git-ws/projectWork/unpipelined/verilog/mkMacUnitTop.v", 44, "",
                 "Verilated model didn't converge\n"
                 "- See DIDNOTCONVERGE in the Verilator manual");
         } else {
@@ -59,7 +59,7 @@ void Vtop::_eval_initial_loop(Vtop__Syms* __restrict vlSymsp) {
             Verilated::debug(1);
             __Vchange = _change_request(vlSymsp);
             Verilated::debug(__Vsaved_debug);
-            VL_FATAL_MT("/home/shakti/Executeprograms/bluespec_demo_examples/git-ws/projectWork/verilog/mkMacUnitTop.v", 44, "",
+            VL_FATAL_MT("/home/shakti/Executeprograms/bluespec_demo_examples/git-ws/projectWork/unpipelined/verilog/mkMacUnitTop.v", 44, "",
                 "Verilated model didn't DC converge\n"
                 "- See DIDNOTCONVERGE in the Verilator manual");
         } else {

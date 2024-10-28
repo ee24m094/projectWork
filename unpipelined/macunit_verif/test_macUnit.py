@@ -75,7 +75,7 @@ async def test_macUnit_integer(dut):
     dut.EN_load_C.value = 1
     dut.EN_load_s1_or_s2.value = 0
     dut.load_A_a.value = -50
-    dut.load_B_b.value = 400
+    dut.load_B_b.value = 40
     dut.load_C_c.value = 30
     dut.load_s1_or_s2_sel.value = 1	
     for i in range(0,5):
