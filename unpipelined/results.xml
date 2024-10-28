@@ -1,0 +1,9 @@
+<testsuites name="results">
+  <testsuite name="all" package="all">
+    <property name="random_seed" value="1730137800" />
+    <testcase name="test_macUnit_integer" classname="test_macUnit" file="/home/shakti/Executeprograms/bluespec_demo_examples/git-ws/projectWork/macunit_verif/test_macUnit.py" lineno="38" time="1.7443678379058838" sim_time_ns="52625000.001" ratio_time="30168522.29067488">
+      <failure />
+    </testcase>
+    <testcase name="test_macUnit_float" classname="test_macUnit" file="/home/shakti/Executeprograms/bluespec_demo_examples/git-ws/projectWork/macunit_verif/test_macUnit.py" lineno="93" time="2.83367919921875" sim_time_ns="60005000.001" ratio_time="21175650.376211774" />
+  </testsuite>
+</testsuites>
