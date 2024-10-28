@@ -38,10 +38,10 @@ def read_binary_file_float1(filename,bitwidth):
 @cocotb.test()
 async def test_macUnit_integer(dut):
     """Test to check Int macUnit"""
-    a_Data = read_binary_file_integer("/home/shakti/Executeprograms/bluespec_demo_examples/git-ws/projectWork/testcases/int8mac/A_binary.txt",8)
-    b_Data = read_binary_file_integer("/home/shakti/Executeprograms/bluespec_demo_examples/git-ws/projectWork/testcases/int8mac/B_binary.txt",8)
-    c_Data = read_binary_file_integer("/home/shakti/Executeprograms/bluespec_demo_examples/git-ws/projectWork/testcases/int8mac/C_binary.txt",32)
-    expected_MacOut_Integer = read_binary_file_integer("/home/shakti/Executeprograms/bluespec_demo_examples/git-ws/projectWork/testcases/int8mac/MAC_binary.txt",32)
+    a_Data = read_binary_file_integer("testcases/int8mac/A_binary.txt",8)
+    b_Data = read_binary_file_integer("testcases/int8mac/B_binary.txt",8)
+    c_Data = read_binary_file_integer("testcases/int8mac/C_binary.txt",32)
+    expected_MacOut_Integer = read_binary_file_integer("testcases/int8mac/MAC_binary.txt",32)
     num_tests_intger = len(a_Data)
     clock = Clock(dut.CLK, 10, units="us")  # Create a 10us period clock on port clk
     # Start the clock. Start it low to avoid issues on the first RisingEdge
@@ -74,10 +74,10 @@ async def test_macUnit_integer(dut):
 async def test_macUnit_float(dut):
     
     
-    a_Data = read_binary_file_float("/home/shakti/Executeprograms/bluespec_demo_examples/git-ws/projectWork/testcases/bf16mac/A_binary.txt",16)
-    b_Data = read_binary_file_float("/home/shakti/Executeprograms/bluespec_demo_examples/git-ws/projectWork/testcases/bf16mac/B_binary.txt",16)
-    c_Data = read_binary_file_float("/home/shakti/Executeprograms/bluespec_demo_examples/git-ws/projectWork/testcases/bf16mac/C_binary.txt",32)
-    expected_MacOut_float = read_binary_file_float1("/home/shakti/Executeprograms/bluespec_demo_examples/git-ws/projectWork/testcases/bf16mac/MAC_binary.txt",32)
+    a_Data = read_binary_file_float("testcases/bf16mac/A_binary.txt",16)
+    b_Data = read_binary_file_float("testcases/bf16mac/B_binary.txt",16)
+    c_Data = read_binary_file_float("testcases/bf16mac/C_binary.txt",32)
+    expected_MacOut_float = read_binary_file_float1("testcases/bf16mac/MAC_binary.txt",32)
     
     num_tests_float = len(a_Data)
     
