@@ -120,62 +120,99 @@ module mkbf16Mac(MacUnit_Ifc);
 
 	//function to convert bf16 to fp32
 	function Bit#(32) bf16_to_fp32(Bit#(16) bf16);
-		Bit#(32) fp32 = zeroExtend(bf16[15]) << 31; //sign
-		fp32 = fp32 | (zeroExtend(bf16[14:7])) << 23; // exponent
-		fp32 = fp32 | (zeroExtend(bf16[6:0])) << 16; //mantissa
+		Bit#(1) sign = bf16[15]; //sign
+		Bit#(8) exponent = bf16[14:7]; // exponent
+		Bit#(7) mantissa = bf16[6:0]; //mantissa
+		Bit#(23) mantissa_fp32 = {mantissa, 16'b0};
+		Bit#(32) fp32 = {sign,exponent, mantissa_fp32}; //{sign ,exponent, mantissa_fp32}
 		return fp32;
 	endfunction:bf16_to_fp32
 	
-	//function to perform 48-bit addition
-	/*function Bit#(48) addition_48bit(Bit#(48) a, Bit#(48) b,Bit#(1) cin);
-		Bit#(48) sum=0;
-		Bit#(49) carry = zeroExtend(cin);
-		for(Integer i=0;i<48;i=i+1) begin
-			sum[i] = (a[i]^b[i]^carry[i]);
-			carry[i+1] = (a[i]&b[i])|(carry[i]&(a[i]^b[i]));
+	    function Bit#(16) bitwise_Addition_int32(Bit#(16) a, Bit#(16) b, Bit#(1) cin);
+		Bit#(16) sum = 0;
+		Bit#(17) carry = zeroExtend(cin);
+
+		// Perform bitwise addition over 32 bits
+		for (Integer i = 0; i < 16; i = i + 1) begin
+		    sum[i] = (a[i] ^ b[i] ^ carry[i]);
+		    carry[i+1] = (a[i] & b[i]) | (carry[i] & (a[i] ^ b[i]));
 		end
 		return sum;
-	endfunction
+	    endfunction: bitwise_Addition_int32
+	    
+	    function Tuple2#(Bit#(24),Bit#(25)) bitwise_Addition_int23(Bit#(24) a, Bit#(24) b, Bit#(1) cin);
+			Bit#(24) sum = 0;
+			Bit#(25) carry = zeroExtend(cin);
+
+			// Perform bitwise addition over 32 bits
+			for (Integer i = 0; i < 24; i = i + 1) begin
+		    	sum[i] = (a[i] ^ b[i] ^ carry[i]);
+		    	carry[i+1] = (a[i] & b[i]) | (carry[i] & (a[i] ^ b[i]));
+			end
+			return tuple2(sum, carry);
+	    endfunction: bitwise_Addition_int23
+
 
 	//function to perform 24 bit multiplication
-	function Bit#(48) multiplication_24bit(Bit#(24) a, Bit#(24) b);
-		Bit#(48) product=0;
-		Bit#(48) temp_a = zeroExtend(a);
-		for(Integer i=0; i<24; i=i+1) begin
+	function Bit#(16) multiplication_24bit(Bit#(8) a, Bit#(8) b);
+		Bit#(16) product=0;
+		Bit#(16) temp_a = zeroExtend(a); // Extend a to 32 bits for shift operations
+
+		for(Integer i=0; i<8; i=i+1) begin
 			if(b[i]==1) begin
-				product = addition_48bit(product,(temp_a<<i),0);
+				product = bitwise_Addition_int32(product, (temp_a << i), 0);
 			end
 		end
-		return temp_a;//return the middle 32 bits
-	endfunction: multiplication_24bit*/
+		return product;//return the middle 32 bits
+	endfunction: multiplication_24bit
 
 	//Function to perform multiplication for fp32
 	function Bit#(32) multiplication_fp32(Bit#(32) a_fp32, Bit#(32) b_fp32);
-		//Split the binary to sign, mantissa and exponent
 		Bit#(1) sign_A = a_fp32[31];
 		Bit#(1) sign_B = b_fp32[31];
+		Bit#(8) mantissa_a = {1'b1, a_fp32[22:16]};
+		Bit#(8) mantissa_b = {1'b1, b_fp32[22:16]};
 		Bit#(8) exponent_A = a_fp32[30:23];
 		Bit#(8) exponent_B = b_fp32[30:23];
-		Bit#(24) mantissa_a = {1'b1, a_fp32[22:0]};
-		Bit#(24) mantissa_b = {1'b1, b_fp32[22:0]};
-		//Bit#(48) mantissa_product = multiplication_24bit(mantissa_a,mantissa_b);
-		Bit#(48) mantissa_product = zeroExtend(mantissa_a)*zeroExtend(mantissa_b);
-		//find mantissa correct or not
-		//Bit#(32) mant =  mantissa_product[47:16];
-		Bit#(32) mant = zeroExtend(mantissa_a);
-		//Handle rounding
-		//Bit#(24) mantissa_rounded = mantissa_product[31:8];
-		Bit#(8) exponent_sum = exponent_A + exponent_A -127;
-		Bit#(24) mantissa_rounded=mantissa_product[47:24];
+		Bit#(16) mantissa_product = multiplication_24bit(mantissa_a,mantissa_b);
+		Bit#(8) exponent_sum = exponent_A + exponent_B -127;
+		Bit#(8) final_mantissa;
+		
 		//Handling overflow in mantissa
-		if(mantissa_rounded[23]==1) begin
-			mantissa_rounded = mantissa_rounded>>1;
+		/*if(mantissa_product[15]==1) begin
+			mantissa_product = mantissa_product >> 1;
 			exponent_sum = exponent_sum + 1;
-		end
+		end*/
+		
+		if (mantissa_product[15] == 1) begin
+        	// Product already normalized
+        		final_mantissa = {1'b0,mantissa_product[14:8]}; // Take top 7 bits and 1 bit for rounding check
+        		exponent_sum = exponent_sum + 1; // Adjust exponent
+        		// Handle rounding
+        		if (((mantissa_product[6:0])!= 0||final_mantissa[0] == 1) && mantissa_product[7] == 1) begin
+            			final_mantissa = final_mantissa + 1; // Round up (round to nearest even)
+            			if (final_mantissa[7]==1) begin
+            				exponent_sum = exponent_sum + 1;
+            			end
+            			
+        		end
+    		end 
+    		else begin
+        		final_mantissa = {1'b0,mantissa_product[13:7]}; // Take top 7 bits and 1 bit for rounding check
+       			if (((mantissa_product[5:0])!= 0||final_mantissa[0] == 1) && mantissa_product[6] == 1) begin
+            			final_mantissa = final_mantissa + 1; // Round up (round to nearest even)
+            			if (final_mantissa[7]==1) begin
+            				exponent_sum = exponent_sum + 1;
+            			end
+            			
+        		end
+    		end
 
-		//Return the final result
-		//return {sign_A ^ sign_B, exponent_sum[7:0], mantissa_rounded[22:0]};
-		return mant;
+		//Handle rounding
+		Bit#(23) mantissa_rounded = {final_mantissa[6:0], 16'b0};
+		//Bit#(8) exponent_sum = exponent_A + exponent_B -127;
+
+		return {sign_A^sign_B,exponent_sum,mantissa_rounded};
 
 	endfunction: multiplication_fp32
 
@@ -183,67 +220,108 @@ module mkbf16Mac(MacUnit_Ifc);
 	function Bit#(32) fp32_Addition(Bit#(32) a_fp32, Bit#(32) b_fp32);
 		Bit#(1) sign_A = a_fp32[31];
 		Bit#(1) sign_B = b_fp32[31];
-		Bit#(23) mantissa_a = a_fp32[22:0];//{1'b1, a_fp32[22:0]};
-		Bit#(23) mantissa_b = b_fp32[22:0];//{1'b1, b_fp32[22:0]};
+		Bit#(24) mantissa_a = {1'b1, a_fp32[22:0]};
+		Bit#(24) mantissa_b = {1'b1, b_fp32[22:0]};
 		Bit#(8) exponent_A = a_fp32[30:23];
 		Bit#(8) exponent_B = b_fp32[30:23];
+		Bit#(1) round_flag = 0;
 		//Bit#(32) sum=0;
 		//Bit#(33) carry =0;
 		//carry[0] = cin;
-		Bit#(8) exponent_diff = exponent_A-exponent_B;
-		
-		Bit#(23) aligned_mantissa_A = mantissa_a;
-		Bit#(23) aligned_mantissa_B = mantissa_b;
+		Int#(8) exponent_diff = unpack(exponent_A-exponent_B);
+		Int#(8) exponent_diff1 = unpack(exponent_B-exponent_A);
+		Bit#(8) result_exponent = exponent_A;
+		Bit#(24) aligned_mantissa_A = mantissa_a;
+		Bit#(24) aligned_mantissa_B = mantissa_b;
 		
 		if(exponent_diff>0) begin
 			aligned_mantissa_B = aligned_mantissa_B>>exponent_diff;
+			round_flag = mantissa_b[exponent_diff-1];
+			/*if(round_flag==1) begin
+				aligned_mantissa_B = aligned_mantissa_B + 1;
+			end*/
 		end else if(exponent_diff<0) begin
-			aligned_mantissa_A = aligned_mantissa_A>>-exponent_diff;
+			aligned_mantissa_A = aligned_mantissa_A>>exponent_diff1;
+			result_exponent = exponent_A+pack(exponent_diff1);
+			round_flag = mantissa_a[exponent_diff1-1];
+			/*if(round_flag==1) begin
+				aligned_mantissa_A = aligned_mantissa_A + 1;
+			end*/
 		end
 
 		//Add or subtract mantissas
 		Bit#(1) result_sign;
-		Bit#(23) result_mantissa;
-		if(sign_A==sign_B) begin
+		Bit#(24) result_mantissa;
+		Bit#(24) result_mantissa1 = 0;
+		Bit#(25) result_carry;
+		//if(sign_A==sign_B) begin
 			//if both signs are same add mantissas
 			result_sign=sign_A;
-			result_mantissa = aligned_mantissa_A ^ aligned_mantissa_B;
-			//handle carry for mantissa addition
-			Bit#(24) carry=0;
-			for(Integer i=0;i<23;i=i+1) begin
-				Bit#(1) temp = aligned_mantissa_A[i] & aligned_mantissa_B[i];
-				carry[i+1] = (aligned_mantissa_A[i] ^ aligned_mantissa_B[i])|carry[i];
+			Tuple2#(Bit#(24),Bit#(25)) result = bitwise_Addition_int23(aligned_mantissa_A,aligned_mantissa_B,0);
+			result_mantissa = tpl_1(result);
+			result_carry = tpl_2(result);
+			result_mantissa1 = result_mantissa;
+			
+			
+			if(result_carry[24]==1) begin
+				result_mantissa1 = result_mantissa>>1;
+				round_flag = result_mantissa[0];
+				result_exponent = result_exponent+1;
 			end
-			if(carry[23]==1) begin
-				//normalize the value if overload occurs
-				result_mantissa = result_mantissa>>1;
-				exponent_A=exponent_A+1;
-			end
-		end else begin
+
+			if(round_flag==1) begin
+				result_mantissa1 = result_mantissa1 + 1;
+				//if (result_mantissa1[23]==0) begin
+					//result_exponent = result_exponent+1;
+				//end
+				end
+			
+		//end 
+		/*else begin
 			//if sign differs subtract mantissas
 			result_sign = sign_A;//Assume sign
 			if(aligned_mantissa_A<aligned_mantissa_B) begin
 				result_sign = sign_B;//change sign if b is larger
-				result_mantissa = aligned_mantissa_B^aligned_mantissa_A;
-			end else begin
-				result_mantissa = aligned_mantissa_A^aligned_mantissa_B;
+				Tuple2#(Bit#(24),Bit#(25)) result = bitwise_Addition_int23(~aligned_mantissa_A+1,aligned_mantissa_B,0);
+				result_mantissa = tpl_1(result);
+				result_carry = tpl_2(result);
+				result_mantissa1 = result_mantissa;
+				//Integer shift_count = 0;
+				//while (result_mantissa1[23] == 0 && result_exponent > 0) begin
+				result_mantissa1 = result_mantissa1 << 1;
+				result_exponent = result_exponent - 1;
+				    //shift_count = shift_count + 1;
+				end
+			end 
+		else begin
+				Tuple2#(Bit#(24),Bit#(25)) result = bitwise_Addition_int23(aligned_mantissa_A,~aligned_mantissa_B+1,0);
+				result_sign = sign_A;//change sign if a is larger
+				result_mantissa = tpl_1(result);
+				result_carry = tpl_2(result);
+				result_mantissa1 = result_mantissa;
+				//Integer shift_count = 0;
+				//while (result_mantissa1[23] == 0 && result_exponent > 0) begin
+				result_mantissa1 = result_mantissa1 << 1;
+				result_exponent = result_exponent - 1;
+				    //shift_count = shift_count + 1;
+				//end
 			end	
-		end	
-		return {result_sign, exponent_A[7:0],result_mantissa[22:0]};		
+		end	*/
+		return {result_sign, result_exponent,result_mantissa1[22:0]};		
 	endfunction: fp32_Addition
 	
 	//Rule to compute the result
-	/*rule rl_compute_bf16_mac;
+	rule rl_compute_bf16_mac;
 		Bit#(32) fp32_A = bf16_to_fp32(reg_A);
 		Bit#(32) fp32_B = bf16_to_fp32(reg_B);
-		result <= multiplication_fp32(fp32_A, fp32_B);
-		//result <= fp32_Addition(multiplication_fp32(fp32_A, fp32_B), reg_C);
-	endrule: rl_compute_bf16_mac*/
+		result <= fp32_Addition(multiplication_fp32(fp32_A, fp32_B),reg_C);
+		//result <= multiplication_fp32(fp32_A, fp32_B);
+	endrule: rl_compute_bf16_mac
 
 	//Interface methods to load inputsS
 	method Action load_A(Bit#(16) a);
 		reg_A <= a;
-	endmethod
+	endmethod: load_A
 	method Action load_B(Bit#(16) b);
 		reg_B <= b;
 	endmethod
@@ -256,12 +334,8 @@ module mkbf16Mac(MacUnit_Ifc);
 	
 	//method to return result
 	method ActionValue#(Bit#(32)) get_MAC();
-		Bit#(32) fp32_A = bf16_to_fp32(reg_A);
-		Bit#(32) fp32_B = bf16_to_fp32(reg_B);
-		result <= multiplication_fp32(fp32_A, fp32_B);
-		//result <= fp32_Addition(multiplication_fp32(fp32_A, fp32_B), reg_C);
 		return result;
-	endmethod
+	endmethod:get_MAC
 	
 endmodule: mkbf16Mac
 

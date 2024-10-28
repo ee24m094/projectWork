@@ -96,22 +96,6 @@ VL_INLINE_OPT void Vtop::_sequent__TOP__4(Vtop__Syms* __restrict vlSymsp) {
     Vtop* const __restrict vlTOPp VL_ATTR_UNUSED = vlSymsp->TOPp;
     // Body
     if (vlTOPp->RST_N) {
-        if (vlTOPp->mkMacUnitTop__DOT__bf16_Mac_reg_B_EN) {
-            vlTOPp->mkMacUnitTop__DOT__bf16_Mac_reg_B 
-                = vlTOPp->mkMacUnitTop__DOT__bf16_Mac_reg_B_D_IN;
-        }
-    } else {
-        vlTOPp->mkMacUnitTop__DOT__bf16_Mac_reg_B = 0U;
-    }
-    if (vlTOPp->RST_N) {
-        if (vlTOPp->mkMacUnitTop__DOT__bf16_Mac_reg_C_EN) {
-            vlTOPp->mkMacUnitTop__DOT__bf16_Mac_reg_C 
-                = vlTOPp->mkMacUnitTop__DOT__bf16_Mac_reg_C_D_IN;
-        }
-    } else {
-        vlTOPp->mkMacUnitTop__DOT__bf16_Mac_reg_C = 0U;
-    }
-    if (vlTOPp->RST_N) {
         if (vlTOPp->mkMacUnitTop__DOT__bf16_Mac_result_EN) {
             vlTOPp->mkMacUnitTop__DOT__bf16_Mac_result 
                 = vlTOPp->mkMacUnitTop__DOT__bf16_Mac_result_D_IN;
@@ -143,12 +127,12 @@ VL_INLINE_OPT void Vtop::_sequent__TOP__4(Vtop__Syms* __restrict vlSymsp) {
         vlTOPp->mkMacUnitTop__DOT__reg_s1_or_s2 = 0U;
     }
     if (vlTOPp->RST_N) {
-        if (vlTOPp->mkMacUnitTop__DOT__bf16_Mac_reg_A_EN) {
-            vlTOPp->mkMacUnitTop__DOT__bf16_Mac_reg_A 
-                = vlTOPp->mkMacUnitTop__DOT__bf16_Mac_reg_A_D_IN;
+        if (vlTOPp->mkMacUnitTop__DOT__bf16_Mac_reg_C_EN) {
+            vlTOPp->mkMacUnitTop__DOT__bf16_Mac_reg_C 
+                = vlTOPp->mkMacUnitTop__DOT__bf16_Mac_reg_C_D_IN;
         }
     } else {
-        vlTOPp->mkMacUnitTop__DOT__bf16_Mac_reg_A = 0U;
+        vlTOPp->mkMacUnitTop__DOT__bf16_Mac_reg_C = 0U;
     }
     if (vlTOPp->RST_N) {
         if (vlTOPp->mkMacUnitTop__DOT__int_Mac_reg_C_EN) {
@@ -157,6 +141,22 @@ VL_INLINE_OPT void Vtop::_sequent__TOP__4(Vtop__Syms* __restrict vlSymsp) {
         }
     } else {
         vlTOPp->mkMacUnitTop__DOT__int_Mac_reg_C = 0U;
+    }
+    if (vlTOPp->RST_N) {
+        if (vlTOPp->mkMacUnitTop__DOT__bf16_Mac_reg_B_EN) {
+            vlTOPp->mkMacUnitTop__DOT__bf16_Mac_reg_B 
+                = vlTOPp->mkMacUnitTop__DOT__bf16_Mac_reg_B_D_IN;
+        }
+    } else {
+        vlTOPp->mkMacUnitTop__DOT__bf16_Mac_reg_B = 0U;
+    }
+    if (vlTOPp->RST_N) {
+        if (vlTOPp->mkMacUnitTop__DOT__bf16_Mac_reg_A_EN) {
+            vlTOPp->mkMacUnitTop__DOT__bf16_Mac_reg_A 
+                = vlTOPp->mkMacUnitTop__DOT__bf16_Mac_reg_A_D_IN;
+        }
+    } else {
+        vlTOPp->mkMacUnitTop__DOT__bf16_Mac_reg_A = 0U;
     }
     if (vlTOPp->RST_N) {
         if (vlTOPp->mkMacUnitTop__DOT__int_Mac_reg_B_EN) {
@@ -175,368 +175,686 @@ VL_INLINE_OPT void Vtop::_sequent__TOP__4(Vtop__Syms* __restrict vlSymsp) {
         vlTOPp->mkMacUnitTop__DOT__int_Mac_reg_A = 0U;
     }
     vlTOPp->mkMacUnitTop__DOT__get_MAC = vlTOPp->mkMacUnitTop__DOT__result;
-    vlTOPp->mkMacUnitTop__DOT__bf16_Mac_result_EN = vlTOPp->mkMacUnitTop__DOT__reg_s1_or_s2;
     vlTOPp->mkMacUnitTop__DOT__result_D_IN = ((IData)(vlTOPp->mkMacUnitTop__DOT__reg_s1_or_s2)
                                                ? vlTOPp->mkMacUnitTop__DOT__bf16_Mac_result
                                                : vlTOPp->mkMacUnitTop__DOT__int_Mac_result);
-    vlTOPp->mkMacUnitTop__DOT__y___05Fh175652 = (0x7f0000U 
-                                                 & ((IData)(vlTOPp->mkMacUnitTop__DOT__bf16_Mac_reg_A) 
-                                                    << 0x10U));
-    vlTOPp->mkMacUnitTop__DOT__fp32___05Fh175638 = 
-        (0x80000000U & ((IData)(vlTOPp->mkMacUnitTop__DOT__bf16_Mac_reg_A) 
-                        << 0x10U));
-    vlTOPp->mkMacUnitTop__DOT__y___05Fh175664 = (0x7f800000U 
-                                                 & ((IData)(vlTOPp->mkMacUnitTop__DOT__bf16_Mac_reg_A) 
-                                                    << 0x10U));
-    vlTOPp->mkMacUnitTop__DOT__INV_int_Mac_reg_B___05Fq1 
+    vlTOPp->mkMacUnitTop__DOT__mantissa_b___05Fh175522 
+        = (0x800000U | (0x7fffffU & vlTOPp->mkMacUnitTop__DOT__bf16_Mac_reg_C));
+    vlTOPp->mkMacUnitTop__DOT__sign_A___05Fh175519 
+        = (1U & (((IData)(vlTOPp->mkMacUnitTop__DOT__bf16_Mac_reg_A) 
+                  ^ (IData)(vlTOPp->mkMacUnitTop__DOT__bf16_Mac_reg_B)) 
+                 >> 0xfU));
+    vlTOPp->mkMacUnitTop__DOT__x___05Fh212345 = (0xffU 
+                                                 & (((IData)(vlTOPp->mkMacUnitTop__DOT__bf16_Mac_reg_A) 
+                                                     >> 7U) 
+                                                    + 
+                                                    ((IData)(vlTOPp->mkMacUnitTop__DOT__bf16_Mac_reg_B) 
+                                                     >> 7U)));
+    vlTOPp->mkMacUnitTop__DOT__IF_bf16_Mac_reg_A_BIT_0_THEN_1_ELSE_0___05Fq1 
+        = ((1U & (IData)(vlTOPp->mkMacUnitTop__DOT__bf16_Mac_reg_A))
+            ? 1U : 0U);
+    vlTOPp->mkMacUnitTop__DOT__INV_int_Mac_reg_B___05Fq2 
         = (0xffU & (~ (IData)(vlTOPp->mkMacUnitTop__DOT__int_Mac_reg_B)));
     vlTOPp->mkMacUnitTop__DOT__temp_a___05Fh1026 = 
         ((0xffffff00U & ((- (IData)((1U & ((IData)(vlTOPp->mkMacUnitTop__DOT__int_Mac_reg_A) 
                                            >> 7U)))) 
                          << 8U)) | (IData)(vlTOPp->mkMacUnitTop__DOT__int_Mac_reg_A));
     vlTOPp->get_MAC = vlTOPp->mkMacUnitTop__DOT__get_MAC;
-    vlTOPp->mkMacUnitTop__DOT__fp32___05Fh175639 = 
-        (vlTOPp->mkMacUnitTop__DOT__fp32___05Fh175638 
-         | vlTOPp->mkMacUnitTop__DOT__y___05Fh175664);
-    if ((1U & (IData)(vlTOPp->mkMacUnitTop__DOT__INV_int_Mac_reg_B___05Fq1))) {
-        vlTOPp->mkMacUnitTop__DOT__IF_INV_INV_int_Mac_reg_B_BIT_0_THEN_1_ELSE_0___05Fq5 = 0U;
-        vlTOPp->mkMacUnitTop__DOT__IF_INV_int_Mac_reg_B_BIT_0_THEN_2_ELSE_0___05Fq2 = 2U;
+    vlTOPp->mkMacUnitTop__DOT__exponent_sum___05Fh175568 
+        = (0xffU & ((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh212345) 
+                    - (IData)(0x7fU)));
+    vlTOPp->mkMacUnitTop__DOT__product___05Fh178963 
+        = (0x80U | ((0x7eU & (IData)(vlTOPp->mkMacUnitTop__DOT__bf16_Mac_reg_A)) 
+                    | (1U & (IData)(vlTOPp->mkMacUnitTop__DOT__IF_bf16_Mac_reg_A_BIT_0_THEN_1_ELSE_0___05Fq1))));
+    if ((1U & (IData)(vlTOPp->mkMacUnitTop__DOT__INV_int_Mac_reg_B___05Fq2))) {
+        vlTOPp->mkMacUnitTop__DOT__IF_INV_INV_int_Mac_reg_B_BIT_0_THEN_1_ELSE_0___05Fq6 = 0U;
+        vlTOPp->mkMacUnitTop__DOT__IF_INV_int_Mac_reg_B_BIT_0_THEN_2_ELSE_0___05Fq3 = 2U;
     } else {
-        vlTOPp->mkMacUnitTop__DOT__IF_INV_INV_int_Mac_reg_B_BIT_0_THEN_1_ELSE_0___05Fq5 = 1U;
-        vlTOPp->mkMacUnitTop__DOT__IF_INV_int_Mac_reg_B_BIT_0_THEN_2_ELSE_0___05Fq2 = 0U;
+        vlTOPp->mkMacUnitTop__DOT__IF_INV_INV_int_Mac_reg_B_BIT_0_THEN_1_ELSE_0___05Fq6 = 1U;
+        vlTOPp->mkMacUnitTop__DOT__IF_INV_int_Mac_reg_B_BIT_0_THEN_2_ELSE_0___05Fq3 = 0U;
     }
-    vlTOPp->mkMacUnitTop__DOT__INV_temp_a026___05Fq3 
+    vlTOPp->mkMacUnitTop__DOT__INV_temp_a026___05Fq4 
         = (~ vlTOPp->mkMacUnitTop__DOT__temp_a___05Fh1026);
-    vlTOPp->mkMacUnitTop__DOT__fp3275639_OR_y75652___05Fq24 
-        = (vlTOPp->mkMacUnitTop__DOT__fp32___05Fh175639 
-           | vlTOPp->mkMacUnitTop__DOT__y___05Fh175652);
+    vlTOPp->mkMacUnitTop__DOT__exponent_sum___05F_1___05Fh212328 
+        = (0xffU & ((IData)(2U) + (IData)(vlTOPp->mkMacUnitTop__DOT__exponent_sum___05Fh175568)));
+    vlTOPp->mkMacUnitTop__DOT__exponent_sum___05F_2___05Fh212198 
+        = (0xffU & ((IData)(1U) + (IData)(vlTOPp->mkMacUnitTop__DOT__exponent_sum___05Fh175568)));
+    vlTOPp->mkMacUnitTop__DOT__IF_bf16_Mac_reg_B_729_BIT_0_738_THEN_1_CONCAT___05FETC___05F_d1744 
+        = ((1U & (IData)(vlTOPp->mkMacUnitTop__DOT__bf16_Mac_reg_B))
+            ? (IData)(vlTOPp->mkMacUnitTop__DOT__product___05Fh178963)
+            : 0U);
     vlTOPp->mkMacUnitTop__DOT__y___05Fh1749 = (1U & 
-                                               (((IData)(vlTOPp->mkMacUnitTop__DOT__IF_INV_int_Mac_reg_B_BIT_0_THEN_2_ELSE_0___05Fq2) 
+                                               (((IData)(vlTOPp->mkMacUnitTop__DOT__IF_INV_int_Mac_reg_B_BIT_0_THEN_2_ELSE_0___05Fq3) 
                                                  >> 1U) 
-                                                & ((IData)(vlTOPp->mkMacUnitTop__DOT__INV_int_Mac_reg_B___05Fq1) 
+                                                & ((IData)(vlTOPp->mkMacUnitTop__DOT__INV_int_Mac_reg_B___05Fq2) 
                                                    >> 1U)));
-    if ((1U & vlTOPp->mkMacUnitTop__DOT__INV_temp_a026___05Fq3)) {
-        vlTOPp->mkMacUnitTop__DOT__IF_INV_INV_temp_a026_BIT_0_THEN_1_ELSE_0___05Fq6 = 0U;
-        vlTOPp->mkMacUnitTop__DOT__IF_INV_temp_a026_BIT_0_THEN_2_ELSE_0___05Fq4 = 2ULL;
+    if ((1U & vlTOPp->mkMacUnitTop__DOT__INV_temp_a026___05Fq4)) {
+        vlTOPp->mkMacUnitTop__DOT__IF_INV_INV_temp_a026_BIT_0_THEN_1_ELSE_0___05Fq7 = 0U;
+        vlTOPp->mkMacUnitTop__DOT__IF_INV_temp_a026_BIT_0_THEN_2_ELSE_0___05Fq5 = 2ULL;
     } else {
-        vlTOPp->mkMacUnitTop__DOT__IF_INV_INV_temp_a026_BIT_0_THEN_1_ELSE_0___05Fq6 = 1U;
-        vlTOPp->mkMacUnitTop__DOT__IF_INV_temp_a026_BIT_0_THEN_2_ELSE_0___05Fq4 = 0ULL;
+        vlTOPp->mkMacUnitTop__DOT__IF_INV_INV_temp_a026_BIT_0_THEN_1_ELSE_0___05Fq7 = 1U;
+        vlTOPp->mkMacUnitTop__DOT__IF_INV_temp_a026_BIT_0_THEN_2_ELSE_0___05Fq5 = 0ULL;
     }
-    vlTOPp->mkMacUnitTop__DOT__bf16_Mac_result_D_IN 
-        = (0x800000U | (0x7fffffU & vlTOPp->mkMacUnitTop__DOT__fp3275639_OR_y75652___05Fq24));
+    vlTOPp->mkMacUnitTop__DOT__IF_IF_bf16_Mac_reg_B_729_BIT_0_738_THEN_1_CONC_ETC___05Fq25 
+        = ((1U & (IData)(vlTOPp->mkMacUnitTop__DOT__IF_bf16_Mac_reg_B_729_BIT_0_738_THEN_1_CONCAT___05FETC___05F_d1744))
+            ? 1U : 0U);
+    vlTOPp->mkMacUnitTop__DOT__x___05Fh185366 = (1U 
+                                                 & (~ 
+                                                    ((IData)(vlTOPp->mkMacUnitTop__DOT__IF_bf16_Mac_reg_B_729_BIT_0_738_THEN_1_CONCAT___05FETC___05F_d1744) 
+                                                     >> 8U)));
+    vlTOPp->mkMacUnitTop__DOT__x___05Fh185457 = (1U 
+                                                 & (((IData)(vlTOPp->mkMacUnitTop__DOT__IF_bf16_Mac_reg_B_729_BIT_0_738_THEN_1_CONCAT___05FETC___05F_d1744) 
+                                                     >> 7U) 
+                                                    & ((IData)(vlTOPp->mkMacUnitTop__DOT__bf16_Mac_reg_A) 
+                                                       >> 6U)));
+    vlTOPp->mkMacUnitTop__DOT__x___05Fh185095 = (1U 
+                                                 & (((IData)(vlTOPp->mkMacUnitTop__DOT__IF_bf16_Mac_reg_B_729_BIT_0_738_THEN_1_CONCAT___05FETC___05F_d1744) 
+                                                     >> 7U) 
+                                                    ^ 
+                                                    ((IData)(vlTOPp->mkMacUnitTop__DOT__bf16_Mac_reg_A) 
+                                                     >> 6U)));
+    vlTOPp->mkMacUnitTop__DOT__x___05Fh185186 = (1U 
+                                                 & (((IData)(vlTOPp->mkMacUnitTop__DOT__IF_bf16_Mac_reg_B_729_BIT_0_738_THEN_1_CONCAT___05FETC___05F_d1744) 
+                                                     >> 6U) 
+                                                    & ((IData)(vlTOPp->mkMacUnitTop__DOT__bf16_Mac_reg_A) 
+                                                       >> 5U)));
+    vlTOPp->mkMacUnitTop__DOT__x___05Fh184824 = (1U 
+                                                 & (((IData)(vlTOPp->mkMacUnitTop__DOT__IF_bf16_Mac_reg_B_729_BIT_0_738_THEN_1_CONCAT___05FETC___05F_d1744) 
+                                                     >> 6U) 
+                                                    ^ 
+                                                    ((IData)(vlTOPp->mkMacUnitTop__DOT__bf16_Mac_reg_A) 
+                                                     >> 5U)));
+    vlTOPp->mkMacUnitTop__DOT__x___05Fh184915 = (1U 
+                                                 & (((IData)(vlTOPp->mkMacUnitTop__DOT__IF_bf16_Mac_reg_B_729_BIT_0_738_THEN_1_CONCAT___05FETC___05F_d1744) 
+                                                     >> 5U) 
+                                                    & ((IData)(vlTOPp->mkMacUnitTop__DOT__bf16_Mac_reg_A) 
+                                                       >> 4U)));
+    vlTOPp->mkMacUnitTop__DOT__x___05Fh184553 = (1U 
+                                                 & (((IData)(vlTOPp->mkMacUnitTop__DOT__IF_bf16_Mac_reg_B_729_BIT_0_738_THEN_1_CONCAT___05FETC___05F_d1744) 
+                                                     >> 5U) 
+                                                    ^ 
+                                                    ((IData)(vlTOPp->mkMacUnitTop__DOT__bf16_Mac_reg_A) 
+                                                     >> 4U)));
+    vlTOPp->mkMacUnitTop__DOT__x___05Fh184644 = (1U 
+                                                 & (((IData)(vlTOPp->mkMacUnitTop__DOT__IF_bf16_Mac_reg_B_729_BIT_0_738_THEN_1_CONCAT___05FETC___05F_d1744) 
+                                                     >> 4U) 
+                                                    & ((IData)(vlTOPp->mkMacUnitTop__DOT__bf16_Mac_reg_A) 
+                                                       >> 3U)));
+    vlTOPp->mkMacUnitTop__DOT__x___05Fh184282 = (1U 
+                                                 & (((IData)(vlTOPp->mkMacUnitTop__DOT__IF_bf16_Mac_reg_B_729_BIT_0_738_THEN_1_CONCAT___05FETC___05F_d1744) 
+                                                     >> 4U) 
+                                                    ^ 
+                                                    ((IData)(vlTOPp->mkMacUnitTop__DOT__bf16_Mac_reg_A) 
+                                                     >> 3U)));
+    vlTOPp->mkMacUnitTop__DOT__x___05Fh184373 = (1U 
+                                                 & (((IData)(vlTOPp->mkMacUnitTop__DOT__IF_bf16_Mac_reg_B_729_BIT_0_738_THEN_1_CONCAT___05FETC___05F_d1744) 
+                                                     >> 3U) 
+                                                    & ((IData)(vlTOPp->mkMacUnitTop__DOT__bf16_Mac_reg_A) 
+                                                       >> 2U)));
+    vlTOPp->mkMacUnitTop__DOT__x___05Fh184010 = (1U 
+                                                 & (((IData)(vlTOPp->mkMacUnitTop__DOT__IF_bf16_Mac_reg_B_729_BIT_0_738_THEN_1_CONCAT___05FETC___05F_d1744) 
+                                                     >> 3U) 
+                                                    ^ 
+                                                    ((IData)(vlTOPp->mkMacUnitTop__DOT__bf16_Mac_reg_A) 
+                                                     >> 2U)));
+    vlTOPp->mkMacUnitTop__DOT__x___05Fh184101 = (1U 
+                                                 & (((IData)(vlTOPp->mkMacUnitTop__DOT__IF_bf16_Mac_reg_B_729_BIT_0_738_THEN_1_CONCAT___05FETC___05F_d1744) 
+                                                     >> 2U) 
+                                                    & ((IData)(vlTOPp->mkMacUnitTop__DOT__bf16_Mac_reg_A) 
+                                                       >> 1U)));
+    vlTOPp->mkMacUnitTop__DOT__IF_IF_bf16_Mac_reg_B_729_BIT_0_738_THEN_1_CONC_ETC___05Fq24 
+        = ((1U & (((IData)(vlTOPp->mkMacUnitTop__DOT__IF_bf16_Mac_reg_B_729_BIT_0_738_THEN_1_CONCAT___05FETC___05F_d1744) 
+                   >> 1U) & (IData)(vlTOPp->mkMacUnitTop__DOT__bf16_Mac_reg_A)))
+            ? 4U : 0U);
+    vlTOPp->mkMacUnitTop__DOT__x___05Fh183742 = (1U 
+                                                 & (((IData)(vlTOPp->mkMacUnitTop__DOT__IF_bf16_Mac_reg_B_729_BIT_0_738_THEN_1_CONCAT___05FETC___05F_d1744) 
+                                                     >> 2U) 
+                                                    ^ 
+                                                    ((IData)(vlTOPp->mkMacUnitTop__DOT__bf16_Mac_reg_A) 
+                                                     >> 1U)));
     vlTOPp->mkMacUnitTop__DOT__y___05Fh2021 = ((IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh1749) 
-                                               & ((IData)(vlTOPp->mkMacUnitTop__DOT__INV_int_Mac_reg_B___05Fq1) 
+                                               & ((IData)(vlTOPp->mkMacUnitTop__DOT__INV_int_Mac_reg_B___05Fq2) 
                                                   >> 2U));
     vlTOPp->mkMacUnitTop__DOT__y___05Fh26406 = (1U 
                                                 & ((IData)(
-                                                           (vlTOPp->mkMacUnitTop__DOT__IF_INV_temp_a026_BIT_0_THEN_2_ELSE_0___05Fq4 
+                                                           (vlTOPp->mkMacUnitTop__DOT__IF_INV_temp_a026_BIT_0_THEN_2_ELSE_0___05Fq5 
                                                             >> 1U)) 
-                                                   & (vlTOPp->mkMacUnitTop__DOT__INV_temp_a026___05Fq3 
+                                                   & (vlTOPp->mkMacUnitTop__DOT__INV_temp_a026___05Fq4 
                                                       >> 1U)));
+    vlTOPp->mkMacUnitTop__DOT__y___05Fh184102 = ((vlTOPp->mkMacUnitTop__DOT__IF_IF_bf16_Mac_reg_B_729_BIT_0_738_THEN_1_CONC_ETC___05Fq24 
+                                                  >> 2U) 
+                                                 & (IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh183742));
     vlTOPp->mkMacUnitTop__DOT__INV_int_Mac_reg_B_BIT_3_6_XOR_IF_INV_int_Mac_r_ETC___05F_d35 
-        = ((8U & ((0xfffffff8U & (IData)(vlTOPp->mkMacUnitTop__DOT__INV_int_Mac_reg_B___05Fq1)) 
+        = ((8U & ((0xfffffff8U & (IData)(vlTOPp->mkMacUnitTop__DOT__INV_int_Mac_reg_B___05Fq2)) 
                   ^ ((IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh2021) 
                      << 3U))) | ((4U & ((0xfffffffcU 
-                                         & (IData)(vlTOPp->mkMacUnitTop__DOT__INV_int_Mac_reg_B___05Fq1)) 
+                                         & (IData)(vlTOPp->mkMacUnitTop__DOT__INV_int_Mac_reg_B___05Fq2)) 
                                         ^ ((IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh1749) 
                                            << 2U))) 
                                  | ((2U & ((0xfffffffeU 
-                                            & (IData)(vlTOPp->mkMacUnitTop__DOT__INV_int_Mac_reg_B___05Fq1)) 
+                                            & (IData)(vlTOPp->mkMacUnitTop__DOT__INV_int_Mac_reg_B___05Fq2)) 
                                            ^ (0xfffffffeU 
-                                              & (IData)(vlTOPp->mkMacUnitTop__DOT__IF_INV_int_Mac_reg_B_BIT_0_THEN_2_ELSE_0___05Fq2)))) 
-                                    | (1U & (IData)(vlTOPp->mkMacUnitTop__DOT__IF_INV_INV_int_Mac_reg_B_BIT_0_THEN_1_ELSE_0___05Fq5)))));
+                                              & (IData)(vlTOPp->mkMacUnitTop__DOT__IF_INV_int_Mac_reg_B_BIT_0_THEN_2_ELSE_0___05Fq3)))) 
+                                    | (1U & (IData)(vlTOPp->mkMacUnitTop__DOT__IF_INV_INV_int_Mac_reg_B_BIT_0_THEN_1_ELSE_0___05Fq6)))));
     vlTOPp->mkMacUnitTop__DOT__y___05Fh2292 = ((IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh2021) 
-                                               & ((IData)(vlTOPp->mkMacUnitTop__DOT__INV_int_Mac_reg_B___05Fq1) 
+                                               & ((IData)(vlTOPp->mkMacUnitTop__DOT__INV_int_Mac_reg_B___05Fq2) 
                                                   >> 3U));
     vlTOPp->mkMacUnitTop__DOT__y___05Fh26678 = ((IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh26406) 
-                                                & (vlTOPp->mkMacUnitTop__DOT__INV_temp_a026___05Fq3 
+                                                & (vlTOPp->mkMacUnitTop__DOT__INV_temp_a026___05Fq4 
                                                    >> 2U));
+    vlTOPp->mkMacUnitTop__DOT__y___05Fh184011 = ((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh184101) 
+                                                 | (IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh184102));
     vlTOPp->mkMacUnitTop__DOT__y___05Fh2563 = ((IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh2292) 
-                                               & ((IData)(vlTOPp->mkMacUnitTop__DOT__INV_int_Mac_reg_B___05Fq1) 
+                                               & ((IData)(vlTOPp->mkMacUnitTop__DOT__INV_int_Mac_reg_B___05Fq2) 
                                                   >> 4U));
     vlTOPp->mkMacUnitTop__DOT__INV_SEXT_int_Mac_reg_A___05F7_8_BIT_3_7_XOR_IF_INV_ETC___05F_d148 
-        = ((8U & ((0xfffffff8U & vlTOPp->mkMacUnitTop__DOT__INV_temp_a026___05Fq3) 
+        = ((8U & ((0xfffffff8U & vlTOPp->mkMacUnitTop__DOT__INV_temp_a026___05Fq4) 
                   ^ ((IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh26678) 
                      << 3U))) | ((4U & ((0xfffffffcU 
-                                         & vlTOPp->mkMacUnitTop__DOT__INV_temp_a026___05Fq3) 
+                                         & vlTOPp->mkMacUnitTop__DOT__INV_temp_a026___05Fq4) 
                                         ^ ((IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh26406) 
                                            << 2U))) 
                                  | ((2U & ((0xfffffffeU 
-                                            & vlTOPp->mkMacUnitTop__DOT__INV_temp_a026___05Fq3) 
+                                            & vlTOPp->mkMacUnitTop__DOT__INV_temp_a026___05Fq4) 
                                            ^ ((IData)(
-                                                      (vlTOPp->mkMacUnitTop__DOT__IF_INV_temp_a026_BIT_0_THEN_2_ELSE_0___05Fq4 
+                                                      (vlTOPp->mkMacUnitTop__DOT__IF_INV_temp_a026_BIT_0_THEN_2_ELSE_0___05Fq5 
                                                        >> 1U)) 
                                               << 1U))) 
-                                    | (1U & vlTOPp->mkMacUnitTop__DOT__IF_INV_INV_temp_a026_BIT_0_THEN_1_ELSE_0___05Fq6))));
+                                    | (1U & vlTOPp->mkMacUnitTop__DOT__IF_INV_INV_temp_a026_BIT_0_THEN_1_ELSE_0___05Fq7))));
     vlTOPp->mkMacUnitTop__DOT__y___05Fh26949 = ((IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh26678) 
-                                                & (vlTOPp->mkMacUnitTop__DOT__INV_temp_a026___05Fq3 
+                                                & (vlTOPp->mkMacUnitTop__DOT__INV_temp_a026___05Fq4 
                                                    >> 3U));
+    vlTOPp->mkMacUnitTop__DOT__IF_bf16_Mac_reg_B_729_BIT_0_738_THEN_1_CONCAT___05FETC___05F_d1821 
+        = ((((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh184010) 
+             ^ (IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh184011)) 
+            << 3U) | ((4U & (((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh183742) 
+                              << 2U) ^ (0xfffffffcU 
+                                        & vlTOPp->mkMacUnitTop__DOT__IF_IF_bf16_Mac_reg_B_729_BIT_0_738_THEN_1_CONC_ETC___05Fq24))) 
+                      | ((2U & ((0xfffffffeU & (IData)(vlTOPp->mkMacUnitTop__DOT__IF_bf16_Mac_reg_B_729_BIT_0_738_THEN_1_CONCAT___05FETC___05F_d1744)) 
+                                ^ ((IData)(vlTOPp->mkMacUnitTop__DOT__bf16_Mac_reg_A) 
+                                   << 1U))) | (1U & (IData)(vlTOPp->mkMacUnitTop__DOT__IF_IF_bf16_Mac_reg_B_729_BIT_0_738_THEN_1_CONC_ETC___05Fq25)))));
+    vlTOPp->mkMacUnitTop__DOT__y___05Fh184374 = ((IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh184011) 
+                                                 & (IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh184010));
     vlTOPp->mkMacUnitTop__DOT__y___05Fh2834 = ((IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh2563) 
-                                               & ((IData)(vlTOPp->mkMacUnitTop__DOT__INV_int_Mac_reg_B___05Fq1) 
+                                               & ((IData)(vlTOPp->mkMacUnitTop__DOT__INV_int_Mac_reg_B___05Fq2) 
                                                   >> 5U));
     vlTOPp->mkMacUnitTop__DOT__y___05Fh27220 = ((IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh26949) 
-                                                & (vlTOPp->mkMacUnitTop__DOT__INV_temp_a026___05Fq3 
+                                                & (vlTOPp->mkMacUnitTop__DOT__INV_temp_a026___05Fq4 
                                                    >> 4U));
+    vlTOPp->mkMacUnitTop__DOT__y___05Fh184283 = ((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh184373) 
+                                                 | (IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh184374));
     vlTOPp->mkMacUnitTop__DOT__y___05Fh3105 = ((IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh2834) 
-                                               & ((IData)(vlTOPp->mkMacUnitTop__DOT__INV_int_Mac_reg_B___05Fq1) 
+                                               & ((IData)(vlTOPp->mkMacUnitTop__DOT__INV_int_Mac_reg_B___05Fq2) 
                                                   >> 6U));
     vlTOPp->mkMacUnitTop__DOT__y___05Fh27491 = ((IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh27220) 
-                                                & (vlTOPp->mkMacUnitTop__DOT__INV_temp_a026___05Fq3 
+                                                & (vlTOPp->mkMacUnitTop__DOT__INV_temp_a026___05Fq4 
                                                    >> 5U));
+    vlTOPp->mkMacUnitTop__DOT__y___05Fh184645 = ((IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh184283) 
+                                                 & (IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh184282));
     vlTOPp->mkMacUnitTop__DOT__temp_b___05F_1___05Fh1161 
-        = ((0x80U & ((0xffffff80U & (IData)(vlTOPp->mkMacUnitTop__DOT__INV_int_Mac_reg_B___05Fq1)) 
+        = ((0x80U & ((0xffffff80U & (IData)(vlTOPp->mkMacUnitTop__DOT__INV_int_Mac_reg_B___05Fq2)) 
                      ^ ((IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh3105) 
                         << 7U))) | ((0x40U & ((0xffffffc0U 
-                                               & (IData)(vlTOPp->mkMacUnitTop__DOT__INV_int_Mac_reg_B___05Fq1)) 
+                                               & (IData)(vlTOPp->mkMacUnitTop__DOT__INV_int_Mac_reg_B___05Fq2)) 
                                               ^ ((IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh2834) 
                                                  << 6U))) 
                                     | ((0x20U & ((0xffffffe0U 
-                                                  & (IData)(vlTOPp->mkMacUnitTop__DOT__INV_int_Mac_reg_B___05Fq1)) 
+                                                  & (IData)(vlTOPp->mkMacUnitTop__DOT__INV_int_Mac_reg_B___05Fq2)) 
                                                  ^ 
                                                  ((IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh2563) 
                                                   << 5U))) 
                                        | ((0x10U & 
                                            ((0xfffffff0U 
-                                             & (IData)(vlTOPp->mkMacUnitTop__DOT__INV_int_Mac_reg_B___05Fq1)) 
+                                             & (IData)(vlTOPp->mkMacUnitTop__DOT__INV_int_Mac_reg_B___05Fq2)) 
                                             ^ ((IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh2292) 
                                                << 4U))) 
                                           | (IData)(vlTOPp->mkMacUnitTop__DOT__INV_int_Mac_reg_B_BIT_3_6_XOR_IF_INV_int_Mac_r_ETC___05F_d35)))));
     vlTOPp->mkMacUnitTop__DOT__y___05Fh27762 = ((IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh27491) 
-                                                & (vlTOPp->mkMacUnitTop__DOT__INV_temp_a026___05Fq3 
+                                                & (vlTOPp->mkMacUnitTop__DOT__INV_temp_a026___05Fq4 
                                                    >> 6U));
+    vlTOPp->mkMacUnitTop__DOT__y___05Fh184554 = ((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh184644) 
+                                                 | (IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh184645));
     vlTOPp->mkMacUnitTop__DOT__IF_int_Mac_reg_B_BIT_7_THEN_INV_int_Mac_reg_B___05FETC___05F_d38 
         = ((0x80U & (IData)(vlTOPp->mkMacUnitTop__DOT__int_Mac_reg_B))
             ? (IData)(vlTOPp->mkMacUnitTop__DOT__temp_b___05F_1___05Fh1161)
             : (IData)(vlTOPp->mkMacUnitTop__DOT__int_Mac_reg_B));
     vlTOPp->mkMacUnitTop__DOT__INV_SEXT_int_Mac_reg_A___05F7_8_BIT_7_5_XOR_IF_INV_ETC___05F_d150 
-        = ((0x80U & ((0xffffff80U & vlTOPp->mkMacUnitTop__DOT__INV_temp_a026___05Fq3) 
+        = ((0x80U & ((0xffffff80U & vlTOPp->mkMacUnitTop__DOT__INV_temp_a026___05Fq4) 
                      ^ ((IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh27762) 
                         << 7U))) | ((0x40U & ((0xffffffc0U 
-                                               & vlTOPp->mkMacUnitTop__DOT__INV_temp_a026___05Fq3) 
+                                               & vlTOPp->mkMacUnitTop__DOT__INV_temp_a026___05Fq4) 
                                               ^ ((IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh27491) 
                                                  << 6U))) 
                                     | ((0x20U & ((0xffffffe0U 
-                                                  & vlTOPp->mkMacUnitTop__DOT__INV_temp_a026___05Fq3) 
+                                                  & vlTOPp->mkMacUnitTop__DOT__INV_temp_a026___05Fq4) 
                                                  ^ 
                                                  ((IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh27220) 
                                                   << 5U))) 
                                        | ((0x10U & 
                                            ((0xfffffff0U 
-                                             & vlTOPp->mkMacUnitTop__DOT__INV_temp_a026___05Fq3) 
+                                             & vlTOPp->mkMacUnitTop__DOT__INV_temp_a026___05Fq4) 
                                             ^ ((IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh26949) 
                                                << 4U))) 
                                           | (IData)(vlTOPp->mkMacUnitTop__DOT__INV_SEXT_int_Mac_reg_A___05F7_8_BIT_3_7_XOR_IF_INV_ETC___05F_d148)))));
     vlTOPp->mkMacUnitTop__DOT__y___05Fh28033 = ((IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh27762) 
-                                                & (vlTOPp->mkMacUnitTop__DOT__INV_temp_a026___05Fq3 
+                                                & (vlTOPp->mkMacUnitTop__DOT__INV_temp_a026___05Fq4 
                                                    >> 7U));
+    vlTOPp->mkMacUnitTop__DOT__IF_bf16_Mac_reg_B_729_BIT_0_738_THEN_1_CONCAT___05FETC___05F_d1822 
+        = ((((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh184553) 
+             ^ (IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh184554)) 
+            << 5U) | ((((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh184282) 
+                        ^ (IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh184283)) 
+                       << 4U) | (IData)(vlTOPp->mkMacUnitTop__DOT__IF_bf16_Mac_reg_B_729_BIT_0_738_THEN_1_CONCAT___05FETC___05F_d1821)));
+    vlTOPp->mkMacUnitTop__DOT__y___05Fh184916 = ((IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh184554) 
+                                                 & (IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh184553));
     vlTOPp->mkMacUnitTop__DOT__y___05Fh28304 = ((IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh28033) 
-                                                & (vlTOPp->mkMacUnitTop__DOT__INV_temp_a026___05Fq3 
+                                                & (vlTOPp->mkMacUnitTop__DOT__INV_temp_a026___05Fq4 
                                                    >> 8U));
+    vlTOPp->mkMacUnitTop__DOT__y___05Fh184825 = ((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh184915) 
+                                                 | (IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh184916));
     vlTOPp->mkMacUnitTop__DOT__y___05Fh28575 = ((IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh28304) 
-                                                & (vlTOPp->mkMacUnitTop__DOT__INV_temp_a026___05Fq3 
+                                                & (vlTOPp->mkMacUnitTop__DOT__INV_temp_a026___05Fq4 
                                                    >> 9U));
+    vlTOPp->mkMacUnitTop__DOT__y___05Fh185187 = ((IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh184825) 
+                                                 & (IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh184824));
     vlTOPp->mkMacUnitTop__DOT__y___05Fh28846 = ((IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh28575) 
-                                                & (vlTOPp->mkMacUnitTop__DOT__INV_temp_a026___05Fq3 
+                                                & (vlTOPp->mkMacUnitTop__DOT__INV_temp_a026___05Fq4 
                                                    >> 0xaU));
+    vlTOPp->mkMacUnitTop__DOT__y___05Fh185096 = ((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh185186) 
+                                                 | (IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh185187));
     vlTOPp->mkMacUnitTop__DOT__INV_SEXT_int_Mac_reg_A___05F7_8_BIT_11_3_XOR_IF_IN_ETC___05F_d152 
-        = ((0x800U & ((0xfffff800U & vlTOPp->mkMacUnitTop__DOT__INV_temp_a026___05Fq3) 
+        = ((0x800U & ((0xfffff800U & vlTOPp->mkMacUnitTop__DOT__INV_temp_a026___05Fq4) 
                       ^ ((IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh28846) 
                          << 0xbU))) | ((0x400U & ((0xfffffc00U 
-                                                   & vlTOPp->mkMacUnitTop__DOT__INV_temp_a026___05Fq3) 
+                                                   & vlTOPp->mkMacUnitTop__DOT__INV_temp_a026___05Fq4) 
                                                   ^ 
                                                   ((IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh28575) 
                                                    << 0xaU))) 
                                        | ((0x200U & 
                                            ((0xfffffe00U 
-                                             & vlTOPp->mkMacUnitTop__DOT__INV_temp_a026___05Fq3) 
+                                             & vlTOPp->mkMacUnitTop__DOT__INV_temp_a026___05Fq4) 
                                             ^ ((IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh28304) 
                                                << 9U))) 
                                           | ((0x100U 
                                               & ((0xffffff00U 
-                                                  & vlTOPp->mkMacUnitTop__DOT__INV_temp_a026___05Fq3) 
+                                                  & vlTOPp->mkMacUnitTop__DOT__INV_temp_a026___05Fq4) 
                                                  ^ 
                                                  ((IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh28033) 
                                                   << 8U))) 
                                              | (IData)(vlTOPp->mkMacUnitTop__DOT__INV_SEXT_int_Mac_reg_A___05F7_8_BIT_7_5_XOR_IF_INV_ETC___05F_d150)))));
     vlTOPp->mkMacUnitTop__DOT__y___05Fh29117 = ((IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh28846) 
-                                                & (vlTOPp->mkMacUnitTop__DOT__INV_temp_a026___05Fq3 
+                                                & (vlTOPp->mkMacUnitTop__DOT__INV_temp_a026___05Fq4 
                                                    >> 0xbU));
+    vlTOPp->mkMacUnitTop__DOT__IF_bf16_Mac_reg_B_729_BIT_0_738_THEN_1_CONCAT___05FETC___05F_d1823 
+        = ((((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh185095) 
+             ^ (IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh185096)) 
+            << 7U) | ((((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh184824) 
+                        ^ (IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh184825)) 
+                       << 6U) | (IData)(vlTOPp->mkMacUnitTop__DOT__IF_bf16_Mac_reg_B_729_BIT_0_738_THEN_1_CONCAT___05FETC___05F_d1822)));
+    vlTOPp->mkMacUnitTop__DOT__y___05Fh185458 = ((IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh185096) 
+                                                 & (IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh185095));
     vlTOPp->mkMacUnitTop__DOT__y___05Fh29388 = ((IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh29117) 
-                                                & (vlTOPp->mkMacUnitTop__DOT__INV_temp_a026___05Fq3 
+                                                & (vlTOPp->mkMacUnitTop__DOT__INV_temp_a026___05Fq4 
                                                    >> 0xcU));
+    vlTOPp->mkMacUnitTop__DOT__y___05Fh185367 = ((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh185457) 
+                                                 | (IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh185458));
     vlTOPp->mkMacUnitTop__DOT__y___05Fh29659 = ((IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh29388) 
-                                                & (vlTOPp->mkMacUnitTop__DOT__INV_temp_a026___05Fq3 
+                                                & (vlTOPp->mkMacUnitTop__DOT__INV_temp_a026___05Fq4 
                                                    >> 0xdU));
+    vlTOPp->mkMacUnitTop__DOT__y___05Fh185729 = ((IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh185367) 
+                                                 & (IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh185366));
     vlTOPp->mkMacUnitTop__DOT__y___05Fh29930 = ((IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh29659) 
-                                                & (vlTOPp->mkMacUnitTop__DOT__INV_temp_a026___05Fq3 
+                                                & (vlTOPp->mkMacUnitTop__DOT__INV_temp_a026___05Fq4 
                                                    >> 0xeU));
+    vlTOPp->mkMacUnitTop__DOT__y___05Fh185638 = (1U 
+                                                 & (((IData)(vlTOPp->mkMacUnitTop__DOT__IF_bf16_Mac_reg_B_729_BIT_0_738_THEN_1_CONCAT___05FETC___05F_d1744) 
+                                                     >> 8U) 
+                                                    | (IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh185729)));
     vlTOPp->mkMacUnitTop__DOT__INV_SEXT_int_Mac_reg_A___05F7_8_BIT_15_1_XOR_IF_IN_ETC___05F_d154 
-        = ((0x8000U & ((0xffff8000U & vlTOPp->mkMacUnitTop__DOT__INV_temp_a026___05Fq3) 
+        = ((0x8000U & ((0xffff8000U & vlTOPp->mkMacUnitTop__DOT__INV_temp_a026___05Fq4) 
                        ^ ((IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh29930) 
                           << 0xfU))) | ((0x4000U & 
                                          ((0xffffc000U 
-                                           & vlTOPp->mkMacUnitTop__DOT__INV_temp_a026___05Fq3) 
+                                           & vlTOPp->mkMacUnitTop__DOT__INV_temp_a026___05Fq4) 
                                           ^ ((IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh29659) 
                                              << 0xeU))) 
                                         | ((0x2000U 
                                             & ((0xffffe000U 
-                                                & vlTOPp->mkMacUnitTop__DOT__INV_temp_a026___05Fq3) 
+                                                & vlTOPp->mkMacUnitTop__DOT__INV_temp_a026___05Fq4) 
                                                ^ ((IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh29388) 
                                                   << 0xdU))) 
                                            | ((0x1000U 
                                                & ((0xfffff000U 
-                                                   & vlTOPp->mkMacUnitTop__DOT__INV_temp_a026___05Fq3) 
+                                                   & vlTOPp->mkMacUnitTop__DOT__INV_temp_a026___05Fq4) 
                                                   ^ 
                                                   ((IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh29117) 
                                                    << 0xcU))) 
                                               | (IData)(vlTOPp->mkMacUnitTop__DOT__INV_SEXT_int_Mac_reg_A___05F7_8_BIT_11_3_XOR_IF_IN_ETC___05F_d152)))));
     vlTOPp->mkMacUnitTop__DOT__y___05Fh30201 = ((IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh29930) 
-                                                & (vlTOPp->mkMacUnitTop__DOT__INV_temp_a026___05Fq3 
+                                                & (vlTOPp->mkMacUnitTop__DOT__INV_temp_a026___05Fq4 
                                                    >> 0xfU));
+    vlTOPp->mkMacUnitTop__DOT__IF_bf16_Mac_reg_B_729_BIT_0_738_THEN_1_CONCAT___05FETC___05F_d1824 
+        = ((0x200U & ((0xfffffe00U & (IData)(vlTOPp->mkMacUnitTop__DOT__IF_bf16_Mac_reg_B_729_BIT_0_738_THEN_1_CONCAT___05FETC___05F_d1744)) 
+                      ^ ((IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh185638) 
+                         << 9U))) | ((((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh185366) 
+                                       ^ (IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh185367)) 
+                                      << 8U) | (IData)(vlTOPp->mkMacUnitTop__DOT__IF_bf16_Mac_reg_B_729_BIT_0_738_THEN_1_CONCAT___05FETC___05F_d1823)));
+    vlTOPp->mkMacUnitTop__DOT__y___05Fh185909 = ((IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh185638) 
+                                                 & ((IData)(vlTOPp->mkMacUnitTop__DOT__IF_bf16_Mac_reg_B_729_BIT_0_738_THEN_1_CONCAT___05FETC___05F_d1744) 
+                                                    >> 9U));
     vlTOPp->mkMacUnitTop__DOT__y___05Fh30472 = ((IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh30201) 
-                                                & (vlTOPp->mkMacUnitTop__DOT__INV_temp_a026___05Fq3 
+                                                & (vlTOPp->mkMacUnitTop__DOT__INV_temp_a026___05Fq4 
                                                    >> 0x10U));
+    vlTOPp->mkMacUnitTop__DOT__y___05Fh186180 = ((IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh185909) 
+                                                 & ((IData)(vlTOPp->mkMacUnitTop__DOT__IF_bf16_Mac_reg_B_729_BIT_0_738_THEN_1_CONCAT___05FETC___05F_d1744) 
+                                                    >> 0xaU));
     vlTOPp->mkMacUnitTop__DOT__y___05Fh30743 = ((IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh30472) 
-                                                & (vlTOPp->mkMacUnitTop__DOT__INV_temp_a026___05Fq3 
+                                                & (vlTOPp->mkMacUnitTop__DOT__INV_temp_a026___05Fq4 
                                                    >> 0x11U));
+    vlTOPp->mkMacUnitTop__DOT__y___05Fh186451 = ((IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh186180) 
+                                                 & ((IData)(vlTOPp->mkMacUnitTop__DOT__IF_bf16_Mac_reg_B_729_BIT_0_738_THEN_1_CONCAT___05FETC___05F_d1744) 
+                                                    >> 0xbU));
     vlTOPp->mkMacUnitTop__DOT__y___05Fh31014 = ((IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh30743) 
-                                                & (vlTOPp->mkMacUnitTop__DOT__INV_temp_a026___05Fq3 
+                                                & (vlTOPp->mkMacUnitTop__DOT__INV_temp_a026___05Fq4 
                                                    >> 0x12U));
+    vlTOPp->mkMacUnitTop__DOT__y___05Fh186722 = ((IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh186451) 
+                                                 & ((IData)(vlTOPp->mkMacUnitTop__DOT__IF_bf16_Mac_reg_B_729_BIT_0_738_THEN_1_CONCAT___05FETC___05F_d1744) 
+                                                    >> 0xcU));
     vlTOPp->mkMacUnitTop__DOT__INV_SEXT_int_Mac_reg_A___05F7_8_BIT_19_9_XOR_IF_IN_ETC___05F_d156 
-        = ((0x80000U & ((0xfff80000U & vlTOPp->mkMacUnitTop__DOT__INV_temp_a026___05Fq3) 
+        = ((0x80000U & ((0xfff80000U & vlTOPp->mkMacUnitTop__DOT__INV_temp_a026___05Fq4) 
                         ^ ((IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh31014) 
                            << 0x13U))) | ((0x40000U 
                                            & ((0xfffc0000U 
-                                               & vlTOPp->mkMacUnitTop__DOT__INV_temp_a026___05Fq3) 
+                                               & vlTOPp->mkMacUnitTop__DOT__INV_temp_a026___05Fq4) 
                                               ^ ((IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh30743) 
                                                  << 0x12U))) 
                                           | ((0x20000U 
                                               & ((0xfffe0000U 
-                                                  & vlTOPp->mkMacUnitTop__DOT__INV_temp_a026___05Fq3) 
+                                                  & vlTOPp->mkMacUnitTop__DOT__INV_temp_a026___05Fq4) 
                                                  ^ 
                                                  ((IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh30472) 
                                                   << 0x11U))) 
                                              | ((0x10000U 
                                                  & ((0xffff0000U 
-                                                     & vlTOPp->mkMacUnitTop__DOT__INV_temp_a026___05Fq3) 
+                                                     & vlTOPp->mkMacUnitTop__DOT__INV_temp_a026___05Fq4) 
                                                     ^ 
                                                     ((IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh30201) 
                                                      << 0x10U))) 
                                                 | (IData)(vlTOPp->mkMacUnitTop__DOT__INV_SEXT_int_Mac_reg_A___05F7_8_BIT_15_1_XOR_IF_IN_ETC___05F_d154)))));
     vlTOPp->mkMacUnitTop__DOT__y___05Fh31285 = ((IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh31014) 
-                                                & (vlTOPp->mkMacUnitTop__DOT__INV_temp_a026___05Fq3 
+                                                & (vlTOPp->mkMacUnitTop__DOT__INV_temp_a026___05Fq4 
                                                    >> 0x13U));
+    vlTOPp->mkMacUnitTop__DOT__IF_bf16_Mac_reg_B_729_BIT_0_738_THEN_1_CONCAT___05FETC___05F_d1826 
+        = ((0x2000U & ((0xffffe000U & (IData)(vlTOPp->mkMacUnitTop__DOT__IF_bf16_Mac_reg_B_729_BIT_0_738_THEN_1_CONCAT___05FETC___05F_d1744)) 
+                       ^ ((IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh186722) 
+                          << 0xdU))) | ((0x1000U & 
+                                         ((0xfffff000U 
+                                           & (IData)(vlTOPp->mkMacUnitTop__DOT__IF_bf16_Mac_reg_B_729_BIT_0_738_THEN_1_CONCAT___05FETC___05F_d1744)) 
+                                          ^ ((IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh186451) 
+                                             << 0xcU))) 
+                                        | ((0x800U 
+                                            & ((0xfffff800U 
+                                                & (IData)(vlTOPp->mkMacUnitTop__DOT__IF_bf16_Mac_reg_B_729_BIT_0_738_THEN_1_CONCAT___05FETC___05F_d1744)) 
+                                               ^ ((IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh186180) 
+                                                  << 0xbU))) 
+                                           | ((0x400U 
+                                               & ((0xfffffc00U 
+                                                   & (IData)(vlTOPp->mkMacUnitTop__DOT__IF_bf16_Mac_reg_B_729_BIT_0_738_THEN_1_CONCAT___05FETC___05F_d1744)) 
+                                                  ^ 
+                                                  ((IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh185909) 
+                                                   << 0xaU))) 
+                                              | (IData)(vlTOPp->mkMacUnitTop__DOT__IF_bf16_Mac_reg_B_729_BIT_0_738_THEN_1_CONCAT___05FETC___05F_d1824)))));
+    vlTOPp->mkMacUnitTop__DOT__y___05Fh186993 = ((IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh186722) 
+                                                 & ((IData)(vlTOPp->mkMacUnitTop__DOT__IF_bf16_Mac_reg_B_729_BIT_0_738_THEN_1_CONCAT___05FETC___05F_d1744) 
+                                                    >> 0xdU));
     vlTOPp->mkMacUnitTop__DOT__y___05Fh31556 = ((IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh31285) 
-                                                & (vlTOPp->mkMacUnitTop__DOT__INV_temp_a026___05Fq3 
+                                                & (vlTOPp->mkMacUnitTop__DOT__INV_temp_a026___05Fq4 
                                                    >> 0x14U));
+    vlTOPp->mkMacUnitTop__DOT__y___05Fh187264 = ((IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh186993) 
+                                                 & ((IData)(vlTOPp->mkMacUnitTop__DOT__IF_bf16_Mac_reg_B_729_BIT_0_738_THEN_1_CONCAT___05FETC___05F_d1744) 
+                                                    >> 0xeU));
     vlTOPp->mkMacUnitTop__DOT__y___05Fh31827 = ((IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh31556) 
-                                                & (vlTOPp->mkMacUnitTop__DOT__INV_temp_a026___05Fq3 
+                                                & (vlTOPp->mkMacUnitTop__DOT__INV_temp_a026___05Fq4 
                                                    >> 0x15U));
+    vlTOPp->mkMacUnitTop__DOT__product___05Fh178520 
+        = ((0x8000U & ((0xffff8000U & (IData)(vlTOPp->mkMacUnitTop__DOT__IF_bf16_Mac_reg_B_729_BIT_0_738_THEN_1_CONCAT___05FETC___05F_d1744)) 
+                       ^ ((IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh187264) 
+                          << 0xfU))) | ((0x4000U & 
+                                         ((0xffffc000U 
+                                           & (IData)(vlTOPp->mkMacUnitTop__DOT__IF_bf16_Mac_reg_B_729_BIT_0_738_THEN_1_CONCAT___05FETC___05F_d1744)) 
+                                          ^ ((IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh186993) 
+                                             << 0xeU))) 
+                                        | (IData)(vlTOPp->mkMacUnitTop__DOT__IF_bf16_Mac_reg_B_729_BIT_0_738_THEN_1_CONCAT___05FETC___05F_d1826)));
     vlTOPp->mkMacUnitTop__DOT__y___05Fh32098 = ((IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh31827) 
-                                                & (vlTOPp->mkMacUnitTop__DOT__INV_temp_a026___05Fq3 
+                                                & (vlTOPp->mkMacUnitTop__DOT__INV_temp_a026___05Fq4 
                                                    >> 0x16U));
+    vlTOPp->mkMacUnitTop__DOT__IF_bf16_Mac_reg_B_729_BIT_1_737_THEN_IF_bf16_M_ETC___05F_d1828 
+        = ((2U & (IData)(vlTOPp->mkMacUnitTop__DOT__bf16_Mac_reg_B))
+            ? (IData)(vlTOPp->mkMacUnitTop__DOT__product___05Fh178520)
+            : (IData)(vlTOPp->mkMacUnitTop__DOT__IF_bf16_Mac_reg_B_729_BIT_0_738_THEN_1_CONCAT___05FETC___05F_d1744));
     vlTOPp->mkMacUnitTop__DOT__INV_SEXT_int_Mac_reg_A___05F7_8_BIT_23_7_XOR_IF_IN_ETC___05F_d158 
-        = ((0x800000U & ((0xff800000U & vlTOPp->mkMacUnitTop__DOT__INV_temp_a026___05Fq3) 
+        = ((0x800000U & ((0xff800000U & vlTOPp->mkMacUnitTop__DOT__INV_temp_a026___05Fq4) 
                          ^ ((IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh32098) 
                             << 0x17U))) | ((0x400000U 
                                             & ((0xffc00000U 
-                                                & vlTOPp->mkMacUnitTop__DOT__INV_temp_a026___05Fq3) 
+                                                & vlTOPp->mkMacUnitTop__DOT__INV_temp_a026___05Fq4) 
                                                ^ ((IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh31827) 
                                                   << 0x16U))) 
                                            | ((0x200000U 
                                                & ((0xffe00000U 
-                                                   & vlTOPp->mkMacUnitTop__DOT__INV_temp_a026___05Fq3) 
+                                                   & vlTOPp->mkMacUnitTop__DOT__INV_temp_a026___05Fq4) 
                                                   ^ 
                                                   ((IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh31556) 
                                                    << 0x15U))) 
                                               | ((0x100000U 
                                                   & ((0xfff00000U 
-                                                      & vlTOPp->mkMacUnitTop__DOT__INV_temp_a026___05Fq3) 
+                                                      & vlTOPp->mkMacUnitTop__DOT__INV_temp_a026___05Fq4) 
                                                      ^ 
                                                      ((IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh31285) 
                                                       << 0x14U))) 
                                                  | vlTOPp->mkMacUnitTop__DOT__INV_SEXT_int_Mac_reg_A___05F7_8_BIT_19_9_XOR_IF_IN_ETC___05F_d156))));
     vlTOPp->mkMacUnitTop__DOT__y___05Fh32369 = ((IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh32098) 
-                                                & (vlTOPp->mkMacUnitTop__DOT__INV_temp_a026___05Fq3 
+                                                & (vlTOPp->mkMacUnitTop__DOT__INV_temp_a026___05Fq4 
                                                    >> 0x17U));
+    vlTOPp->mkMacUnitTop__DOT__IF_IF_bf16_Mac_reg_B_729_BIT_1_737_THEN_IF_bf1_ETC___05Fq27 
+        = ((1U & (IData)(vlTOPp->mkMacUnitTop__DOT__IF_bf16_Mac_reg_B_729_BIT_1_737_THEN_IF_bf16_M_ETC___05F_d1828))
+            ? 1U : 0U);
+    vlTOPp->mkMacUnitTop__DOT__x___05Fh189761 = (1U 
+                                                 & (~ 
+                                                    ((IData)(vlTOPp->mkMacUnitTop__DOT__IF_bf16_Mac_reg_B_729_BIT_1_737_THEN_IF_bf16_M_ETC___05F_d1828) 
+                                                     >> 9U)));
+    vlTOPp->mkMacUnitTop__DOT__x___05Fh189852 = (1U 
+                                                 & (((IData)(vlTOPp->mkMacUnitTop__DOT__IF_bf16_Mac_reg_B_729_BIT_1_737_THEN_IF_bf16_M_ETC___05F_d1828) 
+                                                     >> 8U) 
+                                                    & ((IData)(vlTOPp->mkMacUnitTop__DOT__bf16_Mac_reg_A) 
+                                                       >> 6U)));
+    vlTOPp->mkMacUnitTop__DOT__x___05Fh189490 = (1U 
+                                                 & (((IData)(vlTOPp->mkMacUnitTop__DOT__IF_bf16_Mac_reg_B_729_BIT_1_737_THEN_IF_bf16_M_ETC___05F_d1828) 
+                                                     >> 8U) 
+                                                    ^ 
+                                                    ((IData)(vlTOPp->mkMacUnitTop__DOT__bf16_Mac_reg_A) 
+                                                     >> 6U)));
+    vlTOPp->mkMacUnitTop__DOT__x___05Fh189581 = (1U 
+                                                 & (((IData)(vlTOPp->mkMacUnitTop__DOT__IF_bf16_Mac_reg_B_729_BIT_1_737_THEN_IF_bf16_M_ETC___05F_d1828) 
+                                                     >> 7U) 
+                                                    & ((IData)(vlTOPp->mkMacUnitTop__DOT__bf16_Mac_reg_A) 
+                                                       >> 5U)));
+    vlTOPp->mkMacUnitTop__DOT__x___05Fh189219 = (1U 
+                                                 & (((IData)(vlTOPp->mkMacUnitTop__DOT__IF_bf16_Mac_reg_B_729_BIT_1_737_THEN_IF_bf16_M_ETC___05F_d1828) 
+                                                     >> 7U) 
+                                                    ^ 
+                                                    ((IData)(vlTOPp->mkMacUnitTop__DOT__bf16_Mac_reg_A) 
+                                                     >> 5U)));
+    vlTOPp->mkMacUnitTop__DOT__x___05Fh189310 = (1U 
+                                                 & (((IData)(vlTOPp->mkMacUnitTop__DOT__IF_bf16_Mac_reg_B_729_BIT_1_737_THEN_IF_bf16_M_ETC___05F_d1828) 
+                                                     >> 6U) 
+                                                    & ((IData)(vlTOPp->mkMacUnitTop__DOT__bf16_Mac_reg_A) 
+                                                       >> 4U)));
+    vlTOPp->mkMacUnitTop__DOT__x___05Fh188948 = (1U 
+                                                 & (((IData)(vlTOPp->mkMacUnitTop__DOT__IF_bf16_Mac_reg_B_729_BIT_1_737_THEN_IF_bf16_M_ETC___05F_d1828) 
+                                                     >> 6U) 
+                                                    ^ 
+                                                    ((IData)(vlTOPp->mkMacUnitTop__DOT__bf16_Mac_reg_A) 
+                                                     >> 4U)));
+    vlTOPp->mkMacUnitTop__DOT__x___05Fh189039 = (1U 
+                                                 & (((IData)(vlTOPp->mkMacUnitTop__DOT__IF_bf16_Mac_reg_B_729_BIT_1_737_THEN_IF_bf16_M_ETC___05F_d1828) 
+                                                     >> 5U) 
+                                                    & ((IData)(vlTOPp->mkMacUnitTop__DOT__bf16_Mac_reg_A) 
+                                                       >> 3U)));
+    vlTOPp->mkMacUnitTop__DOT__x___05Fh188677 = (1U 
+                                                 & (((IData)(vlTOPp->mkMacUnitTop__DOT__IF_bf16_Mac_reg_B_729_BIT_1_737_THEN_IF_bf16_M_ETC___05F_d1828) 
+                                                     >> 5U) 
+                                                    ^ 
+                                                    ((IData)(vlTOPp->mkMacUnitTop__DOT__bf16_Mac_reg_A) 
+                                                     >> 3U)));
+    vlTOPp->mkMacUnitTop__DOT__x___05Fh188768 = (1U 
+                                                 & (((IData)(vlTOPp->mkMacUnitTop__DOT__IF_bf16_Mac_reg_B_729_BIT_1_737_THEN_IF_bf16_M_ETC___05F_d1828) 
+                                                     >> 4U) 
+                                                    & ((IData)(vlTOPp->mkMacUnitTop__DOT__bf16_Mac_reg_A) 
+                                                       >> 2U)));
+    vlTOPp->mkMacUnitTop__DOT__x___05Fh188405 = (1U 
+                                                 & (((IData)(vlTOPp->mkMacUnitTop__DOT__IF_bf16_Mac_reg_B_729_BIT_1_737_THEN_IF_bf16_M_ETC___05F_d1828) 
+                                                     >> 4U) 
+                                                    ^ 
+                                                    ((IData)(vlTOPp->mkMacUnitTop__DOT__bf16_Mac_reg_A) 
+                                                     >> 2U)));
+    vlTOPp->mkMacUnitTop__DOT__x___05Fh188496 = (1U 
+                                                 & (((IData)(vlTOPp->mkMacUnitTop__DOT__IF_bf16_Mac_reg_B_729_BIT_1_737_THEN_IF_bf16_M_ETC___05F_d1828) 
+                                                     >> 3U) 
+                                                    & ((IData)(vlTOPp->mkMacUnitTop__DOT__bf16_Mac_reg_A) 
+                                                       >> 1U)));
+    vlTOPp->mkMacUnitTop__DOT__IF_IF_bf16_Mac_reg_B_729_BIT_1_737_THEN_IF_bf1_ETC___05Fq26 
+        = ((1U & (((IData)(vlTOPp->mkMacUnitTop__DOT__IF_bf16_Mac_reg_B_729_BIT_1_737_THEN_IF_bf16_M_ETC___05F_d1828) 
+                   >> 2U) & (IData)(vlTOPp->mkMacUnitTop__DOT__bf16_Mac_reg_A)))
+            ? 8U : 0U);
+    vlTOPp->mkMacUnitTop__DOT__x___05Fh188137 = (1U 
+                                                 & (((IData)(vlTOPp->mkMacUnitTop__DOT__IF_bf16_Mac_reg_B_729_BIT_1_737_THEN_IF_bf16_M_ETC___05F_d1828) 
+                                                     >> 3U) 
+                                                    ^ 
+                                                    ((IData)(vlTOPp->mkMacUnitTop__DOT__bf16_Mac_reg_A) 
+                                                     >> 1U)));
     vlTOPp->mkMacUnitTop__DOT__y___05Fh32640 = ((IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh32369) 
-                                                & (vlTOPp->mkMacUnitTop__DOT__INV_temp_a026___05Fq3 
+                                                & (vlTOPp->mkMacUnitTop__DOT__INV_temp_a026___05Fq4 
                                                    >> 0x18U));
+    vlTOPp->mkMacUnitTop__DOT__IF_bf16_Mac_reg_B_729_BIT_1_737_THEN_IF_bf16_M_ETC___05F_d1897 
+        = ((8U & (((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh188137) 
+                   << 3U) ^ (0xfffffff8U & vlTOPp->mkMacUnitTop__DOT__IF_IF_bf16_Mac_reg_B_729_BIT_1_737_THEN_IF_bf1_ETC___05Fq26))) 
+           | ((4U & ((0xfffffffcU & (IData)(vlTOPp->mkMacUnitTop__DOT__IF_bf16_Mac_reg_B_729_BIT_1_737_THEN_IF_bf16_M_ETC___05F_d1828)) 
+                     ^ ((IData)(vlTOPp->mkMacUnitTop__DOT__bf16_Mac_reg_A) 
+                        << 2U))) | ((2U & (IData)(vlTOPp->mkMacUnitTop__DOT__IF_bf16_Mac_reg_B_729_BIT_1_737_THEN_IF_bf16_M_ETC___05F_d1828)) 
+                                    | (1U & (IData)(vlTOPp->mkMacUnitTop__DOT__IF_IF_bf16_Mac_reg_B_729_BIT_1_737_THEN_IF_bf1_ETC___05Fq27)))));
+    vlTOPp->mkMacUnitTop__DOT__y___05Fh188497 = ((vlTOPp->mkMacUnitTop__DOT__IF_IF_bf16_Mac_reg_B_729_BIT_1_737_THEN_IF_bf1_ETC___05Fq26 
+                                                  >> 3U) 
+                                                 & (IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh188137));
     vlTOPp->mkMacUnitTop__DOT__y___05Fh32911 = ((IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh32640) 
-                                                & (vlTOPp->mkMacUnitTop__DOT__INV_temp_a026___05Fq3 
+                                                & (vlTOPp->mkMacUnitTop__DOT__INV_temp_a026___05Fq4 
                                                    >> 0x19U));
+    vlTOPp->mkMacUnitTop__DOT__y___05Fh188406 = ((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh188496) 
+                                                 | (IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh188497));
     vlTOPp->mkMacUnitTop__DOT__y___05Fh33182 = ((IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh32911) 
-                                                & (vlTOPp->mkMacUnitTop__DOT__INV_temp_a026___05Fq3 
+                                                & (vlTOPp->mkMacUnitTop__DOT__INV_temp_a026___05Fq4 
                                                    >> 0x1aU));
+    vlTOPp->mkMacUnitTop__DOT__y___05Fh188769 = ((IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh188406) 
+                                                 & (IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh188405));
     vlTOPp->mkMacUnitTop__DOT__INV_SEXT_int_Mac_reg_A___05F7_8_BIT_27_05_XOR_IF_I_ETC___05F_d160 
-        = ((0x8000000U & ((0xf8000000U & vlTOPp->mkMacUnitTop__DOT__INV_temp_a026___05Fq3) 
+        = ((0x8000000U & ((0xf8000000U & vlTOPp->mkMacUnitTop__DOT__INV_temp_a026___05Fq4) 
                           ^ ((IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh33182) 
                              << 0x1bU))) | ((0x4000000U 
                                              & ((0xfc000000U 
-                                                 & vlTOPp->mkMacUnitTop__DOT__INV_temp_a026___05Fq3) 
+                                                 & vlTOPp->mkMacUnitTop__DOT__INV_temp_a026___05Fq4) 
                                                 ^ ((IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh32911) 
                                                    << 0x1aU))) 
                                             | ((0x2000000U 
                                                 & ((0xfe000000U 
-                                                    & vlTOPp->mkMacUnitTop__DOT__INV_temp_a026___05Fq3) 
+                                                    & vlTOPp->mkMacUnitTop__DOT__INV_temp_a026___05Fq4) 
                                                    ^ 
                                                    ((IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh32640) 
                                                     << 0x19U))) 
                                                | ((0x1000000U 
                                                    & ((0xff000000U 
-                                                       & vlTOPp->mkMacUnitTop__DOT__INV_temp_a026___05Fq3) 
+                                                       & vlTOPp->mkMacUnitTop__DOT__INV_temp_a026___05Fq4) 
                                                       ^ 
                                                       ((IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh32369) 
                                                        << 0x18U))) 
                                                   | vlTOPp->mkMacUnitTop__DOT__INV_SEXT_int_Mac_reg_A___05F7_8_BIT_23_7_XOR_IF_IN_ETC___05F_d158))));
     vlTOPp->mkMacUnitTop__DOT__y___05Fh33453 = ((IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh33182) 
-                                                & (vlTOPp->mkMacUnitTop__DOT__INV_temp_a026___05Fq3 
+                                                & (vlTOPp->mkMacUnitTop__DOT__INV_temp_a026___05Fq4 
                                                    >> 0x1bU));
+    vlTOPp->mkMacUnitTop__DOT__y___05Fh188678 = ((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh188768) 
+                                                 | (IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh188769));
     vlTOPp->mkMacUnitTop__DOT__y___05Fh33724 = ((IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh33453) 
-                                                & (vlTOPp->mkMacUnitTop__DOT__INV_temp_a026___05Fq3 
+                                                & (vlTOPp->mkMacUnitTop__DOT__INV_temp_a026___05Fq4 
                                                    >> 0x1cU));
+    vlTOPp->mkMacUnitTop__DOT__IF_bf16_Mac_reg_B_729_BIT_1_737_THEN_IF_bf16_M_ETC___05F_d1898 
+        = ((((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh188677) 
+             ^ (IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh188678)) 
+            << 5U) | ((((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh188405) 
+                        ^ (IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh188406)) 
+                       << 4U) | (IData)(vlTOPp->mkMacUnitTop__DOT__IF_bf16_Mac_reg_B_729_BIT_1_737_THEN_IF_bf16_M_ETC___05F_d1897)));
+    vlTOPp->mkMacUnitTop__DOT__y___05Fh189040 = ((IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh188678) 
+                                                 & (IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh188677));
     vlTOPp->mkMacUnitTop__DOT__y___05Fh33995 = ((IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh33724) 
-                                                & (vlTOPp->mkMacUnitTop__DOT__INV_temp_a026___05Fq3 
+                                                & (vlTOPp->mkMacUnitTop__DOT__INV_temp_a026___05Fq4 
                                                    >> 0x1dU));
+    vlTOPp->mkMacUnitTop__DOT__y___05Fh188949 = ((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh189039) 
+                                                 | (IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh189040));
     vlTOPp->mkMacUnitTop__DOT__y___05Fh34266 = ((IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh33995) 
-                                                & (vlTOPp->mkMacUnitTop__DOT__INV_temp_a026___05Fq3 
+                                                & (vlTOPp->mkMacUnitTop__DOT__INV_temp_a026___05Fq4 
                                                    >> 0x1eU));
+    vlTOPp->mkMacUnitTop__DOT__y___05Fh189311 = ((IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh188949) 
+                                                 & (IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh188948));
     vlTOPp->mkMacUnitTop__DOT__temp_a___05F_1___05Fh25264 
-        = ((0x80000000U & ((0x80000000U & vlTOPp->mkMacUnitTop__DOT__INV_temp_a026___05Fq3) 
+        = ((0x80000000U & ((0x80000000U & vlTOPp->mkMacUnitTop__DOT__INV_temp_a026___05Fq4) 
                            ^ ((IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh34266) 
                               << 0x1fU))) | ((0x40000000U 
                                               & ((0xc0000000U 
-                                                  & vlTOPp->mkMacUnitTop__DOT__INV_temp_a026___05Fq3) 
+                                                  & vlTOPp->mkMacUnitTop__DOT__INV_temp_a026___05Fq4) 
                                                  ^ 
                                                  ((IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh33995) 
                                                   << 0x1eU))) 
                                              | ((0x20000000U 
                                                  & ((0xe0000000U 
-                                                     & vlTOPp->mkMacUnitTop__DOT__INV_temp_a026___05Fq3) 
+                                                     & vlTOPp->mkMacUnitTop__DOT__INV_temp_a026___05Fq4) 
                                                     ^ 
                                                     ((IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh33724) 
                                                      << 0x1dU))) 
                                                 | ((0x10000000U 
                                                     & ((0xf0000000U 
-                                                        & vlTOPp->mkMacUnitTop__DOT__INV_temp_a026___05Fq3) 
+                                                        & vlTOPp->mkMacUnitTop__DOT__INV_temp_a026___05Fq4) 
                                                        ^ 
                                                        ((IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh33453) 
                                                         << 0x1cU))) 
                                                    | vlTOPp->mkMacUnitTop__DOT__INV_SEXT_int_Mac_reg_A___05F7_8_BIT_27_05_XOR_IF_I_ETC___05F_d160))));
+    vlTOPp->mkMacUnitTop__DOT__y___05Fh189220 = ((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh189310) 
+                                                 | (IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh189311));
     vlTOPp->mkMacUnitTop__DOT__IF_int_Mac_reg_A_BIT_7_THEN_INV_SEXT_int_Mac_r_ETC___05F_d163 
         = ((0x80U & (IData)(vlTOPp->mkMacUnitTop__DOT__int_Mac_reg_A))
             ? vlTOPp->mkMacUnitTop__DOT__temp_a___05F_1___05Fh25264
             : vlTOPp->mkMacUnitTop__DOT__temp_a___05Fh1026);
-    vlTOPp->mkMacUnitTop__DOT__IF_IF_int_Mac_reg_A_BIT_7_THEN_INV_SEXT_int_Ma_ETC___05Fq7 
+    vlTOPp->mkMacUnitTop__DOT__IF_bf16_Mac_reg_B_729_BIT_1_737_THEN_IF_bf16_M_ETC___05F_d1899 
+        = ((((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh189219) 
+             ^ (IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh189220)) 
+            << 7U) | ((((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh188948) 
+                        ^ (IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh188949)) 
+                       << 6U) | (IData)(vlTOPp->mkMacUnitTop__DOT__IF_bf16_Mac_reg_B_729_BIT_1_737_THEN_IF_bf16_M_ETC___05F_d1898)));
+    vlTOPp->mkMacUnitTop__DOT__y___05Fh189582 = ((IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh189220) 
+                                                 & (IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh189219));
+    vlTOPp->mkMacUnitTop__DOT__IF_IF_int_Mac_reg_A_BIT_7_THEN_INV_SEXT_int_Ma_ETC___05Fq8 
         = ((1U & vlTOPp->mkMacUnitTop__DOT__IF_int_Mac_reg_A_BIT_7_THEN_INV_SEXT_int_Mac_r_ETC___05F_d163)
             ? 1U : 0U);
+    vlTOPp->mkMacUnitTop__DOT__y___05Fh189491 = ((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh189581) 
+                                                 | (IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh189582));
     vlTOPp->mkMacUnitTop__DOT__result___05Fh24455 = 
         ((0xfffffffeU & vlTOPp->mkMacUnitTop__DOT__IF_int_Mac_reg_A_BIT_7_THEN_INV_SEXT_int_Mac_r_ETC___05F_d163) 
-         | (1U & vlTOPp->mkMacUnitTop__DOT__IF_IF_int_Mac_reg_A_BIT_7_THEN_INV_SEXT_int_Ma_ETC___05Fq7));
+         | (1U & vlTOPp->mkMacUnitTop__DOT__IF_IF_int_Mac_reg_A_BIT_7_THEN_INV_SEXT_int_Ma_ETC___05Fq8));
+    vlTOPp->mkMacUnitTop__DOT__y___05Fh189853 = ((IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh189491) 
+                                                 & (IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh189490));
     vlTOPp->mkMacUnitTop__DOT__IF_IF_int_Mac_reg_B_BIT_7_THEN_INV_int_Mac_reg_ETC___05F_d169 
         = ((1U & (IData)(vlTOPp->mkMacUnitTop__DOT__IF_int_Mac_reg_B_BIT_7_THEN_INV_int_Mac_reg_B___05FETC___05F_d38))
             ? vlTOPp->mkMacUnitTop__DOT__result___05Fh24455
             : 0U);
+    vlTOPp->mkMacUnitTop__DOT__y___05Fh189762 = ((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh189852) 
+                                                 | (IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh189853));
     vlTOPp->mkMacUnitTop__DOT__x___05Fh60286 = (1U 
                                                 & ((vlTOPp->mkMacUnitTop__DOT__IF_IF_int_Mac_reg_B_BIT_7_THEN_INV_int_Mac_reg_ETC___05F_d169 
                                                     >> 0x1fU) 
@@ -614,7 +932,7 @@ VL_INLINE_OPT void Vtop::_sequent__TOP__4(Vtop__Syms* __restrict vlSymsp) {
                                                     >> 0x18U) 
                                                    & (vlTOPp->mkMacUnitTop__DOT__IF_int_Mac_reg_A_BIT_7_THEN_INV_SEXT_int_Mac_r_ETC___05F_d163 
                                                       >> 0x17U)));
-    vlTOPp->mkMacUnitTop__DOT__IF_IF_IF_int_Mac_reg_B_BIT_7_THEN_INV_int_Mac___05FETC___05Fq9 
+    vlTOPp->mkMacUnitTop__DOT__IF_IF_IF_int_Mac_reg_B_BIT_7_THEN_INV_int_Mac___05FETC___05Fq10 
         = ((1U & vlTOPp->mkMacUnitTop__DOT__IF_IF_int_Mac_reg_B_BIT_7_THEN_INV_int_Mac_reg_ETC___05F_d169)
             ? 1U : 0U);
     vlTOPp->mkMacUnitTop__DOT__x___05Fh58389 = (1U 
@@ -859,7 +1177,7 @@ VL_INLINE_OPT void Vtop::_sequent__TOP__4(Vtop__Syms* __restrict vlSymsp) {
                                                     >> 2U) 
                                                    & (vlTOPp->mkMacUnitTop__DOT__IF_int_Mac_reg_A_BIT_7_THEN_INV_SEXT_int_Mac_r_ETC___05F_d163 
                                                       >> 1U)));
-    vlTOPp->mkMacUnitTop__DOT__IF_IF_IF_int_Mac_reg_B_BIT_7_THEN_INV_int_Mac___05FETC___05Fq8 
+    vlTOPp->mkMacUnitTop__DOT__IF_IF_IF_int_Mac_reg_B_BIT_7_THEN_INV_int_Mac___05FETC___05Fq9 
         = ((1U & ((vlTOPp->mkMacUnitTop__DOT__IF_IF_int_Mac_reg_B_BIT_7_THEN_INV_int_Mac_reg_ETC___05F_d169 
                    >> 1U) & vlTOPp->mkMacUnitTop__DOT__IF_int_Mac_reg_A_BIT_7_THEN_INV_SEXT_int_Mac_r_ETC___05F_d163))
             ? 4ULL : 0ULL);
@@ -869,29 +1187,76 @@ VL_INLINE_OPT void Vtop::_sequent__TOP__4(Vtop__Syms* __restrict vlSymsp) {
                                                    ^ 
                                                    (vlTOPp->mkMacUnitTop__DOT__IF_int_Mac_reg_A_BIT_7_THEN_INV_SEXT_int_Mac_r_ETC___05F_d163 
                                                     >> 1U)));
+    vlTOPp->mkMacUnitTop__DOT__INV_IF_bf16_Mac_reg_B_729_BIT_1_737_THEN_IF_bf_ETC___05F_d1900 
+        = ((((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh189761) 
+             ^ (IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh189762)) 
+            << 9U) | ((((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh189490) 
+                        ^ (IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh189491)) 
+                       << 8U) | (IData)(vlTOPp->mkMacUnitTop__DOT__IF_bf16_Mac_reg_B_729_BIT_1_737_THEN_IF_bf16_M_ETC___05F_d1899)));
+    vlTOPp->mkMacUnitTop__DOT__y___05Fh190124 = ((IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh189762) 
+                                                 & (IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh189761));
     vlTOPp->mkMacUnitTop__DOT__y___05Fh52789 = ((IData)(
-                                                        (vlTOPp->mkMacUnitTop__DOT__IF_IF_IF_int_Mac_reg_B_BIT_7_THEN_INV_int_Mac___05FETC___05Fq8 
+                                                        (vlTOPp->mkMacUnitTop__DOT__IF_IF_IF_int_Mac_reg_B_BIT_7_THEN_INV_int_Mac___05FETC___05Fq9 
                                                          >> 2U)) 
                                                 & (IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh52429));
+    vlTOPp->mkMacUnitTop__DOT__y___05Fh190033 = (1U 
+                                                 & (((IData)(vlTOPp->mkMacUnitTop__DOT__IF_bf16_Mac_reg_B_729_BIT_1_737_THEN_IF_bf16_M_ETC___05F_d1828) 
+                                                     >> 9U) 
+                                                    | (IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh190124)));
     vlTOPp->mkMacUnitTop__DOT__y___05Fh52698 = ((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh52788) 
                                                 | (IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh52789));
+    vlTOPp->mkMacUnitTop__DOT__y___05Fh190304 = ((IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh190033) 
+                                                 & ((IData)(vlTOPp->mkMacUnitTop__DOT__IF_bf16_Mac_reg_B_729_BIT_1_737_THEN_IF_bf16_M_ETC___05F_d1828) 
+                                                    >> 0xaU));
     vlTOPp->mkMacUnitTop__DOT__IF_IF_int_Mac_reg_B_BIT_7_THEN_INV_int_Mac_reg_ETC___05F_d386 
         = ((((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh52697) 
              ^ (IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh52698)) 
             << 3U) | ((4U & (((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh52429) 
-                              ^ (IData)((vlTOPp->mkMacUnitTop__DOT__IF_IF_IF_int_Mac_reg_B_BIT_7_THEN_INV_int_Mac___05FETC___05Fq8 
+                              ^ (IData)((vlTOPp->mkMacUnitTop__DOT__IF_IF_IF_int_Mac_reg_B_BIT_7_THEN_INV_int_Mac___05FETC___05Fq9 
                                          >> 2U))) << 2U)) 
                       | ((2U & ((0xfffffffeU & vlTOPp->mkMacUnitTop__DOT__IF_IF_int_Mac_reg_B_BIT_7_THEN_INV_int_Mac_reg_ETC___05F_d169) 
                                 ^ (vlTOPp->mkMacUnitTop__DOT__IF_int_Mac_reg_A_BIT_7_THEN_INV_SEXT_int_Mac_r_ETC___05F_d163 
-                                   << 1U))) | (1U & vlTOPp->mkMacUnitTop__DOT__IF_IF_IF_int_Mac_reg_B_BIT_7_THEN_INV_int_Mac___05FETC___05Fq9))));
+                                   << 1U))) | (1U & vlTOPp->mkMacUnitTop__DOT__IF_IF_IF_int_Mac_reg_B_BIT_7_THEN_INV_int_Mac___05FETC___05Fq10))));
     vlTOPp->mkMacUnitTop__DOT__y___05Fh53061 = ((IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh52698) 
                                                 & (IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh52697));
+    vlTOPp->mkMacUnitTop__DOT__y___05Fh190575 = ((IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh190304) 
+                                                 & ((IData)(vlTOPp->mkMacUnitTop__DOT__IF_bf16_Mac_reg_B_729_BIT_1_737_THEN_IF_bf16_M_ETC___05F_d1828) 
+                                                    >> 0xbU));
     vlTOPp->mkMacUnitTop__DOT__y___05Fh52970 = ((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh53060) 
                                                 | (IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh53061));
+    vlTOPp->mkMacUnitTop__DOT__y___05Fh190846 = ((IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh190575) 
+                                                 & ((IData)(vlTOPp->mkMacUnitTop__DOT__IF_bf16_Mac_reg_B_729_BIT_1_737_THEN_IF_bf16_M_ETC___05F_d1828) 
+                                                    >> 0xcU));
     vlTOPp->mkMacUnitTop__DOT__y___05Fh53332 = ((IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh52970) 
                                                 & (IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh52969));
+    vlTOPp->mkMacUnitTop__DOT__IF_bf16_Mac_reg_B_729_BIT_1_737_THEN_IF_bf16_M_ETC___05F_d1902 
+        = ((0x2000U & ((0xffffe000U & (IData)(vlTOPp->mkMacUnitTop__DOT__IF_bf16_Mac_reg_B_729_BIT_1_737_THEN_IF_bf16_M_ETC___05F_d1828)) 
+                       ^ ((IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh190846) 
+                          << 0xdU))) | ((0x1000U & 
+                                         ((0xfffff000U 
+                                           & (IData)(vlTOPp->mkMacUnitTop__DOT__IF_bf16_Mac_reg_B_729_BIT_1_737_THEN_IF_bf16_M_ETC___05F_d1828)) 
+                                          ^ ((IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh190575) 
+                                             << 0xcU))) 
+                                        | ((0x800U 
+                                            & ((0xfffff800U 
+                                                & (IData)(vlTOPp->mkMacUnitTop__DOT__IF_bf16_Mac_reg_B_729_BIT_1_737_THEN_IF_bf16_M_ETC___05F_d1828)) 
+                                               ^ ((IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh190304) 
+                                                  << 0xbU))) 
+                                           | ((0x400U 
+                                               & ((0xfffffc00U 
+                                                   & (IData)(vlTOPp->mkMacUnitTop__DOT__IF_bf16_Mac_reg_B_729_BIT_1_737_THEN_IF_bf16_M_ETC___05F_d1828)) 
+                                                  ^ 
+                                                  ((IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh190033) 
+                                                   << 0xaU))) 
+                                              | (IData)(vlTOPp->mkMacUnitTop__DOT__INV_IF_bf16_Mac_reg_B_729_BIT_1_737_THEN_IF_bf_ETC___05F_d1900)))));
+    vlTOPp->mkMacUnitTop__DOT__y___05Fh191117 = ((IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh190846) 
+                                                 & ((IData)(vlTOPp->mkMacUnitTop__DOT__IF_bf16_Mac_reg_B_729_BIT_1_737_THEN_IF_bf16_M_ETC___05F_d1828) 
+                                                    >> 0xdU));
     vlTOPp->mkMacUnitTop__DOT__y___05Fh53241 = ((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh53331) 
                                                 | (IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh53332));
+    vlTOPp->mkMacUnitTop__DOT__y___05Fh191388 = ((IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh191117) 
+                                                 & ((IData)(vlTOPp->mkMacUnitTop__DOT__IF_bf16_Mac_reg_B_729_BIT_1_737_THEN_IF_bf16_M_ETC___05F_d1828) 
+                                                    >> 0xeU));
     vlTOPp->mkMacUnitTop__DOT__IF_IF_int_Mac_reg_B_BIT_7_THEN_INV_int_Mac_reg_ETC___05F_d387 
         = ((((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh53240) 
              ^ (IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh53241)) 
@@ -900,12 +1265,105 @@ VL_INLINE_OPT void Vtop::_sequent__TOP__4(Vtop__Syms* __restrict vlSymsp) {
                        << 4U) | (IData)(vlTOPp->mkMacUnitTop__DOT__IF_IF_int_Mac_reg_B_BIT_7_THEN_INV_int_Mac_reg_ETC___05F_d386)));
     vlTOPp->mkMacUnitTop__DOT__y___05Fh53603 = ((IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh53241) 
                                                 & (IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh53240));
+    vlTOPp->mkMacUnitTop__DOT__product___05Fh178077 
+        = ((0x8000U & ((0xffff8000U & (IData)(vlTOPp->mkMacUnitTop__DOT__IF_bf16_Mac_reg_B_729_BIT_1_737_THEN_IF_bf16_M_ETC___05F_d1828)) 
+                       ^ ((IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh191388) 
+                          << 0xfU))) | ((0x4000U & 
+                                         ((0xffffc000U 
+                                           & (IData)(vlTOPp->mkMacUnitTop__DOT__IF_bf16_Mac_reg_B_729_BIT_1_737_THEN_IF_bf16_M_ETC___05F_d1828)) 
+                                          ^ ((IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh191117) 
+                                             << 0xeU))) 
+                                        | (IData)(vlTOPp->mkMacUnitTop__DOT__IF_bf16_Mac_reg_B_729_BIT_1_737_THEN_IF_bf16_M_ETC___05F_d1902)));
     vlTOPp->mkMacUnitTop__DOT__y___05Fh53512 = ((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh53602) 
                                                 | (IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh53603));
+    vlTOPp->mkMacUnitTop__DOT__IF_bf16_Mac_reg_B_729_BIT_2_736_THEN_IF_bf16_M_ETC___05F_d1904 
+        = ((4U & (IData)(vlTOPp->mkMacUnitTop__DOT__bf16_Mac_reg_B))
+            ? (IData)(vlTOPp->mkMacUnitTop__DOT__product___05Fh178077)
+            : (IData)(vlTOPp->mkMacUnitTop__DOT__IF_bf16_Mac_reg_B_729_BIT_1_737_THEN_IF_bf16_M_ETC___05F_d1828));
     vlTOPp->mkMacUnitTop__DOT__y___05Fh53874 = ((IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh53512) 
                                                 & (IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh53511));
+    vlTOPp->mkMacUnitTop__DOT__IF_IF_bf16_Mac_reg_B_729_BIT_2_736_THEN_IF_bf1_ETC___05Fq29 
+        = ((1U & (IData)(vlTOPp->mkMacUnitTop__DOT__IF_bf16_Mac_reg_B_729_BIT_2_736_THEN_IF_bf16_M_ETC___05F_d1904))
+            ? 1U : 0U);
+    vlTOPp->mkMacUnitTop__DOT__x___05Fh194151 = (1U 
+                                                 & (~ 
+                                                    ((IData)(vlTOPp->mkMacUnitTop__DOT__IF_bf16_Mac_reg_B_729_BIT_2_736_THEN_IF_bf16_M_ETC___05F_d1904) 
+                                                     >> 0xaU)));
+    vlTOPp->mkMacUnitTop__DOT__x___05Fh194242 = (1U 
+                                                 & (((IData)(vlTOPp->mkMacUnitTop__DOT__IF_bf16_Mac_reg_B_729_BIT_2_736_THEN_IF_bf16_M_ETC___05F_d1904) 
+                                                     >> 9U) 
+                                                    & ((IData)(vlTOPp->mkMacUnitTop__DOT__bf16_Mac_reg_A) 
+                                                       >> 6U)));
+    vlTOPp->mkMacUnitTop__DOT__x___05Fh193880 = (1U 
+                                                 & (((IData)(vlTOPp->mkMacUnitTop__DOT__IF_bf16_Mac_reg_B_729_BIT_2_736_THEN_IF_bf16_M_ETC___05F_d1904) 
+                                                     >> 9U) 
+                                                    ^ 
+                                                    ((IData)(vlTOPp->mkMacUnitTop__DOT__bf16_Mac_reg_A) 
+                                                     >> 6U)));
+    vlTOPp->mkMacUnitTop__DOT__x___05Fh193971 = (1U 
+                                                 & (((IData)(vlTOPp->mkMacUnitTop__DOT__IF_bf16_Mac_reg_B_729_BIT_2_736_THEN_IF_bf16_M_ETC___05F_d1904) 
+                                                     >> 8U) 
+                                                    & ((IData)(vlTOPp->mkMacUnitTop__DOT__bf16_Mac_reg_A) 
+                                                       >> 5U)));
+    vlTOPp->mkMacUnitTop__DOT__x___05Fh193609 = (1U 
+                                                 & (((IData)(vlTOPp->mkMacUnitTop__DOT__IF_bf16_Mac_reg_B_729_BIT_2_736_THEN_IF_bf16_M_ETC___05F_d1904) 
+                                                     >> 8U) 
+                                                    ^ 
+                                                    ((IData)(vlTOPp->mkMacUnitTop__DOT__bf16_Mac_reg_A) 
+                                                     >> 5U)));
+    vlTOPp->mkMacUnitTop__DOT__x___05Fh193700 = (1U 
+                                                 & (((IData)(vlTOPp->mkMacUnitTop__DOT__IF_bf16_Mac_reg_B_729_BIT_2_736_THEN_IF_bf16_M_ETC___05F_d1904) 
+                                                     >> 7U) 
+                                                    & ((IData)(vlTOPp->mkMacUnitTop__DOT__bf16_Mac_reg_A) 
+                                                       >> 4U)));
+    vlTOPp->mkMacUnitTop__DOT__x___05Fh193338 = (1U 
+                                                 & (((IData)(vlTOPp->mkMacUnitTop__DOT__IF_bf16_Mac_reg_B_729_BIT_2_736_THEN_IF_bf16_M_ETC___05F_d1904) 
+                                                     >> 7U) 
+                                                    ^ 
+                                                    ((IData)(vlTOPp->mkMacUnitTop__DOT__bf16_Mac_reg_A) 
+                                                     >> 4U)));
+    vlTOPp->mkMacUnitTop__DOT__x___05Fh193429 = (1U 
+                                                 & (((IData)(vlTOPp->mkMacUnitTop__DOT__IF_bf16_Mac_reg_B_729_BIT_2_736_THEN_IF_bf16_M_ETC___05F_d1904) 
+                                                     >> 6U) 
+                                                    & ((IData)(vlTOPp->mkMacUnitTop__DOT__bf16_Mac_reg_A) 
+                                                       >> 3U)));
+    vlTOPp->mkMacUnitTop__DOT__x___05Fh193067 = (1U 
+                                                 & (((IData)(vlTOPp->mkMacUnitTop__DOT__IF_bf16_Mac_reg_B_729_BIT_2_736_THEN_IF_bf16_M_ETC___05F_d1904) 
+                                                     >> 6U) 
+                                                    ^ 
+                                                    ((IData)(vlTOPp->mkMacUnitTop__DOT__bf16_Mac_reg_A) 
+                                                     >> 3U)));
+    vlTOPp->mkMacUnitTop__DOT__x___05Fh193158 = (1U 
+                                                 & (((IData)(vlTOPp->mkMacUnitTop__DOT__IF_bf16_Mac_reg_B_729_BIT_2_736_THEN_IF_bf16_M_ETC___05F_d1904) 
+                                                     >> 5U) 
+                                                    & ((IData)(vlTOPp->mkMacUnitTop__DOT__bf16_Mac_reg_A) 
+                                                       >> 2U)));
+    vlTOPp->mkMacUnitTop__DOT__x___05Fh192795 = (1U 
+                                                 & (((IData)(vlTOPp->mkMacUnitTop__DOT__IF_bf16_Mac_reg_B_729_BIT_2_736_THEN_IF_bf16_M_ETC___05F_d1904) 
+                                                     >> 5U) 
+                                                    ^ 
+                                                    ((IData)(vlTOPp->mkMacUnitTop__DOT__bf16_Mac_reg_A) 
+                                                     >> 2U)));
+    vlTOPp->mkMacUnitTop__DOT__x___05Fh192886 = (1U 
+                                                 & (((IData)(vlTOPp->mkMacUnitTop__DOT__IF_bf16_Mac_reg_B_729_BIT_2_736_THEN_IF_bf16_M_ETC___05F_d1904) 
+                                                     >> 4U) 
+                                                    & ((IData)(vlTOPp->mkMacUnitTop__DOT__bf16_Mac_reg_A) 
+                                                       >> 1U)));
+    vlTOPp->mkMacUnitTop__DOT__IF_IF_bf16_Mac_reg_B_729_BIT_2_736_THEN_IF_bf1_ETC___05Fq28 
+        = ((1U & (((IData)(vlTOPp->mkMacUnitTop__DOT__IF_bf16_Mac_reg_B_729_BIT_2_736_THEN_IF_bf16_M_ETC___05F_d1904) 
+                   >> 3U) & (IData)(vlTOPp->mkMacUnitTop__DOT__bf16_Mac_reg_A)))
+            ? 0x10U : 0U);
+    vlTOPp->mkMacUnitTop__DOT__x___05Fh192527 = (1U 
+                                                 & (((IData)(vlTOPp->mkMacUnitTop__DOT__IF_bf16_Mac_reg_B_729_BIT_2_736_THEN_IF_bf16_M_ETC___05F_d1904) 
+                                                     >> 4U) 
+                                                    ^ 
+                                                    ((IData)(vlTOPp->mkMacUnitTop__DOT__bf16_Mac_reg_A) 
+                                                     >> 1U)));
     vlTOPp->mkMacUnitTop__DOT__y___05Fh53783 = ((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh53873) 
                                                 | (IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh53874));
+    vlTOPp->mkMacUnitTop__DOT__y___05Fh192887 = ((vlTOPp->mkMacUnitTop__DOT__IF_IF_bf16_Mac_reg_B_729_BIT_2_736_THEN_IF_bf1_ETC___05Fq28 
+                                                  >> 4U) 
+                                                 & (IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh192527));
     vlTOPp->mkMacUnitTop__DOT__IF_IF_int_Mac_reg_B_BIT_7_THEN_INV_int_Mac_reg_ETC___05F_d388 
         = ((((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh53782) 
              ^ (IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh53783)) 
@@ -914,12 +1372,32 @@ VL_INLINE_OPT void Vtop::_sequent__TOP__4(Vtop__Syms* __restrict vlSymsp) {
                        << 6U) | (IData)(vlTOPp->mkMacUnitTop__DOT__IF_IF_int_Mac_reg_B_BIT_7_THEN_INV_int_Mac_reg_ETC___05F_d387)));
     vlTOPp->mkMacUnitTop__DOT__y___05Fh54145 = ((IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh53783) 
                                                 & (IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh53782));
+    vlTOPp->mkMacUnitTop__DOT__y___05Fh192796 = ((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh192886) 
+                                                 | (IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh192887));
     vlTOPp->mkMacUnitTop__DOT__y___05Fh54054 = ((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh54144) 
                                                 | (IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh54145));
+    vlTOPp->mkMacUnitTop__DOT__IF_bf16_Mac_reg_B_729_BIT_2_736_THEN_IF_bf16_M_ETC___05F_d1970 
+        = ((((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh192795) 
+             ^ (IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh192796)) 
+            << 5U) | ((0x10U & (((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh192527) 
+                                 << 4U) ^ (0xfffffff0U 
+                                           & vlTOPp->mkMacUnitTop__DOT__IF_IF_bf16_Mac_reg_B_729_BIT_2_736_THEN_IF_bf1_ETC___05Fq28))) 
+                      | ((8U & ((0xfffffff8U & (IData)(vlTOPp->mkMacUnitTop__DOT__IF_bf16_Mac_reg_B_729_BIT_2_736_THEN_IF_bf16_M_ETC___05F_d1904)) 
+                                ^ ((IData)(vlTOPp->mkMacUnitTop__DOT__bf16_Mac_reg_A) 
+                                   << 3U))) | ((6U 
+                                                & (IData)(vlTOPp->mkMacUnitTop__DOT__IF_bf16_Mac_reg_B_729_BIT_2_736_THEN_IF_bf16_M_ETC___05F_d1904)) 
+                                               | (1U 
+                                                  & (IData)(vlTOPp->mkMacUnitTop__DOT__IF_IF_bf16_Mac_reg_B_729_BIT_2_736_THEN_IF_bf1_ETC___05Fq29))))));
+    vlTOPp->mkMacUnitTop__DOT__y___05Fh193159 = ((IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh192796) 
+                                                 & (IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh192795));
     vlTOPp->mkMacUnitTop__DOT__y___05Fh54416 = ((IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh54054) 
                                                 & (IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh54053));
+    vlTOPp->mkMacUnitTop__DOT__y___05Fh193068 = ((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh193158) 
+                                                 | (IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh193159));
     vlTOPp->mkMacUnitTop__DOT__y___05Fh54325 = ((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh54415) 
                                                 | (IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh54416));
+    vlTOPp->mkMacUnitTop__DOT__y___05Fh193430 = ((IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh193068) 
+                                                 & (IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh193067));
     vlTOPp->mkMacUnitTop__DOT__IF_IF_int_Mac_reg_B_BIT_7_THEN_INV_int_Mac_reg_ETC___05F_d389 
         = ((((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh54324) 
              ^ (IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh54325)) 
@@ -928,12 +1406,26 @@ VL_INLINE_OPT void Vtop::_sequent__TOP__4(Vtop__Syms* __restrict vlSymsp) {
                        << 8U) | (IData)(vlTOPp->mkMacUnitTop__DOT__IF_IF_int_Mac_reg_B_BIT_7_THEN_INV_int_Mac_reg_ETC___05F_d388)));
     vlTOPp->mkMacUnitTop__DOT__y___05Fh54687 = ((IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh54325) 
                                                 & (IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh54324));
+    vlTOPp->mkMacUnitTop__DOT__y___05Fh193339 = ((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh193429) 
+                                                 | (IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh193430));
     vlTOPp->mkMacUnitTop__DOT__y___05Fh54596 = ((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh54686) 
                                                 | (IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh54687));
+    vlTOPp->mkMacUnitTop__DOT__IF_bf16_Mac_reg_B_729_BIT_2_736_THEN_IF_bf16_M_ETC___05F_d1971 
+        = ((((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh193338) 
+             ^ (IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh193339)) 
+            << 7U) | ((((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh193067) 
+                        ^ (IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh193068)) 
+                       << 6U) | (IData)(vlTOPp->mkMacUnitTop__DOT__IF_bf16_Mac_reg_B_729_BIT_2_736_THEN_IF_bf16_M_ETC___05F_d1970)));
+    vlTOPp->mkMacUnitTop__DOT__y___05Fh193701 = ((IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh193339) 
+                                                 & (IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh193338));
     vlTOPp->mkMacUnitTop__DOT__y___05Fh54958 = ((IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh54596) 
                                                 & (IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh54595));
+    vlTOPp->mkMacUnitTop__DOT__y___05Fh193610 = ((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh193700) 
+                                                 | (IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh193701));
     vlTOPp->mkMacUnitTop__DOT__y___05Fh54867 = ((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh54957) 
                                                 | (IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh54958));
+    vlTOPp->mkMacUnitTop__DOT__y___05Fh193972 = ((IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh193610) 
+                                                 & (IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh193609));
     vlTOPp->mkMacUnitTop__DOT__IF_IF_int_Mac_reg_B_BIT_7_THEN_INV_int_Mac_reg_ETC___05F_d390 
         = ((((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh54866) 
              ^ (IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh54867)) 
@@ -942,12 +1434,26 @@ VL_INLINE_OPT void Vtop::_sequent__TOP__4(Vtop__Syms* __restrict vlSymsp) {
                          << 0xaU) | (IData)(vlTOPp->mkMacUnitTop__DOT__IF_IF_int_Mac_reg_B_BIT_7_THEN_INV_int_Mac_reg_ETC___05F_d389)));
     vlTOPp->mkMacUnitTop__DOT__y___05Fh55229 = ((IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh54867) 
                                                 & (IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh54866));
+    vlTOPp->mkMacUnitTop__DOT__y___05Fh193881 = ((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh193971) 
+                                                 | (IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh193972));
     vlTOPp->mkMacUnitTop__DOT__y___05Fh55138 = ((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh55228) 
                                                 | (IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh55229));
+    vlTOPp->mkMacUnitTop__DOT__IF_bf16_Mac_reg_B_729_BIT_2_736_THEN_IF_bf16_M_ETC___05F_d1972 
+        = ((((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh193880) 
+             ^ (IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh193881)) 
+            << 9U) | ((((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh193609) 
+                        ^ (IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh193610)) 
+                       << 8U) | (IData)(vlTOPp->mkMacUnitTop__DOT__IF_bf16_Mac_reg_B_729_BIT_2_736_THEN_IF_bf16_M_ETC___05F_d1971)));
+    vlTOPp->mkMacUnitTop__DOT__y___05Fh194243 = ((IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh193881) 
+                                                 & (IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh193880));
     vlTOPp->mkMacUnitTop__DOT__y___05Fh55500 = ((IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh55138) 
                                                 & (IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh55137));
+    vlTOPp->mkMacUnitTop__DOT__y___05Fh194152 = ((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh194242) 
+                                                 | (IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh194243));
     vlTOPp->mkMacUnitTop__DOT__y___05Fh55409 = ((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh55499) 
                                                 | (IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh55500));
+    vlTOPp->mkMacUnitTop__DOT__y___05Fh194514 = ((IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh194152) 
+                                                 & (IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh194151));
     vlTOPp->mkMacUnitTop__DOT__IF_IF_int_Mac_reg_B_BIT_7_THEN_INV_int_Mac_reg_ETC___05F_d391 
         = ((((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh55408) 
              ^ (IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh55409)) 
@@ -956,12 +1462,31 @@ VL_INLINE_OPT void Vtop::_sequent__TOP__4(Vtop__Syms* __restrict vlSymsp) {
                          << 0xcU) | (IData)(vlTOPp->mkMacUnitTop__DOT__IF_IF_int_Mac_reg_B_BIT_7_THEN_INV_int_Mac_reg_ETC___05F_d390)));
     vlTOPp->mkMacUnitTop__DOT__y___05Fh55771 = ((IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh55409) 
                                                 & (IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh55408));
+    vlTOPp->mkMacUnitTop__DOT__y___05Fh194423 = (1U 
+                                                 & (((IData)(vlTOPp->mkMacUnitTop__DOT__IF_bf16_Mac_reg_B_729_BIT_2_736_THEN_IF_bf16_M_ETC___05F_d1904) 
+                                                     >> 0xaU) 
+                                                    | (IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh194514)));
     vlTOPp->mkMacUnitTop__DOT__y___05Fh55680 = ((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh55770) 
                                                 | (IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh55771));
+    vlTOPp->mkMacUnitTop__DOT__IF_bf16_Mac_reg_B_729_BIT_2_736_THEN_IF_bf16_M_ETC___05F_d1973 
+        = ((0x800U & ((0xfffff800U & (IData)(vlTOPp->mkMacUnitTop__DOT__IF_bf16_Mac_reg_B_729_BIT_2_736_THEN_IF_bf16_M_ETC___05F_d1904)) 
+                      ^ ((IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh194423) 
+                         << 0xbU))) | ((((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh194151) 
+                                         ^ (IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh194152)) 
+                                        << 0xaU) | (IData)(vlTOPp->mkMacUnitTop__DOT__IF_bf16_Mac_reg_B_729_BIT_2_736_THEN_IF_bf16_M_ETC___05F_d1972)));
+    vlTOPp->mkMacUnitTop__DOT__y___05Fh194694 = ((IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh194423) 
+                                                 & ((IData)(vlTOPp->mkMacUnitTop__DOT__IF_bf16_Mac_reg_B_729_BIT_2_736_THEN_IF_bf16_M_ETC___05F_d1904) 
+                                                    >> 0xbU));
     vlTOPp->mkMacUnitTop__DOT__y___05Fh56042 = ((IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh55680) 
                                                 & (IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh55679));
+    vlTOPp->mkMacUnitTop__DOT__y___05Fh194965 = ((IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh194694) 
+                                                 & ((IData)(vlTOPp->mkMacUnitTop__DOT__IF_bf16_Mac_reg_B_729_BIT_2_736_THEN_IF_bf16_M_ETC___05F_d1904) 
+                                                    >> 0xcU));
     vlTOPp->mkMacUnitTop__DOT__y___05Fh55951 = ((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh56041) 
                                                 | (IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh56042));
+    vlTOPp->mkMacUnitTop__DOT__y___05Fh195236 = ((IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh194965) 
+                                                 & ((IData)(vlTOPp->mkMacUnitTop__DOT__IF_bf16_Mac_reg_B_729_BIT_2_736_THEN_IF_bf16_M_ETC___05F_d1904) 
+                                                    >> 0xdU));
     vlTOPp->mkMacUnitTop__DOT__IF_IF_int_Mac_reg_B_BIT_7_THEN_INV_int_Mac_reg_ETC___05F_d392 
         = ((((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh55950) 
              ^ (IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh55951)) 
@@ -970,12 +1495,116 @@ VL_INLINE_OPT void Vtop::_sequent__TOP__4(Vtop__Syms* __restrict vlSymsp) {
                          << 0xeU) | (IData)(vlTOPp->mkMacUnitTop__DOT__IF_IF_int_Mac_reg_B_BIT_7_THEN_INV_int_Mac_reg_ETC___05F_d391)));
     vlTOPp->mkMacUnitTop__DOT__y___05Fh56313 = ((IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh55951) 
                                                 & (IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh55950));
+    vlTOPp->mkMacUnitTop__DOT__y___05Fh195507 = ((IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh195236) 
+                                                 & ((IData)(vlTOPp->mkMacUnitTop__DOT__IF_bf16_Mac_reg_B_729_BIT_2_736_THEN_IF_bf16_M_ETC___05F_d1904) 
+                                                    >> 0xeU));
     vlTOPp->mkMacUnitTop__DOT__y___05Fh56222 = ((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh56312) 
                                                 | (IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh56313));
+    vlTOPp->mkMacUnitTop__DOT__product___05Fh177634 
+        = ((0x8000U & ((0xffff8000U & (IData)(vlTOPp->mkMacUnitTop__DOT__IF_bf16_Mac_reg_B_729_BIT_2_736_THEN_IF_bf16_M_ETC___05F_d1904)) 
+                       ^ ((IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh195507) 
+                          << 0xfU))) | ((0x4000U & 
+                                         ((0xffffc000U 
+                                           & (IData)(vlTOPp->mkMacUnitTop__DOT__IF_bf16_Mac_reg_B_729_BIT_2_736_THEN_IF_bf16_M_ETC___05F_d1904)) 
+                                          ^ ((IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh195236) 
+                                             << 0xeU))) 
+                                        | ((0x2000U 
+                                            & ((0xffffe000U 
+                                                & (IData)(vlTOPp->mkMacUnitTop__DOT__IF_bf16_Mac_reg_B_729_BIT_2_736_THEN_IF_bf16_M_ETC___05F_d1904)) 
+                                               ^ ((IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh194965) 
+                                                  << 0xdU))) 
+                                           | ((0x1000U 
+                                               & ((0xfffff000U 
+                                                   & (IData)(vlTOPp->mkMacUnitTop__DOT__IF_bf16_Mac_reg_B_729_BIT_2_736_THEN_IF_bf16_M_ETC___05F_d1904)) 
+                                                  ^ 
+                                                  ((IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh194694) 
+                                                   << 0xcU))) 
+                                              | (IData)(vlTOPp->mkMacUnitTop__DOT__IF_bf16_Mac_reg_B_729_BIT_2_736_THEN_IF_bf16_M_ETC___05F_d1973)))));
     vlTOPp->mkMacUnitTop__DOT__y___05Fh56584 = ((IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh56222) 
                                                 & (IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh56221));
+    vlTOPp->mkMacUnitTop__DOT__IF_bf16_Mac_reg_B_729_BIT_3_735_THEN_IF_bf16_M_ETC___05F_d1976 
+        = ((8U & (IData)(vlTOPp->mkMacUnitTop__DOT__bf16_Mac_reg_B))
+            ? (IData)(vlTOPp->mkMacUnitTop__DOT__product___05Fh177634)
+            : (IData)(vlTOPp->mkMacUnitTop__DOT__IF_bf16_Mac_reg_B_729_BIT_2_736_THEN_IF_bf16_M_ETC___05F_d1904));
     vlTOPp->mkMacUnitTop__DOT__y___05Fh56493 = ((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh56583) 
                                                 | (IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh56584));
+    vlTOPp->mkMacUnitTop__DOT__IF_IF_bf16_Mac_reg_B_729_BIT_3_735_THEN_IF_bf1_ETC___05Fq31 
+        = ((1U & (IData)(vlTOPp->mkMacUnitTop__DOT__IF_bf16_Mac_reg_B_729_BIT_3_735_THEN_IF_bf16_M_ETC___05F_d1976))
+            ? 1U : 0U);
+    vlTOPp->mkMacUnitTop__DOT__x___05Fh198536 = (1U 
+                                                 & (~ 
+                                                    ((IData)(vlTOPp->mkMacUnitTop__DOT__IF_bf16_Mac_reg_B_729_BIT_3_735_THEN_IF_bf16_M_ETC___05F_d1976) 
+                                                     >> 0xbU)));
+    vlTOPp->mkMacUnitTop__DOT__x___05Fh198627 = (1U 
+                                                 & (((IData)(vlTOPp->mkMacUnitTop__DOT__IF_bf16_Mac_reg_B_729_BIT_3_735_THEN_IF_bf16_M_ETC___05F_d1976) 
+                                                     >> 0xaU) 
+                                                    & ((IData)(vlTOPp->mkMacUnitTop__DOT__bf16_Mac_reg_A) 
+                                                       >> 6U)));
+    vlTOPp->mkMacUnitTop__DOT__x___05Fh198265 = (1U 
+                                                 & (((IData)(vlTOPp->mkMacUnitTop__DOT__IF_bf16_Mac_reg_B_729_BIT_3_735_THEN_IF_bf16_M_ETC___05F_d1976) 
+                                                     >> 0xaU) 
+                                                    ^ 
+                                                    ((IData)(vlTOPp->mkMacUnitTop__DOT__bf16_Mac_reg_A) 
+                                                     >> 6U)));
+    vlTOPp->mkMacUnitTop__DOT__x___05Fh198356 = (1U 
+                                                 & (((IData)(vlTOPp->mkMacUnitTop__DOT__IF_bf16_Mac_reg_B_729_BIT_3_735_THEN_IF_bf16_M_ETC___05F_d1976) 
+                                                     >> 9U) 
+                                                    & ((IData)(vlTOPp->mkMacUnitTop__DOT__bf16_Mac_reg_A) 
+                                                       >> 5U)));
+    vlTOPp->mkMacUnitTop__DOT__x___05Fh197994 = (1U 
+                                                 & (((IData)(vlTOPp->mkMacUnitTop__DOT__IF_bf16_Mac_reg_B_729_BIT_3_735_THEN_IF_bf16_M_ETC___05F_d1976) 
+                                                     >> 9U) 
+                                                    ^ 
+                                                    ((IData)(vlTOPp->mkMacUnitTop__DOT__bf16_Mac_reg_A) 
+                                                     >> 5U)));
+    vlTOPp->mkMacUnitTop__DOT__x___05Fh198085 = (1U 
+                                                 & (((IData)(vlTOPp->mkMacUnitTop__DOT__IF_bf16_Mac_reg_B_729_BIT_3_735_THEN_IF_bf16_M_ETC___05F_d1976) 
+                                                     >> 8U) 
+                                                    & ((IData)(vlTOPp->mkMacUnitTop__DOT__bf16_Mac_reg_A) 
+                                                       >> 4U)));
+    vlTOPp->mkMacUnitTop__DOT__x___05Fh197723 = (1U 
+                                                 & (((IData)(vlTOPp->mkMacUnitTop__DOT__IF_bf16_Mac_reg_B_729_BIT_3_735_THEN_IF_bf16_M_ETC___05F_d1976) 
+                                                     >> 8U) 
+                                                    ^ 
+                                                    ((IData)(vlTOPp->mkMacUnitTop__DOT__bf16_Mac_reg_A) 
+                                                     >> 4U)));
+    vlTOPp->mkMacUnitTop__DOT__x___05Fh197814 = (1U 
+                                                 & (((IData)(vlTOPp->mkMacUnitTop__DOT__IF_bf16_Mac_reg_B_729_BIT_3_735_THEN_IF_bf16_M_ETC___05F_d1976) 
+                                                     >> 7U) 
+                                                    & ((IData)(vlTOPp->mkMacUnitTop__DOT__bf16_Mac_reg_A) 
+                                                       >> 3U)));
+    vlTOPp->mkMacUnitTop__DOT__x___05Fh197452 = (1U 
+                                                 & (((IData)(vlTOPp->mkMacUnitTop__DOT__IF_bf16_Mac_reg_B_729_BIT_3_735_THEN_IF_bf16_M_ETC___05F_d1976) 
+                                                     >> 7U) 
+                                                    ^ 
+                                                    ((IData)(vlTOPp->mkMacUnitTop__DOT__bf16_Mac_reg_A) 
+                                                     >> 3U)));
+    vlTOPp->mkMacUnitTop__DOT__x___05Fh197543 = (1U 
+                                                 & (((IData)(vlTOPp->mkMacUnitTop__DOT__IF_bf16_Mac_reg_B_729_BIT_3_735_THEN_IF_bf16_M_ETC___05F_d1976) 
+                                                     >> 6U) 
+                                                    & ((IData)(vlTOPp->mkMacUnitTop__DOT__bf16_Mac_reg_A) 
+                                                       >> 2U)));
+    vlTOPp->mkMacUnitTop__DOT__x___05Fh197180 = (1U 
+                                                 & (((IData)(vlTOPp->mkMacUnitTop__DOT__IF_bf16_Mac_reg_B_729_BIT_3_735_THEN_IF_bf16_M_ETC___05F_d1976) 
+                                                     >> 6U) 
+                                                    ^ 
+                                                    ((IData)(vlTOPp->mkMacUnitTop__DOT__bf16_Mac_reg_A) 
+                                                     >> 2U)));
+    vlTOPp->mkMacUnitTop__DOT__x___05Fh197271 = (1U 
+                                                 & (((IData)(vlTOPp->mkMacUnitTop__DOT__IF_bf16_Mac_reg_B_729_BIT_3_735_THEN_IF_bf16_M_ETC___05F_d1976) 
+                                                     >> 5U) 
+                                                    & ((IData)(vlTOPp->mkMacUnitTop__DOT__bf16_Mac_reg_A) 
+                                                       >> 1U)));
+    vlTOPp->mkMacUnitTop__DOT__IF_IF_bf16_Mac_reg_B_729_BIT_3_735_THEN_IF_bf1_ETC___05Fq30 
+        = ((1U & (((IData)(vlTOPp->mkMacUnitTop__DOT__IF_bf16_Mac_reg_B_729_BIT_3_735_THEN_IF_bf16_M_ETC___05F_d1976) 
+                   >> 4U) & (IData)(vlTOPp->mkMacUnitTop__DOT__bf16_Mac_reg_A)))
+            ? 0x20U : 0U);
+    vlTOPp->mkMacUnitTop__DOT__x___05Fh196912 = (1U 
+                                                 & (((IData)(vlTOPp->mkMacUnitTop__DOT__IF_bf16_Mac_reg_B_729_BIT_3_735_THEN_IF_bf16_M_ETC___05F_d1976) 
+                                                     >> 5U) 
+                                                    ^ 
+                                                    ((IData)(vlTOPp->mkMacUnitTop__DOT__bf16_Mac_reg_A) 
+                                                     >> 1U)));
     vlTOPp->mkMacUnitTop__DOT__IF_IF_int_Mac_reg_B_BIT_7_THEN_INV_int_Mac_reg_ETC___05F_d393 
         = ((((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh56492) 
              ^ (IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh56493)) 
@@ -984,12 +1613,28 @@ VL_INLINE_OPT void Vtop::_sequent__TOP__4(Vtop__Syms* __restrict vlSymsp) {
                           << 0x10U) | (IData)(vlTOPp->mkMacUnitTop__DOT__IF_IF_int_Mac_reg_B_BIT_7_THEN_INV_int_Mac_reg_ETC___05F_d392)));
     vlTOPp->mkMacUnitTop__DOT__y___05Fh56855 = ((IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh56493) 
                                                 & (IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh56492));
+    vlTOPp->mkMacUnitTop__DOT__IF_bf16_Mac_reg_B_729_BIT_3_735_THEN_IF_bf16_M_ETC___05F_d2039 
+        = ((0x20U & (((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh196912) 
+                      << 5U) ^ (0xffffffe0U & vlTOPp->mkMacUnitTop__DOT__IF_IF_bf16_Mac_reg_B_729_BIT_3_735_THEN_IF_bf1_ETC___05Fq30))) 
+           | ((0x10U & ((0xfffffff0U & (IData)(vlTOPp->mkMacUnitTop__DOT__IF_bf16_Mac_reg_B_729_BIT_3_735_THEN_IF_bf16_M_ETC___05F_d1976)) 
+                        ^ ((IData)(vlTOPp->mkMacUnitTop__DOT__bf16_Mac_reg_A) 
+                           << 4U))) | ((0xeU & (IData)(vlTOPp->mkMacUnitTop__DOT__IF_bf16_Mac_reg_B_729_BIT_3_735_THEN_IF_bf16_M_ETC___05F_d1976)) 
+                                       | (1U & (IData)(vlTOPp->mkMacUnitTop__DOT__IF_IF_bf16_Mac_reg_B_729_BIT_3_735_THEN_IF_bf1_ETC___05Fq31)))));
+    vlTOPp->mkMacUnitTop__DOT__y___05Fh197272 = ((vlTOPp->mkMacUnitTop__DOT__IF_IF_bf16_Mac_reg_B_729_BIT_3_735_THEN_IF_bf1_ETC___05Fq30 
+                                                  >> 5U) 
+                                                 & (IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh196912));
     vlTOPp->mkMacUnitTop__DOT__y___05Fh56764 = ((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh56854) 
                                                 | (IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh56855));
+    vlTOPp->mkMacUnitTop__DOT__y___05Fh197181 = ((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh197271) 
+                                                 | (IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh197272));
     vlTOPp->mkMacUnitTop__DOT__y___05Fh57126 = ((IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh56764) 
                                                 & (IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh56763));
+    vlTOPp->mkMacUnitTop__DOT__y___05Fh197544 = ((IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh197181) 
+                                                 & (IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh197180));
     vlTOPp->mkMacUnitTop__DOT__y___05Fh57035 = ((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh57125) 
                                                 | (IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh57126));
+    vlTOPp->mkMacUnitTop__DOT__y___05Fh197453 = ((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh197543) 
+                                                 | (IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh197544));
     vlTOPp->mkMacUnitTop__DOT__IF_IF_int_Mac_reg_B_BIT_7_THEN_INV_int_Mac_reg_ETC___05F_d394 
         = ((((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh57034) 
              ^ (IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh57035)) 
@@ -998,12 +1643,26 @@ VL_INLINE_OPT void Vtop::_sequent__TOP__4(Vtop__Syms* __restrict vlSymsp) {
                           << 0x12U) | vlTOPp->mkMacUnitTop__DOT__IF_IF_int_Mac_reg_B_BIT_7_THEN_INV_int_Mac_reg_ETC___05F_d393));
     vlTOPp->mkMacUnitTop__DOT__y___05Fh57397 = ((IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh57035) 
                                                 & (IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh57034));
+    vlTOPp->mkMacUnitTop__DOT__IF_bf16_Mac_reg_B_729_BIT_3_735_THEN_IF_bf16_M_ETC___05F_d2040 
+        = ((((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh197452) 
+             ^ (IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh197453)) 
+            << 7U) | ((((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh197180) 
+                        ^ (IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh197181)) 
+                       << 6U) | (IData)(vlTOPp->mkMacUnitTop__DOT__IF_bf16_Mac_reg_B_729_BIT_3_735_THEN_IF_bf16_M_ETC___05F_d2039)));
+    vlTOPp->mkMacUnitTop__DOT__y___05Fh197815 = ((IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh197453) 
+                                                 & (IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh197452));
     vlTOPp->mkMacUnitTop__DOT__y___05Fh57306 = ((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh57396) 
                                                 | (IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh57397));
+    vlTOPp->mkMacUnitTop__DOT__y___05Fh197724 = ((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh197814) 
+                                                 | (IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh197815));
     vlTOPp->mkMacUnitTop__DOT__y___05Fh57668 = ((IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh57306) 
                                                 & (IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh57305));
+    vlTOPp->mkMacUnitTop__DOT__y___05Fh198086 = ((IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh197724) 
+                                                 & (IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh197723));
     vlTOPp->mkMacUnitTop__DOT__y___05Fh57577 = ((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh57667) 
                                                 | (IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh57668));
+    vlTOPp->mkMacUnitTop__DOT__y___05Fh197995 = ((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh198085) 
+                                                 | (IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh198086));
     vlTOPp->mkMacUnitTop__DOT__IF_IF_int_Mac_reg_B_BIT_7_THEN_INV_int_Mac_reg_ETC___05F_d395 
         = ((((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh57576) 
              ^ (IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh57577)) 
@@ -1012,12 +1671,26 @@ VL_INLINE_OPT void Vtop::_sequent__TOP__4(Vtop__Syms* __restrict vlSymsp) {
                           << 0x14U) | vlTOPp->mkMacUnitTop__DOT__IF_IF_int_Mac_reg_B_BIT_7_THEN_INV_int_Mac_reg_ETC___05F_d394));
     vlTOPp->mkMacUnitTop__DOT__y___05Fh57939 = ((IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh57577) 
                                                 & (IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh57576));
+    vlTOPp->mkMacUnitTop__DOT__IF_bf16_Mac_reg_B_729_BIT_3_735_THEN_IF_bf16_M_ETC___05F_d2041 
+        = ((((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh197994) 
+             ^ (IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh197995)) 
+            << 9U) | ((((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh197723) 
+                        ^ (IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh197724)) 
+                       << 8U) | (IData)(vlTOPp->mkMacUnitTop__DOT__IF_bf16_Mac_reg_B_729_BIT_3_735_THEN_IF_bf16_M_ETC___05F_d2040)));
+    vlTOPp->mkMacUnitTop__DOT__y___05Fh198357 = ((IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh197995) 
+                                                 & (IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh197994));
     vlTOPp->mkMacUnitTop__DOT__y___05Fh57848 = ((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh57938) 
                                                 | (IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh57939));
+    vlTOPp->mkMacUnitTop__DOT__y___05Fh198266 = ((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh198356) 
+                                                 | (IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh198357));
     vlTOPp->mkMacUnitTop__DOT__y___05Fh58210 = ((IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh57848) 
                                                 & (IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh57847));
+    vlTOPp->mkMacUnitTop__DOT__y___05Fh198628 = ((IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh198266) 
+                                                 & (IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh198265));
     vlTOPp->mkMacUnitTop__DOT__y___05Fh58119 = ((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh58209) 
                                                 | (IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh58210));
+    vlTOPp->mkMacUnitTop__DOT__y___05Fh198537 = ((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh198627) 
+                                                 | (IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh198628));
     vlTOPp->mkMacUnitTop__DOT__IF_IF_int_Mac_reg_B_BIT_7_THEN_INV_int_Mac_reg_ETC___05F_d396 
         = ((((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh58118) 
              ^ (IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh58119)) 
@@ -1026,12 +1699,30 @@ VL_INLINE_OPT void Vtop::_sequent__TOP__4(Vtop__Syms* __restrict vlSymsp) {
                           << 0x16U) | vlTOPp->mkMacUnitTop__DOT__IF_IF_int_Mac_reg_B_BIT_7_THEN_INV_int_Mac_reg_ETC___05F_d395));
     vlTOPp->mkMacUnitTop__DOT__y___05Fh58481 = ((IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh58119) 
                                                 & (IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh58118));
+    vlTOPp->mkMacUnitTop__DOT__INV_IF_bf16_Mac_reg_B_729_BIT_3_735_THEN_IF_bf_ETC___05F_d2042 
+        = ((((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh198536) 
+             ^ (IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh198537)) 
+            << 0xbU) | ((((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh198265) 
+                          ^ (IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh198266)) 
+                         << 0xaU) | (IData)(vlTOPp->mkMacUnitTop__DOT__IF_bf16_Mac_reg_B_729_BIT_3_735_THEN_IF_bf16_M_ETC___05F_d2041)));
+    vlTOPp->mkMacUnitTop__DOT__y___05Fh198899 = ((IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh198537) 
+                                                 & (IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh198536));
     vlTOPp->mkMacUnitTop__DOT__y___05Fh58390 = ((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh58480) 
                                                 | (IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh58481));
+    vlTOPp->mkMacUnitTop__DOT__y___05Fh198808 = (1U 
+                                                 & (((IData)(vlTOPp->mkMacUnitTop__DOT__IF_bf16_Mac_reg_B_729_BIT_3_735_THEN_IF_bf16_M_ETC___05F_d1976) 
+                                                     >> 0xbU) 
+                                                    | (IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh198899)));
     vlTOPp->mkMacUnitTop__DOT__y___05Fh58752 = ((IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh58390) 
                                                 & (IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh58389));
+    vlTOPp->mkMacUnitTop__DOT__y___05Fh199079 = ((IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh198808) 
+                                                 & ((IData)(vlTOPp->mkMacUnitTop__DOT__IF_bf16_Mac_reg_B_729_BIT_3_735_THEN_IF_bf16_M_ETC___05F_d1976) 
+                                                    >> 0xcU));
     vlTOPp->mkMacUnitTop__DOT__y___05Fh58661 = ((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh58751) 
                                                 | (IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh58752));
+    vlTOPp->mkMacUnitTop__DOT__y___05Fh199350 = ((IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh199079) 
+                                                 & ((IData)(vlTOPp->mkMacUnitTop__DOT__IF_bf16_Mac_reg_B_729_BIT_3_735_THEN_IF_bf16_M_ETC___05F_d1976) 
+                                                    >> 0xdU));
     vlTOPp->mkMacUnitTop__DOT__IF_IF_int_Mac_reg_B_BIT_7_THEN_INV_int_Mac_reg_ETC___05F_d397 
         = ((((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh58660) 
              ^ (IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh58661)) 
@@ -1040,12 +1731,116 @@ VL_INLINE_OPT void Vtop::_sequent__TOP__4(Vtop__Syms* __restrict vlSymsp) {
                           << 0x18U) | vlTOPp->mkMacUnitTop__DOT__IF_IF_int_Mac_reg_B_BIT_7_THEN_INV_int_Mac_reg_ETC___05F_d396));
     vlTOPp->mkMacUnitTop__DOT__y___05Fh59023 = ((IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh58661) 
                                                 & (IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh58660));
+    vlTOPp->mkMacUnitTop__DOT__y___05Fh199621 = ((IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh199350) 
+                                                 & ((IData)(vlTOPp->mkMacUnitTop__DOT__IF_bf16_Mac_reg_B_729_BIT_3_735_THEN_IF_bf16_M_ETC___05F_d1976) 
+                                                    >> 0xeU));
     vlTOPp->mkMacUnitTop__DOT__y___05Fh58932 = ((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh59022) 
                                                 | (IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh59023));
+    vlTOPp->mkMacUnitTop__DOT__product___05Fh177191 
+        = ((0x8000U & ((0xffff8000U & (IData)(vlTOPp->mkMacUnitTop__DOT__IF_bf16_Mac_reg_B_729_BIT_3_735_THEN_IF_bf16_M_ETC___05F_d1976)) 
+                       ^ ((IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh199621) 
+                          << 0xfU))) | ((0x4000U & 
+                                         ((0xffffc000U 
+                                           & (IData)(vlTOPp->mkMacUnitTop__DOT__IF_bf16_Mac_reg_B_729_BIT_3_735_THEN_IF_bf16_M_ETC___05F_d1976)) 
+                                          ^ ((IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh199350) 
+                                             << 0xeU))) 
+                                        | ((0x2000U 
+                                            & ((0xffffe000U 
+                                                & (IData)(vlTOPp->mkMacUnitTop__DOT__IF_bf16_Mac_reg_B_729_BIT_3_735_THEN_IF_bf16_M_ETC___05F_d1976)) 
+                                               ^ ((IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh199079) 
+                                                  << 0xdU))) 
+                                           | ((0x1000U 
+                                               & ((0xfffff000U 
+                                                   & (IData)(vlTOPp->mkMacUnitTop__DOT__IF_bf16_Mac_reg_B_729_BIT_3_735_THEN_IF_bf16_M_ETC___05F_d1976)) 
+                                                  ^ 
+                                                  ((IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh198808) 
+                                                   << 0xcU))) 
+                                              | (IData)(vlTOPp->mkMacUnitTop__DOT__INV_IF_bf16_Mac_reg_B_729_BIT_3_735_THEN_IF_bf_ETC___05F_d2042)))));
     vlTOPp->mkMacUnitTop__DOT__y___05Fh59294 = ((IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh58932) 
                                                 & (IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh58931));
+    vlTOPp->mkMacUnitTop__DOT__IF_bf16_Mac_reg_B_729_BIT_4_734_THEN_IF_bf16_M_ETC___05F_d2045 
+        = ((0x10U & (IData)(vlTOPp->mkMacUnitTop__DOT__bf16_Mac_reg_B))
+            ? (IData)(vlTOPp->mkMacUnitTop__DOT__product___05Fh177191)
+            : (IData)(vlTOPp->mkMacUnitTop__DOT__IF_bf16_Mac_reg_B_729_BIT_3_735_THEN_IF_bf16_M_ETC___05F_d1976));
     vlTOPp->mkMacUnitTop__DOT__y___05Fh59203 = ((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh59293) 
                                                 | (IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh59294));
+    vlTOPp->mkMacUnitTop__DOT__IF_IF_bf16_Mac_reg_B_729_BIT_4_734_THEN_IF_bf1_ETC___05Fq33 
+        = ((1U & (IData)(vlTOPp->mkMacUnitTop__DOT__IF_bf16_Mac_reg_B_729_BIT_4_734_THEN_IF_bf16_M_ETC___05F_d2045))
+            ? 1U : 0U);
+    vlTOPp->mkMacUnitTop__DOT__x___05Fh202916 = (1U 
+                                                 & (~ 
+                                                    ((IData)(vlTOPp->mkMacUnitTop__DOT__IF_bf16_Mac_reg_B_729_BIT_4_734_THEN_IF_bf16_M_ETC___05F_d2045) 
+                                                     >> 0xcU)));
+    vlTOPp->mkMacUnitTop__DOT__x___05Fh203007 = (1U 
+                                                 & (((IData)(vlTOPp->mkMacUnitTop__DOT__IF_bf16_Mac_reg_B_729_BIT_4_734_THEN_IF_bf16_M_ETC___05F_d2045) 
+                                                     >> 0xbU) 
+                                                    & ((IData)(vlTOPp->mkMacUnitTop__DOT__bf16_Mac_reg_A) 
+                                                       >> 6U)));
+    vlTOPp->mkMacUnitTop__DOT__x___05Fh202645 = (1U 
+                                                 & (((IData)(vlTOPp->mkMacUnitTop__DOT__IF_bf16_Mac_reg_B_729_BIT_4_734_THEN_IF_bf16_M_ETC___05F_d2045) 
+                                                     >> 0xbU) 
+                                                    ^ 
+                                                    ((IData)(vlTOPp->mkMacUnitTop__DOT__bf16_Mac_reg_A) 
+                                                     >> 6U)));
+    vlTOPp->mkMacUnitTop__DOT__x___05Fh202736 = (1U 
+                                                 & (((IData)(vlTOPp->mkMacUnitTop__DOT__IF_bf16_Mac_reg_B_729_BIT_4_734_THEN_IF_bf16_M_ETC___05F_d2045) 
+                                                     >> 0xaU) 
+                                                    & ((IData)(vlTOPp->mkMacUnitTop__DOT__bf16_Mac_reg_A) 
+                                                       >> 5U)));
+    vlTOPp->mkMacUnitTop__DOT__x___05Fh202374 = (1U 
+                                                 & (((IData)(vlTOPp->mkMacUnitTop__DOT__IF_bf16_Mac_reg_B_729_BIT_4_734_THEN_IF_bf16_M_ETC___05F_d2045) 
+                                                     >> 0xaU) 
+                                                    ^ 
+                                                    ((IData)(vlTOPp->mkMacUnitTop__DOT__bf16_Mac_reg_A) 
+                                                     >> 5U)));
+    vlTOPp->mkMacUnitTop__DOT__x___05Fh202465 = (1U 
+                                                 & (((IData)(vlTOPp->mkMacUnitTop__DOT__IF_bf16_Mac_reg_B_729_BIT_4_734_THEN_IF_bf16_M_ETC___05F_d2045) 
+                                                     >> 9U) 
+                                                    & ((IData)(vlTOPp->mkMacUnitTop__DOT__bf16_Mac_reg_A) 
+                                                       >> 4U)));
+    vlTOPp->mkMacUnitTop__DOT__x___05Fh202103 = (1U 
+                                                 & (((IData)(vlTOPp->mkMacUnitTop__DOT__IF_bf16_Mac_reg_B_729_BIT_4_734_THEN_IF_bf16_M_ETC___05F_d2045) 
+                                                     >> 9U) 
+                                                    ^ 
+                                                    ((IData)(vlTOPp->mkMacUnitTop__DOT__bf16_Mac_reg_A) 
+                                                     >> 4U)));
+    vlTOPp->mkMacUnitTop__DOT__x___05Fh202194 = (1U 
+                                                 & (((IData)(vlTOPp->mkMacUnitTop__DOT__IF_bf16_Mac_reg_B_729_BIT_4_734_THEN_IF_bf16_M_ETC___05F_d2045) 
+                                                     >> 8U) 
+                                                    & ((IData)(vlTOPp->mkMacUnitTop__DOT__bf16_Mac_reg_A) 
+                                                       >> 3U)));
+    vlTOPp->mkMacUnitTop__DOT__x___05Fh201832 = (1U 
+                                                 & (((IData)(vlTOPp->mkMacUnitTop__DOT__IF_bf16_Mac_reg_B_729_BIT_4_734_THEN_IF_bf16_M_ETC___05F_d2045) 
+                                                     >> 8U) 
+                                                    ^ 
+                                                    ((IData)(vlTOPp->mkMacUnitTop__DOT__bf16_Mac_reg_A) 
+                                                     >> 3U)));
+    vlTOPp->mkMacUnitTop__DOT__x___05Fh201923 = (1U 
+                                                 & (((IData)(vlTOPp->mkMacUnitTop__DOT__IF_bf16_Mac_reg_B_729_BIT_4_734_THEN_IF_bf16_M_ETC___05F_d2045) 
+                                                     >> 7U) 
+                                                    & ((IData)(vlTOPp->mkMacUnitTop__DOT__bf16_Mac_reg_A) 
+                                                       >> 2U)));
+    vlTOPp->mkMacUnitTop__DOT__x___05Fh201560 = (1U 
+                                                 & (((IData)(vlTOPp->mkMacUnitTop__DOT__IF_bf16_Mac_reg_B_729_BIT_4_734_THEN_IF_bf16_M_ETC___05F_d2045) 
+                                                     >> 7U) 
+                                                    ^ 
+                                                    ((IData)(vlTOPp->mkMacUnitTop__DOT__bf16_Mac_reg_A) 
+                                                     >> 2U)));
+    vlTOPp->mkMacUnitTop__DOT__x___05Fh201651 = (1U 
+                                                 & (((IData)(vlTOPp->mkMacUnitTop__DOT__IF_bf16_Mac_reg_B_729_BIT_4_734_THEN_IF_bf16_M_ETC___05F_d2045) 
+                                                     >> 6U) 
+                                                    & ((IData)(vlTOPp->mkMacUnitTop__DOT__bf16_Mac_reg_A) 
+                                                       >> 1U)));
+    vlTOPp->mkMacUnitTop__DOT__IF_IF_bf16_Mac_reg_B_729_BIT_4_734_THEN_IF_bf1_ETC___05Fq32 
+        = ((1U & (((IData)(vlTOPp->mkMacUnitTop__DOT__IF_bf16_Mac_reg_B_729_BIT_4_734_THEN_IF_bf16_M_ETC___05F_d2045) 
+                   >> 5U) & (IData)(vlTOPp->mkMacUnitTop__DOT__bf16_Mac_reg_A)))
+            ? 0x40U : 0U);
+    vlTOPp->mkMacUnitTop__DOT__x___05Fh201292 = (1U 
+                                                 & (((IData)(vlTOPp->mkMacUnitTop__DOT__IF_bf16_Mac_reg_B_729_BIT_4_734_THEN_IF_bf16_M_ETC___05F_d2045) 
+                                                     >> 6U) 
+                                                    ^ 
+                                                    ((IData)(vlTOPp->mkMacUnitTop__DOT__bf16_Mac_reg_A) 
+                                                     >> 1U)));
     vlTOPp->mkMacUnitTop__DOT__IF_IF_int_Mac_reg_B_BIT_7_THEN_INV_int_Mac_reg_ETC___05F_d398 
         = ((((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh59202) 
              ^ (IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh59203)) 
@@ -1054,12 +1849,33 @@ VL_INLINE_OPT void Vtop::_sequent__TOP__4(Vtop__Syms* __restrict vlSymsp) {
                           << 0x1aU) | vlTOPp->mkMacUnitTop__DOT__IF_IF_int_Mac_reg_B_BIT_7_THEN_INV_int_Mac_reg_ETC___05F_d397));
     vlTOPp->mkMacUnitTop__DOT__y___05Fh59565 = ((IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh59203) 
                                                 & (IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh59202));
+    vlTOPp->mkMacUnitTop__DOT__y___05Fh201652 = ((vlTOPp->mkMacUnitTop__DOT__IF_IF_bf16_Mac_reg_B_729_BIT_4_734_THEN_IF_bf1_ETC___05Fq32 
+                                                  >> 6U) 
+                                                 & (IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh201292));
     vlTOPp->mkMacUnitTop__DOT__y___05Fh59474 = ((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh59564) 
                                                 | (IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh59565));
+    vlTOPp->mkMacUnitTop__DOT__y___05Fh201561 = ((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh201651) 
+                                                 | (IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh201652));
     vlTOPp->mkMacUnitTop__DOT__y___05Fh59836 = ((IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh59474) 
                                                 & (IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh59473));
+    vlTOPp->mkMacUnitTop__DOT__IF_bf16_Mac_reg_B_729_BIT_4_734_THEN_IF_bf16_M_ETC___05F_d2105 
+        = ((((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh201560) 
+             ^ (IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh201561)) 
+            << 7U) | ((0x40U & (((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh201292) 
+                                 << 6U) ^ (0xffffffc0U 
+                                           & vlTOPp->mkMacUnitTop__DOT__IF_IF_bf16_Mac_reg_B_729_BIT_4_734_THEN_IF_bf1_ETC___05Fq32))) 
+                      | ((0x20U & ((0xffffffe0U & (IData)(vlTOPp->mkMacUnitTop__DOT__IF_bf16_Mac_reg_B_729_BIT_4_734_THEN_IF_bf16_M_ETC___05F_d2045)) 
+                                   ^ ((IData)(vlTOPp->mkMacUnitTop__DOT__bf16_Mac_reg_A) 
+                                      << 5U))) | ((0x1eU 
+                                                   & (IData)(vlTOPp->mkMacUnitTop__DOT__IF_bf16_Mac_reg_B_729_BIT_4_734_THEN_IF_bf16_M_ETC___05F_d2045)) 
+                                                  | (1U 
+                                                     & (IData)(vlTOPp->mkMacUnitTop__DOT__IF_IF_bf16_Mac_reg_B_729_BIT_4_734_THEN_IF_bf1_ETC___05Fq33))))));
+    vlTOPp->mkMacUnitTop__DOT__y___05Fh201924 = ((IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh201561) 
+                                                 & (IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh201560));
     vlTOPp->mkMacUnitTop__DOT__y___05Fh59745 = ((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh59835) 
                                                 | (IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh59836));
+    vlTOPp->mkMacUnitTop__DOT__y___05Fh201833 = ((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh201923) 
+                                                 | (IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh201924));
     vlTOPp->mkMacUnitTop__DOT__IF_IF_int_Mac_reg_B_BIT_7_THEN_INV_int_Mac_reg_ETC___05F_d399 
         = ((((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh59744) 
              ^ (IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh59745)) 
@@ -1068,22 +1884,40 @@ VL_INLINE_OPT void Vtop::_sequent__TOP__4(Vtop__Syms* __restrict vlSymsp) {
                           << 0x1cU) | vlTOPp->mkMacUnitTop__DOT__IF_IF_int_Mac_reg_B_BIT_7_THEN_INV_int_Mac_reg_ETC___05F_d398));
     vlTOPp->mkMacUnitTop__DOT__y___05Fh60107 = ((IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh59745) 
                                                 & (IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh59744));
+    vlTOPp->mkMacUnitTop__DOT__y___05Fh202195 = ((IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh201833) 
+                                                 & (IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh201832));
     vlTOPp->mkMacUnitTop__DOT__y___05Fh60016 = ((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh60106) 
                                                 | (IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh60107));
+    vlTOPp->mkMacUnitTop__DOT__y___05Fh202104 = ((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh202194) 
+                                                 | (IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh202195));
     vlTOPp->mkMacUnitTop__DOT__y___05Fh60378 = ((IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh60016) 
                                                 & (IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh60015));
+    vlTOPp->mkMacUnitTop__DOT__IF_bf16_Mac_reg_B_729_BIT_4_734_THEN_IF_bf16_M_ETC___05F_d2106 
+        = ((((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh202103) 
+             ^ (IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh202104)) 
+            << 9U) | ((((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh201832) 
+                        ^ (IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh201833)) 
+                       << 8U) | (IData)(vlTOPp->mkMacUnitTop__DOT__IF_bf16_Mac_reg_B_729_BIT_4_734_THEN_IF_bf16_M_ETC___05F_d2105)));
+    vlTOPp->mkMacUnitTop__DOT__y___05Fh202466 = ((IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh202104) 
+                                                 & (IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh202103));
     vlTOPp->mkMacUnitTop__DOT__y___05Fh60287 = ((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh60377) 
                                                 | (IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh60378));
+    vlTOPp->mkMacUnitTop__DOT__y___05Fh202375 = ((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh202465) 
+                                                 | (IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh202466));
     vlTOPp->mkMacUnitTop__DOT__result___05Fh21442 = 
         ((((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh60286) 
            ^ (IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh60287)) 
           << 0x1fU) | ((((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh60015) 
                          ^ (IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh60016)) 
                         << 0x1eU) | vlTOPp->mkMacUnitTop__DOT__IF_IF_int_Mac_reg_B_BIT_7_THEN_INV_int_Mac_reg_ETC___05F_d399));
+    vlTOPp->mkMacUnitTop__DOT__y___05Fh202737 = ((IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh202375) 
+                                                 & (IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh202374));
     vlTOPp->mkMacUnitTop__DOT__IF_IF_int_Mac_reg_B_BIT_7_THEN_INV_int_Mac_reg_ETC___05F_d401 
         = ((2U & (IData)(vlTOPp->mkMacUnitTop__DOT__IF_int_Mac_reg_B_BIT_7_THEN_INV_int_Mac_reg_B___05FETC___05F_d38))
             ? vlTOPp->mkMacUnitTop__DOT__result___05Fh21442
             : vlTOPp->mkMacUnitTop__DOT__IF_IF_int_Mac_reg_B_BIT_7_THEN_INV_int_Mac_reg_ETC___05F_d169);
+    vlTOPp->mkMacUnitTop__DOT__y___05Fh202646 = ((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh202736) 
+                                                 | (IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh202737));
     vlTOPp->mkMacUnitTop__DOT__x___05Fh78004 = (1U 
                                                 & ((vlTOPp->mkMacUnitTop__DOT__IF_IF_int_Mac_reg_B_BIT_7_THEN_INV_int_Mac_reg_ETC___05F_d401 
                                                     >> 0x1fU) 
@@ -1161,7 +1995,7 @@ VL_INLINE_OPT void Vtop::_sequent__TOP__4(Vtop__Syms* __restrict vlSymsp) {
                                                     >> 0x18U) 
                                                    & (vlTOPp->mkMacUnitTop__DOT__IF_int_Mac_reg_A_BIT_7_THEN_INV_SEXT_int_Mac_r_ETC___05F_d163 
                                                       >> 0x16U)));
-    vlTOPp->mkMacUnitTop__DOT__IF_IF_IF_int_Mac_reg_B_BIT_7_THEN_INV_int_Mac___05FETC___05Fq11 
+    vlTOPp->mkMacUnitTop__DOT__IF_IF_IF_int_Mac_reg_B_BIT_7_THEN_INV_int_Mac___05FETC___05Fq12 
         = ((1U & vlTOPp->mkMacUnitTop__DOT__IF_IF_int_Mac_reg_B_BIT_7_THEN_INV_int_Mac_reg_ETC___05F_d401)
             ? 1U : 0U);
     vlTOPp->mkMacUnitTop__DOT__x___05Fh76107 = (1U 
@@ -1395,7 +2229,7 @@ VL_INLINE_OPT void Vtop::_sequent__TOP__4(Vtop__Syms* __restrict vlSymsp) {
                                                     >> 3U) 
                                                    & (vlTOPp->mkMacUnitTop__DOT__IF_int_Mac_reg_A_BIT_7_THEN_INV_SEXT_int_Mac_r_ETC___05F_d163 
                                                       >> 1U)));
-    vlTOPp->mkMacUnitTop__DOT__IF_IF_IF_int_Mac_reg_B_BIT_7_THEN_INV_int_Mac___05FETC___05Fq10 
+    vlTOPp->mkMacUnitTop__DOT__IF_IF_IF_int_Mac_reg_B_BIT_7_THEN_INV_int_Mac___05FETC___05Fq11 
         = ((1U & ((vlTOPp->mkMacUnitTop__DOT__IF_IF_int_Mac_reg_B_BIT_7_THEN_INV_int_Mac_reg_ETC___05F_d401 
                    >> 2U) & vlTOPp->mkMacUnitTop__DOT__IF_int_Mac_reg_A_BIT_7_THEN_INV_SEXT_int_Mac_r_ETC___05F_d163))
             ? 8ULL : 0ULL);
@@ -1405,9 +2239,17 @@ VL_INLINE_OPT void Vtop::_sequent__TOP__4(Vtop__Syms* __restrict vlSymsp) {
                                                    ^ 
                                                    (vlTOPp->mkMacUnitTop__DOT__IF_int_Mac_reg_A_BIT_7_THEN_INV_SEXT_int_Mac_r_ETC___05F_d163 
                                                     >> 1U)));
+    vlTOPp->mkMacUnitTop__DOT__IF_bf16_Mac_reg_B_729_BIT_4_734_THEN_IF_bf16_M_ETC___05F_d2107 
+        = ((((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh202645) 
+             ^ (IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh202646)) 
+            << 0xbU) | ((((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh202374) 
+                          ^ (IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh202375)) 
+                         << 0xaU) | (IData)(vlTOPp->mkMacUnitTop__DOT__IF_bf16_Mac_reg_B_729_BIT_4_734_THEN_IF_bf16_M_ETC___05F_d2106)));
+    vlTOPp->mkMacUnitTop__DOT__y___05Fh203008 = ((IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh202646) 
+                                                 & (IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh202645));
     vlTOPp->mkMacUnitTop__DOT__IF_IF_int_Mac_reg_B_BIT_7_THEN_INV_int_Mac_reg_ETC___05F_d583 
         = ((8U & (((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh70418) 
-                   ^ (IData)((vlTOPp->mkMacUnitTop__DOT__IF_IF_IF_int_Mac_reg_B_BIT_7_THEN_INV_int_Mac___05FETC___05Fq10 
+                   ^ (IData)((vlTOPp->mkMacUnitTop__DOT__IF_IF_IF_int_Mac_reg_B_BIT_7_THEN_INV_int_Mac___05FETC___05Fq11 
                               >> 3U))) << 3U)) | ((4U 
                                                    & ((0xfffffffcU 
                                                        & vlTOPp->mkMacUnitTop__DOT__IF_IF_int_Mac_reg_B_BIT_7_THEN_INV_int_Mac_reg_ETC___05F_d401) 
@@ -1417,17 +2259,34 @@ VL_INLINE_OPT void Vtop::_sequent__TOP__4(Vtop__Syms* __restrict vlSymsp) {
                                                   | ((2U 
                                                       & vlTOPp->mkMacUnitTop__DOT__IF_IF_int_Mac_reg_B_BIT_7_THEN_INV_int_Mac_reg_ETC___05F_d401) 
                                                      | (1U 
-                                                        & vlTOPp->mkMacUnitTop__DOT__IF_IF_IF_int_Mac_reg_B_BIT_7_THEN_INV_int_Mac___05FETC___05Fq11))));
+                                                        & vlTOPp->mkMacUnitTop__DOT__IF_IF_IF_int_Mac_reg_B_BIT_7_THEN_INV_int_Mac___05FETC___05Fq12))));
     vlTOPp->mkMacUnitTop__DOT__y___05Fh70778 = ((IData)(
-                                                        (vlTOPp->mkMacUnitTop__DOT__IF_IF_IF_int_Mac_reg_B_BIT_7_THEN_INV_int_Mac___05FETC___05Fq10 
+                                                        (vlTOPp->mkMacUnitTop__DOT__IF_IF_IF_int_Mac_reg_B_BIT_7_THEN_INV_int_Mac___05FETC___05Fq11 
                                                          >> 3U)) 
                                                 & (IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh70418));
+    vlTOPp->mkMacUnitTop__DOT__y___05Fh202917 = ((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh203007) 
+                                                 | (IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh203008));
     vlTOPp->mkMacUnitTop__DOT__y___05Fh70687 = ((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh70777) 
                                                 | (IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh70778));
+    vlTOPp->mkMacUnitTop__DOT__y___05Fh203279 = ((IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh202917) 
+                                                 & (IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh202916));
     vlTOPp->mkMacUnitTop__DOT__y___05Fh71050 = ((IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh70687) 
                                                 & (IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh70686));
+    vlTOPp->mkMacUnitTop__DOT__y___05Fh203188 = (1U 
+                                                 & (((IData)(vlTOPp->mkMacUnitTop__DOT__IF_bf16_Mac_reg_B_729_BIT_4_734_THEN_IF_bf16_M_ETC___05F_d2045) 
+                                                     >> 0xcU) 
+                                                    | (IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh203279)));
     vlTOPp->mkMacUnitTop__DOT__y___05Fh70959 = ((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh71049) 
                                                 | (IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh71050));
+    vlTOPp->mkMacUnitTop__DOT__IF_bf16_Mac_reg_B_729_BIT_4_734_THEN_IF_bf16_M_ETC___05F_d2108 
+        = ((0x2000U & ((0xffffe000U & (IData)(vlTOPp->mkMacUnitTop__DOT__IF_bf16_Mac_reg_B_729_BIT_4_734_THEN_IF_bf16_M_ETC___05F_d2045)) 
+                       ^ ((IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh203188) 
+                          << 0xdU))) | ((((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh202916) 
+                                          ^ (IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh202917)) 
+                                         << 0xcU) | (IData)(vlTOPp->mkMacUnitTop__DOT__IF_bf16_Mac_reg_B_729_BIT_4_734_THEN_IF_bf16_M_ETC___05F_d2107)));
+    vlTOPp->mkMacUnitTop__DOT__y___05Fh203459 = ((IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh203188) 
+                                                 & ((IData)(vlTOPp->mkMacUnitTop__DOT__IF_bf16_Mac_reg_B_729_BIT_4_734_THEN_IF_bf16_M_ETC___05F_d2045) 
+                                                    >> 0xdU));
     vlTOPp->mkMacUnitTop__DOT__IF_IF_int_Mac_reg_B_BIT_7_THEN_INV_int_Mac_reg_ETC___05F_d584 
         = ((((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh70958) 
              ^ (IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh70959)) 
@@ -1436,12 +2295,105 @@ VL_INLINE_OPT void Vtop::_sequent__TOP__4(Vtop__Syms* __restrict vlSymsp) {
                        << 4U) | (IData)(vlTOPp->mkMacUnitTop__DOT__IF_IF_int_Mac_reg_B_BIT_7_THEN_INV_int_Mac_reg_ETC___05F_d583)));
     vlTOPp->mkMacUnitTop__DOT__y___05Fh71321 = ((IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh70959) 
                                                 & (IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh70958));
+    vlTOPp->mkMacUnitTop__DOT__y___05Fh203730 = ((IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh203459) 
+                                                 & ((IData)(vlTOPp->mkMacUnitTop__DOT__IF_bf16_Mac_reg_B_729_BIT_4_734_THEN_IF_bf16_M_ETC___05F_d2045) 
+                                                    >> 0xeU));
     vlTOPp->mkMacUnitTop__DOT__y___05Fh71230 = ((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh71320) 
                                                 | (IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh71321));
+    vlTOPp->mkMacUnitTop__DOT__product___05Fh176748 
+        = ((0x8000U & ((0xffff8000U & (IData)(vlTOPp->mkMacUnitTop__DOT__IF_bf16_Mac_reg_B_729_BIT_4_734_THEN_IF_bf16_M_ETC___05F_d2045)) 
+                       ^ ((IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh203730) 
+                          << 0xfU))) | ((0x4000U & 
+                                         ((0xffffc000U 
+                                           & (IData)(vlTOPp->mkMacUnitTop__DOT__IF_bf16_Mac_reg_B_729_BIT_4_734_THEN_IF_bf16_M_ETC___05F_d2045)) 
+                                          ^ ((IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh203459) 
+                                             << 0xeU))) 
+                                        | (IData)(vlTOPp->mkMacUnitTop__DOT__IF_bf16_Mac_reg_B_729_BIT_4_734_THEN_IF_bf16_M_ETC___05F_d2108)));
     vlTOPp->mkMacUnitTop__DOT__y___05Fh71592 = ((IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh71230) 
                                                 & (IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh71229));
+    vlTOPp->mkMacUnitTop__DOT__IF_bf16_Mac_reg_B_729_BIT_5_733_THEN_IF_bf16_M_ETC___05F_d2110 
+        = ((0x20U & (IData)(vlTOPp->mkMacUnitTop__DOT__bf16_Mac_reg_B))
+            ? (IData)(vlTOPp->mkMacUnitTop__DOT__product___05Fh176748)
+            : (IData)(vlTOPp->mkMacUnitTop__DOT__IF_bf16_Mac_reg_B_729_BIT_4_734_THEN_IF_bf16_M_ETC___05F_d2045));
     vlTOPp->mkMacUnitTop__DOT__y___05Fh71501 = ((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh71591) 
                                                 | (IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh71592));
+    vlTOPp->mkMacUnitTop__DOT__x___05Fh207291 = (1U 
+                                                 & (~ 
+                                                    ((IData)(vlTOPp->mkMacUnitTop__DOT__IF_bf16_Mac_reg_B_729_BIT_5_733_THEN_IF_bf16_M_ETC___05F_d2110) 
+                                                     >> 0xdU)));
+    vlTOPp->mkMacUnitTop__DOT__IF_IF_bf16_Mac_reg_B_729_BIT_5_733_THEN_IF_bf1_ETC___05Fq35 
+        = ((1U & (IData)(vlTOPp->mkMacUnitTop__DOT__IF_bf16_Mac_reg_B_729_BIT_5_733_THEN_IF_bf16_M_ETC___05F_d2110))
+            ? 1U : 0U);
+    vlTOPp->mkMacUnitTop__DOT__x___05Fh207382 = (1U 
+                                                 & (((IData)(vlTOPp->mkMacUnitTop__DOT__IF_bf16_Mac_reg_B_729_BIT_5_733_THEN_IF_bf16_M_ETC___05F_d2110) 
+                                                     >> 0xcU) 
+                                                    & ((IData)(vlTOPp->mkMacUnitTop__DOT__bf16_Mac_reg_A) 
+                                                       >> 6U)));
+    vlTOPp->mkMacUnitTop__DOT__x___05Fh207020 = (1U 
+                                                 & (((IData)(vlTOPp->mkMacUnitTop__DOT__IF_bf16_Mac_reg_B_729_BIT_5_733_THEN_IF_bf16_M_ETC___05F_d2110) 
+                                                     >> 0xcU) 
+                                                    ^ 
+                                                    ((IData)(vlTOPp->mkMacUnitTop__DOT__bf16_Mac_reg_A) 
+                                                     >> 6U)));
+    vlTOPp->mkMacUnitTop__DOT__x___05Fh207111 = (1U 
+                                                 & (((IData)(vlTOPp->mkMacUnitTop__DOT__IF_bf16_Mac_reg_B_729_BIT_5_733_THEN_IF_bf16_M_ETC___05F_d2110) 
+                                                     >> 0xbU) 
+                                                    & ((IData)(vlTOPp->mkMacUnitTop__DOT__bf16_Mac_reg_A) 
+                                                       >> 5U)));
+    vlTOPp->mkMacUnitTop__DOT__x___05Fh206749 = (1U 
+                                                 & (((IData)(vlTOPp->mkMacUnitTop__DOT__IF_bf16_Mac_reg_B_729_BIT_5_733_THEN_IF_bf16_M_ETC___05F_d2110) 
+                                                     >> 0xbU) 
+                                                    ^ 
+                                                    ((IData)(vlTOPp->mkMacUnitTop__DOT__bf16_Mac_reg_A) 
+                                                     >> 5U)));
+    vlTOPp->mkMacUnitTop__DOT__x___05Fh206840 = (1U 
+                                                 & (((IData)(vlTOPp->mkMacUnitTop__DOT__IF_bf16_Mac_reg_B_729_BIT_5_733_THEN_IF_bf16_M_ETC___05F_d2110) 
+                                                     >> 0xaU) 
+                                                    & ((IData)(vlTOPp->mkMacUnitTop__DOT__bf16_Mac_reg_A) 
+                                                       >> 4U)));
+    vlTOPp->mkMacUnitTop__DOT__x___05Fh206478 = (1U 
+                                                 & (((IData)(vlTOPp->mkMacUnitTop__DOT__IF_bf16_Mac_reg_B_729_BIT_5_733_THEN_IF_bf16_M_ETC___05F_d2110) 
+                                                     >> 0xaU) 
+                                                    ^ 
+                                                    ((IData)(vlTOPp->mkMacUnitTop__DOT__bf16_Mac_reg_A) 
+                                                     >> 4U)));
+    vlTOPp->mkMacUnitTop__DOT__x___05Fh206569 = (1U 
+                                                 & (((IData)(vlTOPp->mkMacUnitTop__DOT__IF_bf16_Mac_reg_B_729_BIT_5_733_THEN_IF_bf16_M_ETC___05F_d2110) 
+                                                     >> 9U) 
+                                                    & ((IData)(vlTOPp->mkMacUnitTop__DOT__bf16_Mac_reg_A) 
+                                                       >> 3U)));
+    vlTOPp->mkMacUnitTop__DOT__x___05Fh206207 = (1U 
+                                                 & (((IData)(vlTOPp->mkMacUnitTop__DOT__IF_bf16_Mac_reg_B_729_BIT_5_733_THEN_IF_bf16_M_ETC___05F_d2110) 
+                                                     >> 9U) 
+                                                    ^ 
+                                                    ((IData)(vlTOPp->mkMacUnitTop__DOT__bf16_Mac_reg_A) 
+                                                     >> 3U)));
+    vlTOPp->mkMacUnitTop__DOT__x___05Fh206298 = (1U 
+                                                 & (((IData)(vlTOPp->mkMacUnitTop__DOT__IF_bf16_Mac_reg_B_729_BIT_5_733_THEN_IF_bf16_M_ETC___05F_d2110) 
+                                                     >> 8U) 
+                                                    & ((IData)(vlTOPp->mkMacUnitTop__DOT__bf16_Mac_reg_A) 
+                                                       >> 2U)));
+    vlTOPp->mkMacUnitTop__DOT__x___05Fh205935 = (1U 
+                                                 & (((IData)(vlTOPp->mkMacUnitTop__DOT__IF_bf16_Mac_reg_B_729_BIT_5_733_THEN_IF_bf16_M_ETC___05F_d2110) 
+                                                     >> 8U) 
+                                                    ^ 
+                                                    ((IData)(vlTOPp->mkMacUnitTop__DOT__bf16_Mac_reg_A) 
+                                                     >> 2U)));
+    vlTOPp->mkMacUnitTop__DOT__x___05Fh206026 = (1U 
+                                                 & (((IData)(vlTOPp->mkMacUnitTop__DOT__IF_bf16_Mac_reg_B_729_BIT_5_733_THEN_IF_bf16_M_ETC___05F_d2110) 
+                                                     >> 7U) 
+                                                    & ((IData)(vlTOPp->mkMacUnitTop__DOT__bf16_Mac_reg_A) 
+                                                       >> 1U)));
+    vlTOPp->mkMacUnitTop__DOT__IF_IF_bf16_Mac_reg_B_729_BIT_5_733_THEN_IF_bf1_ETC___05Fq34 
+        = ((1U & (((IData)(vlTOPp->mkMacUnitTop__DOT__IF_bf16_Mac_reg_B_729_BIT_5_733_THEN_IF_bf16_M_ETC___05F_d2110) 
+                   >> 6U) & (IData)(vlTOPp->mkMacUnitTop__DOT__bf16_Mac_reg_A)))
+            ? 0x80U : 0U);
+    vlTOPp->mkMacUnitTop__DOT__x___05Fh205667 = (1U 
+                                                 & (((IData)(vlTOPp->mkMacUnitTop__DOT__IF_bf16_Mac_reg_B_729_BIT_5_733_THEN_IF_bf16_M_ETC___05F_d2110) 
+                                                     >> 7U) 
+                                                    ^ 
+                                                    ((IData)(vlTOPp->mkMacUnitTop__DOT__bf16_Mac_reg_A) 
+                                                     >> 1U)));
     vlTOPp->mkMacUnitTop__DOT__IF_IF_int_Mac_reg_B_BIT_7_THEN_INV_int_Mac_reg_ETC___05F_d585 
         = ((((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh71500) 
              ^ (IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh71501)) 
@@ -1450,12 +2402,28 @@ VL_INLINE_OPT void Vtop::_sequent__TOP__4(Vtop__Syms* __restrict vlSymsp) {
                        << 6U) | (IData)(vlTOPp->mkMacUnitTop__DOT__IF_IF_int_Mac_reg_B_BIT_7_THEN_INV_int_Mac_reg_ETC___05F_d584)));
     vlTOPp->mkMacUnitTop__DOT__y___05Fh71863 = ((IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh71501) 
                                                 & (IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh71500));
+    vlTOPp->mkMacUnitTop__DOT__IF_bf16_Mac_reg_B_729_BIT_5_733_THEN_IF_bf16_M_ETC___05F_d2167 
+        = ((0x80U & (((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh205667) 
+                      << 7U) ^ (0xffffff80U & vlTOPp->mkMacUnitTop__DOT__IF_IF_bf16_Mac_reg_B_729_BIT_5_733_THEN_IF_bf1_ETC___05Fq34))) 
+           | ((0x40U & ((0xffffffc0U & (IData)(vlTOPp->mkMacUnitTop__DOT__IF_bf16_Mac_reg_B_729_BIT_5_733_THEN_IF_bf16_M_ETC___05F_d2110)) 
+                        ^ ((IData)(vlTOPp->mkMacUnitTop__DOT__bf16_Mac_reg_A) 
+                           << 6U))) | ((0x3eU & (IData)(vlTOPp->mkMacUnitTop__DOT__IF_bf16_Mac_reg_B_729_BIT_5_733_THEN_IF_bf16_M_ETC___05F_d2110)) 
+                                       | (1U & (IData)(vlTOPp->mkMacUnitTop__DOT__IF_IF_bf16_Mac_reg_B_729_BIT_5_733_THEN_IF_bf1_ETC___05Fq35)))));
+    vlTOPp->mkMacUnitTop__DOT__y___05Fh206027 = ((vlTOPp->mkMacUnitTop__DOT__IF_IF_bf16_Mac_reg_B_729_BIT_5_733_THEN_IF_bf1_ETC___05Fq34 
+                                                  >> 7U) 
+                                                 & (IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh205667));
     vlTOPp->mkMacUnitTop__DOT__y___05Fh71772 = ((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh71862) 
                                                 | (IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh71863));
+    vlTOPp->mkMacUnitTop__DOT__y___05Fh205936 = ((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh206026) 
+                                                 | (IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh206027));
     vlTOPp->mkMacUnitTop__DOT__y___05Fh72134 = ((IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh71772) 
                                                 & (IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh71771));
+    vlTOPp->mkMacUnitTop__DOT__y___05Fh206299 = ((IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh205936) 
+                                                 & (IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh205935));
     vlTOPp->mkMacUnitTop__DOT__y___05Fh72043 = ((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh72133) 
                                                 | (IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh72134));
+    vlTOPp->mkMacUnitTop__DOT__y___05Fh206208 = ((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh206298) 
+                                                 | (IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh206299));
     vlTOPp->mkMacUnitTop__DOT__IF_IF_int_Mac_reg_B_BIT_7_THEN_INV_int_Mac_reg_ETC___05F_d586 
         = ((((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh72042) 
              ^ (IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh72043)) 
@@ -1464,12 +2432,26 @@ VL_INLINE_OPT void Vtop::_sequent__TOP__4(Vtop__Syms* __restrict vlSymsp) {
                        << 8U) | (IData)(vlTOPp->mkMacUnitTop__DOT__IF_IF_int_Mac_reg_B_BIT_7_THEN_INV_int_Mac_reg_ETC___05F_d585)));
     vlTOPp->mkMacUnitTop__DOT__y___05Fh72405 = ((IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh72043) 
                                                 & (IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh72042));
+    vlTOPp->mkMacUnitTop__DOT__IF_bf16_Mac_reg_B_729_BIT_5_733_THEN_IF_bf16_M_ETC___05F_d2168 
+        = ((((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh206207) 
+             ^ (IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh206208)) 
+            << 9U) | ((((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh205935) 
+                        ^ (IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh205936)) 
+                       << 8U) | (IData)(vlTOPp->mkMacUnitTop__DOT__IF_bf16_Mac_reg_B_729_BIT_5_733_THEN_IF_bf16_M_ETC___05F_d2167)));
+    vlTOPp->mkMacUnitTop__DOT__y___05Fh206570 = ((IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh206208) 
+                                                 & (IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh206207));
     vlTOPp->mkMacUnitTop__DOT__y___05Fh72314 = ((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh72404) 
                                                 | (IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh72405));
+    vlTOPp->mkMacUnitTop__DOT__y___05Fh206479 = ((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh206569) 
+                                                 | (IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh206570));
     vlTOPp->mkMacUnitTop__DOT__y___05Fh72676 = ((IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh72314) 
                                                 & (IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh72313));
+    vlTOPp->mkMacUnitTop__DOT__y___05Fh206841 = ((IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh206479) 
+                                                 & (IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh206478));
     vlTOPp->mkMacUnitTop__DOT__y___05Fh72585 = ((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh72675) 
                                                 | (IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh72676));
+    vlTOPp->mkMacUnitTop__DOT__y___05Fh206750 = ((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh206840) 
+                                                 | (IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh206841));
     vlTOPp->mkMacUnitTop__DOT__IF_IF_int_Mac_reg_B_BIT_7_THEN_INV_int_Mac_reg_ETC___05F_d587 
         = ((((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh72584) 
              ^ (IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh72585)) 
@@ -1478,12 +2460,26 @@ VL_INLINE_OPT void Vtop::_sequent__TOP__4(Vtop__Syms* __restrict vlSymsp) {
                          << 0xaU) | (IData)(vlTOPp->mkMacUnitTop__DOT__IF_IF_int_Mac_reg_B_BIT_7_THEN_INV_int_Mac_reg_ETC___05F_d586)));
     vlTOPp->mkMacUnitTop__DOT__y___05Fh72947 = ((IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh72585) 
                                                 & (IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh72584));
+    vlTOPp->mkMacUnitTop__DOT__IF_bf16_Mac_reg_B_729_BIT_5_733_THEN_IF_bf16_M_ETC___05F_d2169 
+        = ((((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh206749) 
+             ^ (IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh206750)) 
+            << 0xbU) | ((((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh206478) 
+                          ^ (IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh206479)) 
+                         << 0xaU) | (IData)(vlTOPp->mkMacUnitTop__DOT__IF_bf16_Mac_reg_B_729_BIT_5_733_THEN_IF_bf16_M_ETC___05F_d2168)));
+    vlTOPp->mkMacUnitTop__DOT__y___05Fh207112 = ((IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh206750) 
+                                                 & (IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh206749));
     vlTOPp->mkMacUnitTop__DOT__y___05Fh72856 = ((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh72946) 
                                                 | (IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh72947));
+    vlTOPp->mkMacUnitTop__DOT__y___05Fh207021 = ((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh207111) 
+                                                 | (IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh207112));
     vlTOPp->mkMacUnitTop__DOT__y___05Fh73218 = ((IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh72856) 
                                                 & (IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh72855));
+    vlTOPp->mkMacUnitTop__DOT__y___05Fh207383 = ((IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh207021) 
+                                                 & (IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh207020));
     vlTOPp->mkMacUnitTop__DOT__y___05Fh73127 = ((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh73217) 
                                                 | (IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh73218));
+    vlTOPp->mkMacUnitTop__DOT__y___05Fh207292 = ((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh207382) 
+                                                 | (IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh207383));
     vlTOPp->mkMacUnitTop__DOT__IF_IF_int_Mac_reg_B_BIT_7_THEN_INV_int_Mac_reg_ETC___05F_d588 
         = ((((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh73126) 
              ^ (IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh73127)) 
@@ -1492,12 +2488,36 @@ VL_INLINE_OPT void Vtop::_sequent__TOP__4(Vtop__Syms* __restrict vlSymsp) {
                          << 0xcU) | (IData)(vlTOPp->mkMacUnitTop__DOT__IF_IF_int_Mac_reg_B_BIT_7_THEN_INV_int_Mac_reg_ETC___05F_d587)));
     vlTOPp->mkMacUnitTop__DOT__y___05Fh73489 = ((IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh73127) 
                                                 & (IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh73126));
+    vlTOPp->mkMacUnitTop__DOT__INV_IF_bf16_Mac_reg_B_729_BIT_5_733_THEN_IF_bf_ETC___05F_d2170 
+        = ((((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh207291) 
+             ^ (IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh207292)) 
+            << 0xdU) | ((((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh207020) 
+                          ^ (IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh207021)) 
+                         << 0xcU) | (IData)(vlTOPp->mkMacUnitTop__DOT__IF_bf16_Mac_reg_B_729_BIT_5_733_THEN_IF_bf16_M_ETC___05F_d2169)));
+    vlTOPp->mkMacUnitTop__DOT__y___05Fh207654 = ((IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh207292) 
+                                                 & (IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh207291));
     vlTOPp->mkMacUnitTop__DOT__y___05Fh73398 = ((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh73488) 
                                                 | (IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh73489));
+    vlTOPp->mkMacUnitTop__DOT__y___05Fh207563 = (1U 
+                                                 & (((IData)(vlTOPp->mkMacUnitTop__DOT__IF_bf16_Mac_reg_B_729_BIT_5_733_THEN_IF_bf16_M_ETC___05F_d2110) 
+                                                     >> 0xdU) 
+                                                    | (IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh207654)));
     vlTOPp->mkMacUnitTop__DOT__y___05Fh73760 = ((IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh73398) 
                                                 & (IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh73397));
+    vlTOPp->mkMacUnitTop__DOT__y___05Fh207834 = ((IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh207563) 
+                                                 & ((IData)(vlTOPp->mkMacUnitTop__DOT__IF_bf16_Mac_reg_B_729_BIT_5_733_THEN_IF_bf16_M_ETC___05F_d2110) 
+                                                    >> 0xeU));
     vlTOPp->mkMacUnitTop__DOT__y___05Fh73669 = ((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh73759) 
                                                 | (IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh73760));
+    vlTOPp->mkMacUnitTop__DOT__product___05Fh176305 
+        = ((0x8000U & ((0xffff8000U & (IData)(vlTOPp->mkMacUnitTop__DOT__IF_bf16_Mac_reg_B_729_BIT_5_733_THEN_IF_bf16_M_ETC___05F_d2110)) 
+                       ^ ((IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh207834) 
+                          << 0xfU))) | ((0x4000U & 
+                                         ((0xffffc000U 
+                                           & (IData)(vlTOPp->mkMacUnitTop__DOT__IF_bf16_Mac_reg_B_729_BIT_5_733_THEN_IF_bf16_M_ETC___05F_d2110)) 
+                                          ^ ((IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh207563) 
+                                             << 0xeU))) 
+                                        | (IData)(vlTOPp->mkMacUnitTop__DOT__INV_IF_bf16_Mac_reg_B_729_BIT_5_733_THEN_IF_bf_ETC___05F_d2170)));
     vlTOPp->mkMacUnitTop__DOT__IF_IF_int_Mac_reg_B_BIT_7_THEN_INV_int_Mac_reg_ETC___05F_d589 
         = ((((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh73668) 
              ^ (IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh73669)) 
@@ -1506,12 +2526,110 @@ VL_INLINE_OPT void Vtop::_sequent__TOP__4(Vtop__Syms* __restrict vlSymsp) {
                          << 0xeU) | (IData)(vlTOPp->mkMacUnitTop__DOT__IF_IF_int_Mac_reg_B_BIT_7_THEN_INV_int_Mac_reg_ETC___05F_d588)));
     vlTOPp->mkMacUnitTop__DOT__y___05Fh74031 = ((IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh73669) 
                                                 & (IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh73668));
+    vlTOPp->mkMacUnitTop__DOT__IF_bf16_Mac_reg_B_729_BIT_6_732_THEN_IF_bf16_M_ETC___05F_d2172 
+        = ((0x40U & (IData)(vlTOPp->mkMacUnitTop__DOT__bf16_Mac_reg_B))
+            ? (IData)(vlTOPp->mkMacUnitTop__DOT__product___05Fh176305)
+            : (IData)(vlTOPp->mkMacUnitTop__DOT__IF_bf16_Mac_reg_B_729_BIT_5_733_THEN_IF_bf16_M_ETC___05F_d2110));
     vlTOPp->mkMacUnitTop__DOT__y___05Fh73940 = ((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh74030) 
                                                 | (IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh74031));
+    vlTOPp->mkMacUnitTop__DOT__IF_IF_bf16_Mac_reg_B_729_BIT_6_732_THEN_IF_bf1_ETC___05Fq37 
+        = ((1U & (IData)(vlTOPp->mkMacUnitTop__DOT__IF_bf16_Mac_reg_B_729_BIT_6_732_THEN_IF_bf16_M_ETC___05F_d2172))
+            ? 1U : 0U);
+    vlTOPp->mkMacUnitTop__DOT__IF_bf16_Mac_reg_B_729_BIT_6_732_THEN_IF_bf16_M_ETC___05F_d2222 
+        = (1U & (((IData)(vlTOPp->mkMacUnitTop__DOT__IF_bf16_Mac_reg_B_729_BIT_6_732_THEN_IF_bf16_M_ETC___05F_d2172) 
+                  >> 7U) ^ (IData)(vlTOPp->mkMacUnitTop__DOT__bf16_Mac_reg_A)));
+    vlTOPp->mkMacUnitTop__DOT__x___05Fh211661 = (1U 
+                                                 & (~ 
+                                                    ((IData)(vlTOPp->mkMacUnitTop__DOT__IF_bf16_Mac_reg_B_729_BIT_6_732_THEN_IF_bf16_M_ETC___05F_d2172) 
+                                                     >> 0xeU)));
+    vlTOPp->mkMacUnitTop__DOT__x___05Fh211752 = (1U 
+                                                 & (((IData)(vlTOPp->mkMacUnitTop__DOT__IF_bf16_Mac_reg_B_729_BIT_6_732_THEN_IF_bf16_M_ETC___05F_d2172) 
+                                                     >> 0xdU) 
+                                                    & ((IData)(vlTOPp->mkMacUnitTop__DOT__bf16_Mac_reg_A) 
+                                                       >> 6U)));
+    vlTOPp->mkMacUnitTop__DOT__x___05Fh211390 = (1U 
+                                                 & (((IData)(vlTOPp->mkMacUnitTop__DOT__IF_bf16_Mac_reg_B_729_BIT_6_732_THEN_IF_bf16_M_ETC___05F_d2172) 
+                                                     >> 0xdU) 
+                                                    ^ 
+                                                    ((IData)(vlTOPp->mkMacUnitTop__DOT__bf16_Mac_reg_A) 
+                                                     >> 6U)));
+    vlTOPp->mkMacUnitTop__DOT__x___05Fh211481 = (1U 
+                                                 & (((IData)(vlTOPp->mkMacUnitTop__DOT__IF_bf16_Mac_reg_B_729_BIT_6_732_THEN_IF_bf16_M_ETC___05F_d2172) 
+                                                     >> 0xcU) 
+                                                    & ((IData)(vlTOPp->mkMacUnitTop__DOT__bf16_Mac_reg_A) 
+                                                       >> 5U)));
+    vlTOPp->mkMacUnitTop__DOT__x___05Fh211119 = (1U 
+                                                 & (((IData)(vlTOPp->mkMacUnitTop__DOT__IF_bf16_Mac_reg_B_729_BIT_6_732_THEN_IF_bf16_M_ETC___05F_d2172) 
+                                                     >> 0xcU) 
+                                                    ^ 
+                                                    ((IData)(vlTOPp->mkMacUnitTop__DOT__bf16_Mac_reg_A) 
+                                                     >> 5U)));
+    vlTOPp->mkMacUnitTop__DOT__x___05Fh211210 = (1U 
+                                                 & (((IData)(vlTOPp->mkMacUnitTop__DOT__IF_bf16_Mac_reg_B_729_BIT_6_732_THEN_IF_bf16_M_ETC___05F_d2172) 
+                                                     >> 0xbU) 
+                                                    & ((IData)(vlTOPp->mkMacUnitTop__DOT__bf16_Mac_reg_A) 
+                                                       >> 4U)));
+    vlTOPp->mkMacUnitTop__DOT__x___05Fh210848 = (1U 
+                                                 & (((IData)(vlTOPp->mkMacUnitTop__DOT__IF_bf16_Mac_reg_B_729_BIT_6_732_THEN_IF_bf16_M_ETC___05F_d2172) 
+                                                     >> 0xbU) 
+                                                    ^ 
+                                                    ((IData)(vlTOPp->mkMacUnitTop__DOT__bf16_Mac_reg_A) 
+                                                     >> 4U)));
+    vlTOPp->mkMacUnitTop__DOT__x___05Fh210939 = (1U 
+                                                 & (((IData)(vlTOPp->mkMacUnitTop__DOT__IF_bf16_Mac_reg_B_729_BIT_6_732_THEN_IF_bf16_M_ETC___05F_d2172) 
+                                                     >> 0xaU) 
+                                                    & ((IData)(vlTOPp->mkMacUnitTop__DOT__bf16_Mac_reg_A) 
+                                                       >> 3U)));
+    vlTOPp->mkMacUnitTop__DOT__x___05Fh210577 = (1U 
+                                                 & (((IData)(vlTOPp->mkMacUnitTop__DOT__IF_bf16_Mac_reg_B_729_BIT_6_732_THEN_IF_bf16_M_ETC___05F_d2172) 
+                                                     >> 0xaU) 
+                                                    ^ 
+                                                    ((IData)(vlTOPp->mkMacUnitTop__DOT__bf16_Mac_reg_A) 
+                                                     >> 3U)));
+    vlTOPp->mkMacUnitTop__DOT__x___05Fh210668 = (1U 
+                                                 & (((IData)(vlTOPp->mkMacUnitTop__DOT__IF_bf16_Mac_reg_B_729_BIT_6_732_THEN_IF_bf16_M_ETC___05F_d2172) 
+                                                     >> 9U) 
+                                                    & ((IData)(vlTOPp->mkMacUnitTop__DOT__bf16_Mac_reg_A) 
+                                                       >> 2U)));
+    vlTOPp->mkMacUnitTop__DOT__x___05Fh210305 = (1U 
+                                                 & (((IData)(vlTOPp->mkMacUnitTop__DOT__IF_bf16_Mac_reg_B_729_BIT_6_732_THEN_IF_bf16_M_ETC___05F_d2172) 
+                                                     >> 9U) 
+                                                    ^ 
+                                                    ((IData)(vlTOPp->mkMacUnitTop__DOT__bf16_Mac_reg_A) 
+                                                     >> 2U)));
+    vlTOPp->mkMacUnitTop__DOT__x___05Fh210396 = (1U 
+                                                 & (((IData)(vlTOPp->mkMacUnitTop__DOT__IF_bf16_Mac_reg_B_729_BIT_6_732_THEN_IF_bf16_M_ETC___05F_d2172) 
+                                                     >> 8U) 
+                                                    & ((IData)(vlTOPp->mkMacUnitTop__DOT__bf16_Mac_reg_A) 
+                                                       >> 1U)));
+    vlTOPp->mkMacUnitTop__DOT__IF_IF_bf16_Mac_reg_B_729_BIT_6_732_THEN_IF_bf1_ETC___05Fq36 
+        = ((1U & (((IData)(vlTOPp->mkMacUnitTop__DOT__IF_bf16_Mac_reg_B_729_BIT_6_732_THEN_IF_bf16_M_ETC___05F_d2172) 
+                   >> 7U) & (IData)(vlTOPp->mkMacUnitTop__DOT__bf16_Mac_reg_A)))
+            ? 0x100U : 0U);
+    vlTOPp->mkMacUnitTop__DOT__x___05Fh210037 = (1U 
+                                                 & (((IData)(vlTOPp->mkMacUnitTop__DOT__IF_bf16_Mac_reg_B_729_BIT_6_732_THEN_IF_bf16_M_ETC___05F_d2172) 
+                                                     >> 8U) 
+                                                    ^ 
+                                                    ((IData)(vlTOPp->mkMacUnitTop__DOT__bf16_Mac_reg_A) 
+                                                     >> 1U)));
     vlTOPp->mkMacUnitTop__DOT__y___05Fh74302 = ((IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh73940) 
                                                 & (IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh73939));
+    vlTOPp->mkMacUnitTop__DOT__IF_bf16_Mac_reg_B_729_BIT_6_732_THEN_IF_bf16_M_ETC___05F_d2220 
+        = (1U & ((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh210037) 
+                 ^ (vlTOPp->mkMacUnitTop__DOT__IF_IF_bf16_Mac_reg_B_729_BIT_6_732_THEN_IF_bf1_ETC___05Fq36 
+                    >> 8U)));
+    vlTOPp->mkMacUnitTop__DOT__y___05Fh210397 = ((vlTOPp->mkMacUnitTop__DOT__IF_IF_bf16_Mac_reg_B_729_BIT_6_732_THEN_IF_bf1_ETC___05Fq36 
+                                                  >> 8U) 
+                                                 & (IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh210037));
     vlTOPp->mkMacUnitTop__DOT__y___05Fh74211 = ((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh74301) 
                                                 | (IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh74302));
+    vlTOPp->mkMacUnitTop__DOT__NOT_IF_bf16_Mac_reg_B_729_BIT_6_732_THEN_IF_bf_ETC___05F_d2223 
+        = (((0U != ((0x7eU & (IData)(vlTOPp->mkMacUnitTop__DOT__IF_bf16_Mac_reg_B_729_BIT_6_732_THEN_IF_bf16_M_ETC___05F_d2172)) 
+                    | (1U & (IData)(vlTOPp->mkMacUnitTop__DOT__IF_IF_bf16_Mac_reg_B_729_BIT_6_732_THEN_IF_bf1_ETC___05Fq37)))) 
+            | (IData)(vlTOPp->mkMacUnitTop__DOT__IF_bf16_Mac_reg_B_729_BIT_6_732_THEN_IF_bf16_M_ETC___05F_d2220)) 
+           & (IData)(vlTOPp->mkMacUnitTop__DOT__IF_bf16_Mac_reg_B_729_BIT_6_732_THEN_IF_bf16_M_ETC___05F_d2222));
+    vlTOPp->mkMacUnitTop__DOT__y___05Fh210306 = ((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh210396) 
+                                                 | (IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh210397));
     vlTOPp->mkMacUnitTop__DOT__IF_IF_int_Mac_reg_B_BIT_7_THEN_INV_int_Mac_reg_ETC___05F_d590 
         = ((((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh74210) 
              ^ (IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh74211)) 
@@ -1520,12 +2638,26 @@ VL_INLINE_OPT void Vtop::_sequent__TOP__4(Vtop__Syms* __restrict vlSymsp) {
                           << 0x10U) | (IData)(vlTOPp->mkMacUnitTop__DOT__IF_IF_int_Mac_reg_B_BIT_7_THEN_INV_int_Mac_reg_ETC___05F_d589)));
     vlTOPp->mkMacUnitTop__DOT__y___05Fh74573 = ((IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh74211) 
                                                 & (IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh74210));
+    vlTOPp->mkMacUnitTop__DOT__IF_bf16_Mac_reg_B_729_BIT_6_732_THEN_IF_bf16_M_ETC___05F_d2229 
+        = ((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh210305) 
+           ^ (IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh210306));
+    vlTOPp->mkMacUnitTop__DOT__y___05Fh210669 = ((IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh210306) 
+                                                 & (IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh210305));
     vlTOPp->mkMacUnitTop__DOT__y___05Fh74482 = ((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh74572) 
                                                 | (IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh74573));
+    vlTOPp->mkMacUnitTop__DOT__y___05Fh210578 = ((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh210668) 
+                                                 | (IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh210669));
     vlTOPp->mkMacUnitTop__DOT__y___05Fh74844 = ((IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh74482) 
                                                 & (IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh74481));
+    vlTOPp->mkMacUnitTop__DOT__IF_bf16_Mac_reg_B_729_BIT_6_732_THEN_IF_bf16_M_ETC___05F_d2228 
+        = ((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh210577) 
+           ^ (IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh210578));
+    vlTOPp->mkMacUnitTop__DOT__y___05Fh210940 = ((IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh210578) 
+                                                 & (IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh210577));
     vlTOPp->mkMacUnitTop__DOT__y___05Fh74753 = ((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh74843) 
                                                 | (IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh74844));
+    vlTOPp->mkMacUnitTop__DOT__y___05Fh210849 = ((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh210939) 
+                                                 | (IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh210940));
     vlTOPp->mkMacUnitTop__DOT__IF_IF_int_Mac_reg_B_BIT_7_THEN_INV_int_Mac_reg_ETC___05F_d591 
         = ((((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh74752) 
              ^ (IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh74753)) 
@@ -1534,12 +2666,26 @@ VL_INLINE_OPT void Vtop::_sequent__TOP__4(Vtop__Syms* __restrict vlSymsp) {
                           << 0x12U) | vlTOPp->mkMacUnitTop__DOT__IF_IF_int_Mac_reg_B_BIT_7_THEN_INV_int_Mac_reg_ETC___05F_d590));
     vlTOPp->mkMacUnitTop__DOT__y___05Fh75115 = ((IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh74753) 
                                                 & (IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh74752));
+    vlTOPp->mkMacUnitTop__DOT__IF_bf16_Mac_reg_B_729_BIT_6_732_THEN_IF_bf16_M_ETC___05F_d2227 
+        = ((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh210848) 
+           ^ (IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh210849));
+    vlTOPp->mkMacUnitTop__DOT__y___05Fh211211 = ((IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh210849) 
+                                                 & (IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh210848));
     vlTOPp->mkMacUnitTop__DOT__y___05Fh75024 = ((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh75114) 
                                                 | (IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh75115));
+    vlTOPp->mkMacUnitTop__DOT__y___05Fh211120 = ((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh211210) 
+                                                 | (IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh211211));
     vlTOPp->mkMacUnitTop__DOT__y___05Fh75386 = ((IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh75024) 
                                                 & (IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh75023));
+    vlTOPp->mkMacUnitTop__DOT__IF_bf16_Mac_reg_B_729_BIT_6_732_THEN_IF_bf16_M_ETC___05F_d2226 
+        = ((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh211119) 
+           ^ (IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh211120));
+    vlTOPp->mkMacUnitTop__DOT__y___05Fh211482 = ((IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh211120) 
+                                                 & (IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh211119));
     vlTOPp->mkMacUnitTop__DOT__y___05Fh75295 = ((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh75385) 
                                                 | (IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh75386));
+    vlTOPp->mkMacUnitTop__DOT__y___05Fh211391 = ((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh211481) 
+                                                 | (IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh211482));
     vlTOPp->mkMacUnitTop__DOT__IF_IF_int_Mac_reg_B_BIT_7_THEN_INV_int_Mac_reg_ETC___05F_d592 
         = ((((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh75294) 
              ^ (IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh75295)) 
@@ -1548,12 +2694,63 @@ VL_INLINE_OPT void Vtop::_sequent__TOP__4(Vtop__Syms* __restrict vlSymsp) {
                           << 0x14U) | vlTOPp->mkMacUnitTop__DOT__IF_IF_int_Mac_reg_B_BIT_7_THEN_INV_int_Mac_reg_ETC___05F_d591));
     vlTOPp->mkMacUnitTop__DOT__y___05Fh75657 = ((IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh75295) 
                                                 & (IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh75294));
+    vlTOPp->mkMacUnitTop__DOT__IF_bf16_Mac_reg_B_729_BIT_6_732_THEN_IF_bf16_M_ETC___05F_d2225 
+        = ((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh211390) 
+           ^ (IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh211391));
+    vlTOPp->mkMacUnitTop__DOT__y___05Fh211753 = ((IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh211391) 
+                                                 & (IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh211390));
     vlTOPp->mkMacUnitTop__DOT__y___05Fh75566 = ((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh75656) 
                                                 | (IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh75657));
+    vlTOPp->mkMacUnitTop__DOT__final_mantissa___05Fh212385 
+        = (((IData)(vlTOPp->mkMacUnitTop__DOT__IF_bf16_Mac_reg_B_729_BIT_6_732_THEN_IF_bf16_M_ETC___05F_d2225) 
+            << 6U) | (((IData)(vlTOPp->mkMacUnitTop__DOT__IF_bf16_Mac_reg_B_729_BIT_6_732_THEN_IF_bf16_M_ETC___05F_d2226) 
+                       << 5U) | (((IData)(vlTOPp->mkMacUnitTop__DOT__IF_bf16_Mac_reg_B_729_BIT_6_732_THEN_IF_bf16_M_ETC___05F_d2227) 
+                                  << 4U) | (((IData)(vlTOPp->mkMacUnitTop__DOT__IF_bf16_Mac_reg_B_729_BIT_6_732_THEN_IF_bf16_M_ETC___05F_d2228) 
+                                             << 3U) 
+                                            | (((IData)(vlTOPp->mkMacUnitTop__DOT__IF_bf16_Mac_reg_B_729_BIT_6_732_THEN_IF_bf16_M_ETC___05F_d2229) 
+                                                << 2U) 
+                                               | (((IData)(vlTOPp->mkMacUnitTop__DOT__IF_bf16_Mac_reg_B_729_BIT_6_732_THEN_IF_bf16_M_ETC___05F_d2220) 
+                                                   << 1U) 
+                                                  | (IData)(vlTOPp->mkMacUnitTop__DOT__IF_bf16_Mac_reg_B_729_BIT_6_732_THEN_IF_bf16_M_ETC___05F_d2222)))))));
+    vlTOPp->mkMacUnitTop__DOT__y___05Fh211662 = ((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh211752) 
+                                                 | (IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh211753));
     vlTOPp->mkMacUnitTop__DOT__y___05Fh75928 = ((IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh75566) 
                                                 & (IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh75565));
+    vlTOPp->mkMacUnitTop__DOT__final_mantissa___05F_1___05Fh212492 
+        = (0xffU & ((IData)(1U) + (IData)(vlTOPp->mkMacUnitTop__DOT__final_mantissa___05Fh212385)));
+    vlTOPp->mkMacUnitTop__DOT__y___05Fh212024 = ((IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh211662) 
+                                                 & (IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh211661));
+    vlTOPp->mkMacUnitTop__DOT__final_mantissa___05Fh212197 
+        = ((((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh211661) 
+             ^ (IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh211662)) 
+            << 6U) | (((IData)(vlTOPp->mkMacUnitTop__DOT__IF_bf16_Mac_reg_B_729_BIT_6_732_THEN_IF_bf16_M_ETC___05F_d2225) 
+                       << 5U) | (((IData)(vlTOPp->mkMacUnitTop__DOT__IF_bf16_Mac_reg_B_729_BIT_6_732_THEN_IF_bf16_M_ETC___05F_d2226) 
+                                  << 4U) | (((IData)(vlTOPp->mkMacUnitTop__DOT__IF_bf16_Mac_reg_B_729_BIT_6_732_THEN_IF_bf16_M_ETC___05F_d2227) 
+                                             << 3U) 
+                                            | (((IData)(vlTOPp->mkMacUnitTop__DOT__IF_bf16_Mac_reg_B_729_BIT_6_732_THEN_IF_bf16_M_ETC___05F_d2228) 
+                                                << 2U) 
+                                               | (((IData)(vlTOPp->mkMacUnitTop__DOT__IF_bf16_Mac_reg_B_729_BIT_6_732_THEN_IF_bf16_M_ETC___05F_d2229) 
+                                                   << 1U) 
+                                                  | (IData)(vlTOPp->mkMacUnitTop__DOT__IF_bf16_Mac_reg_B_729_BIT_6_732_THEN_IF_bf16_M_ETC___05F_d2220)))))));
     vlTOPp->mkMacUnitTop__DOT__y___05Fh75837 = ((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh75927) 
                                                 | (IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh75928));
+    vlTOPp->mkMacUnitTop__DOT___theResult___05F_snd___05Fh212388 
+        = ((((0U != ((0x3eU & (IData)(vlTOPp->mkMacUnitTop__DOT__IF_bf16_Mac_reg_B_729_BIT_6_732_THEN_IF_bf16_M_ETC___05F_d2172)) 
+                     | (1U & (IData)(vlTOPp->mkMacUnitTop__DOT__IF_IF_bf16_Mac_reg_B_729_BIT_6_732_THEN_IF_bf1_ETC___05Fq37)))) 
+             | (IData)(vlTOPp->mkMacUnitTop__DOT__IF_bf16_Mac_reg_B_729_BIT_6_732_THEN_IF_bf16_M_ETC___05F_d2222)) 
+            & ((IData)(vlTOPp->mkMacUnitTop__DOT__IF_bf16_Mac_reg_B_729_BIT_6_732_THEN_IF_bf16_M_ETC___05F_d2172) 
+               >> 6U)) ? (IData)(vlTOPp->mkMacUnitTop__DOT__final_mantissa___05F_1___05Fh212492)
+            : (IData)(vlTOPp->mkMacUnitTop__DOT__final_mantissa___05Fh212385));
+    vlTOPp->mkMacUnitTop__DOT___theResult___05F_fst___05Fh212493 
+        = ((0x80U & (IData)(vlTOPp->mkMacUnitTop__DOT__final_mantissa___05F_1___05Fh212492))
+            ? (IData)(vlTOPp->mkMacUnitTop__DOT__exponent_sum___05F_2___05Fh212198)
+            : (IData)(vlTOPp->mkMacUnitTop__DOT__exponent_sum___05Fh175568));
+    vlTOPp->mkMacUnitTop__DOT__y___05Fh211933 = (1U 
+                                                 & (((IData)(vlTOPp->mkMacUnitTop__DOT__IF_bf16_Mac_reg_B_729_BIT_6_732_THEN_IF_bf16_M_ETC___05F_d2172) 
+                                                     >> 0xeU) 
+                                                    | (IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh212024)));
+    vlTOPp->mkMacUnitTop__DOT__final_mantissa___05F_1___05Fh212305 
+        = (0xffU & ((IData)(1U) + (IData)(vlTOPp->mkMacUnitTop__DOT__final_mantissa___05Fh212197)));
     vlTOPp->mkMacUnitTop__DOT__IF_IF_int_Mac_reg_B_BIT_7_THEN_INV_int_Mac_reg_ETC___05F_d593 
         = ((((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh75836) 
              ^ (IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh75837)) 
@@ -1562,12 +2759,54 @@ VL_INLINE_OPT void Vtop::_sequent__TOP__4(Vtop__Syms* __restrict vlSymsp) {
                           << 0x16U) | vlTOPp->mkMacUnitTop__DOT__IF_IF_int_Mac_reg_B_BIT_7_THEN_INV_int_Mac_reg_ETC___05F_d592));
     vlTOPp->mkMacUnitTop__DOT__y___05Fh76199 = ((IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh75837) 
                                                 & (IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh75836));
+    vlTOPp->mkMacUnitTop__DOT___theResult___05F_fst___05Fh212387 
+        = ((((0U != ((0x3eU & (IData)(vlTOPp->mkMacUnitTop__DOT__IF_bf16_Mac_reg_B_729_BIT_6_732_THEN_IF_bf16_M_ETC___05F_d2172)) 
+                     | (1U & (IData)(vlTOPp->mkMacUnitTop__DOT__IF_IF_bf16_Mac_reg_B_729_BIT_6_732_THEN_IF_bf1_ETC___05Fq37)))) 
+             | (IData)(vlTOPp->mkMacUnitTop__DOT__IF_bf16_Mac_reg_B_729_BIT_6_732_THEN_IF_bf16_M_ETC___05F_d2222)) 
+            & ((IData)(vlTOPp->mkMacUnitTop__DOT__IF_bf16_Mac_reg_B_729_BIT_6_732_THEN_IF_bf16_M_ETC___05F_d2172) 
+               >> 6U)) ? (IData)(vlTOPp->mkMacUnitTop__DOT___theResult___05F_fst___05Fh212493)
+            : (IData)(vlTOPp->mkMacUnitTop__DOT__exponent_sum___05Fh175568));
+    vlTOPp->mkMacUnitTop__DOT__IF_bf16_Mac_reg_B_729_BIT_6_732_THEN_IF_bf16_M_ETC___05F_d2212 
+        = (1U & (((IData)(vlTOPp->mkMacUnitTop__DOT__IF_bf16_Mac_reg_B_729_BIT_6_732_THEN_IF_bf16_M_ETC___05F_d2172) 
+                  >> 0xfU) ^ (IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh211933)));
+    vlTOPp->mkMacUnitTop__DOT___theResult___05F_snd___05Fh212201 
+        = ((IData)(vlTOPp->mkMacUnitTop__DOT__NOT_IF_bf16_Mac_reg_B_729_BIT_6_732_THEN_IF_bf_ETC___05F_d2223)
+            ? (IData)(vlTOPp->mkMacUnitTop__DOT__final_mantissa___05F_1___05Fh212305)
+            : (IData)(vlTOPp->mkMacUnitTop__DOT__final_mantissa___05Fh212197));
+    vlTOPp->mkMacUnitTop__DOT___theResult___05F_fst___05Fh212306 
+        = ((0x80U & (IData)(vlTOPp->mkMacUnitTop__DOT__final_mantissa___05F_1___05Fh212305))
+            ? (IData)(vlTOPp->mkMacUnitTop__DOT__exponent_sum___05F_1___05Fh212328)
+            : (IData)(vlTOPp->mkMacUnitTop__DOT__exponent_sum___05F_2___05Fh212198));
     vlTOPp->mkMacUnitTop__DOT__y___05Fh76108 = ((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh76198) 
                                                 | (IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh76199));
+    vlTOPp->mkMacUnitTop__DOT__IF_IF_bf16_Mac_reg_B_729_BIT_6_732_THEN_IF_bf1_ETC___05Fq38 
+        = ((IData)(vlTOPp->mkMacUnitTop__DOT__IF_bf16_Mac_reg_B_729_BIT_6_732_THEN_IF_bf16_M_ETC___05F_d2212)
+            ? (IData)(vlTOPp->mkMacUnitTop__DOT___theResult___05F_snd___05Fh212201)
+            : (IData)(vlTOPp->mkMacUnitTop__DOT___theResult___05F_snd___05Fh212388));
+    vlTOPp->mkMacUnitTop__DOT___theResult___05F_fst___05Fh212200 
+        = ((IData)(vlTOPp->mkMacUnitTop__DOT__NOT_IF_bf16_Mac_reg_B_729_BIT_6_732_THEN_IF_bf_ETC___05F_d2223)
+            ? (IData)(vlTOPp->mkMacUnitTop__DOT___theResult___05F_fst___05Fh212306)
+            : (IData)(vlTOPp->mkMacUnitTop__DOT__exponent_sum___05F_2___05Fh212198));
     vlTOPp->mkMacUnitTop__DOT__y___05Fh76470 = ((IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh76108) 
                                                 & (IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh76107));
+    vlTOPp->mkMacUnitTop__DOT__mantissa_rounded___05Fh175571 
+        = (0x7f0000U & ((IData)(vlTOPp->mkMacUnitTop__DOT__IF_IF_bf16_Mac_reg_B_729_BIT_6_732_THEN_IF_bf1_ETC___05Fq38) 
+                        << 0x10U));
+    vlTOPp->mkMacUnitTop__DOT__exponent_A___05Fh175523 
+        = ((IData)(vlTOPp->mkMacUnitTop__DOT__IF_bf16_Mac_reg_B_729_BIT_6_732_THEN_IF_bf16_M_ETC___05F_d2212)
+            ? (IData)(vlTOPp->mkMacUnitTop__DOT___theResult___05F_fst___05Fh212200)
+            : (IData)(vlTOPp->mkMacUnitTop__DOT___theResult___05F_fst___05Fh212387));
     vlTOPp->mkMacUnitTop__DOT__y___05Fh76379 = ((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh76469) 
                                                 | (IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh76470));
+    vlTOPp->mkMacUnitTop__DOT__mantissa_a___05Fh175521 
+        = (0x800000U | vlTOPp->mkMacUnitTop__DOT__mantissa_rounded___05Fh175571);
+    vlTOPp->mkMacUnitTop__DOT__bf16_Mac_reg_C_260_BITS_30_TO_23_261_MINUS_IF___05FETC___05F_d2271 
+        = (0xffU & ((vlTOPp->mkMacUnitTop__DOT__bf16_Mac_reg_C 
+                     >> 0x17U) - (IData)(vlTOPp->mkMacUnitTop__DOT__exponent_A___05Fh175523)));
+    vlTOPp->mkMacUnitTop__DOT__IF_IF_bf16_Mac_reg_B_729_BIT_6_732_THEN_IF_bf1_ETC___05F_d2262 
+        = (0xffU & ((IData)(vlTOPp->mkMacUnitTop__DOT__exponent_A___05Fh175523) 
+                    - (vlTOPp->mkMacUnitTop__DOT__bf16_Mac_reg_C 
+                       >> 0x17U)));
     vlTOPp->mkMacUnitTop__DOT__IF_IF_int_Mac_reg_B_BIT_7_THEN_INV_int_Mac_reg_ETC___05F_d594 
         = ((((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh76378) 
              ^ (IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh76379)) 
@@ -1576,12 +2815,266 @@ VL_INLINE_OPT void Vtop::_sequent__TOP__4(Vtop__Syms* __restrict vlSymsp) {
                           << 0x18U) | vlTOPp->mkMacUnitTop__DOT__IF_IF_int_Mac_reg_B_BIT_7_THEN_INV_int_Mac_reg_ETC___05F_d593));
     vlTOPp->mkMacUnitTop__DOT__y___05Fh76741 = ((IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh76379) 
                                                 & (IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh76378));
+    vlTOPp->mkMacUnitTop__DOT__x___05Fh219999 = (0xffU 
+                                                 & ((IData)(vlTOPp->mkMacUnitTop__DOT__bf16_Mac_reg_C_260_BITS_30_TO_23_261_MINUS_IF___05FETC___05F_d2271) 
+                                                    - (IData)(1U)));
+    vlTOPp->mkMacUnitTop__DOT__result_exponent___05F_1___05Fh213255 
+        = (0xffU & ((IData)(vlTOPp->mkMacUnitTop__DOT__exponent_A___05Fh175523) 
+                    + (IData)(vlTOPp->mkMacUnitTop__DOT__bf16_Mac_reg_C_260_BITS_30_TO_23_261_MINUS_IF___05FETC___05F_d2271)));
+    vlTOPp->mkMacUnitTop__DOT__aligned_mantissa_A___05F_1___05Fh213254 
+        = ((0x17U >= (IData)(vlTOPp->mkMacUnitTop__DOT__bf16_Mac_reg_C_260_BITS_30_TO_23_261_MINUS_IF___05FETC___05F_d2271))
+            ? (0xffffffU & (vlTOPp->mkMacUnitTop__DOT__mantissa_a___05Fh175521 
+                            >> (IData)(vlTOPp->mkMacUnitTop__DOT__bf16_Mac_reg_C_260_BITS_30_TO_23_261_MINUS_IF___05FETC___05F_d2271)))
+            : 0U);
+    vlTOPp->mkMacUnitTop__DOT__x___05Fh219966 = (0xffU 
+                                                 & ((IData)(vlTOPp->mkMacUnitTop__DOT__IF_IF_bf16_Mac_reg_B_729_BIT_6_732_THEN_IF_bf1_ETC___05F_d2262) 
+                                                    - (IData)(1U)));
+    vlTOPp->mkMacUnitTop__DOT__aligned_mantissa_B___05F_1___05Fh213316 
+        = ((0x17U >= (IData)(vlTOPp->mkMacUnitTop__DOT__IF_IF_bf16_Mac_reg_B_729_BIT_6_732_THEN_IF_bf1_ETC___05F_d2262))
+            ? (0xffffffU & (vlTOPp->mkMacUnitTop__DOT__mantissa_b___05Fh175522 
+                            >> (IData)(vlTOPp->mkMacUnitTop__DOT__IF_IF_bf16_Mac_reg_B_729_BIT_6_732_THEN_IF_bf1_ETC___05F_d2262)))
+            : 0U);
+    vlTOPp->mkMacUnitTop__DOT__IF_IF_bf16_Mac_reg_B_729_BIT_6_732_THEN_IF_bf1_ETC___05F_d2263 
+        = (0x80U >= (0x80U ^ (IData)(vlTOPp->mkMacUnitTop__DOT__IF_IF_bf16_Mac_reg_B_729_BIT_6_732_THEN_IF_bf1_ETC___05F_d2262)));
     vlTOPp->mkMacUnitTop__DOT__y___05Fh76650 = ((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh76740) 
                                                 | (IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh76741));
+    vlTOPp->mkMacUnitTop__DOT___theResult___05F_fst___05Fh213250 
+        = (((IData)(vlTOPp->mkMacUnitTop__DOT__IF_IF_bf16_Mac_reg_B_729_BIT_6_732_THEN_IF_bf1_ETC___05F_d2262) 
+            >> 7U) & ((0x17U >= (0x1fU & (IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh219999))) 
+                      & (vlTOPp->mkMacUnitTop__DOT__mantissa_a___05Fh175521 
+                         >> (0x1fU & (IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh219999)))));
+    if ((0x80U & (IData)(vlTOPp->mkMacUnitTop__DOT__IF_IF_bf16_Mac_reg_B_729_BIT_6_732_THEN_IF_bf1_ETC___05F_d2262))) {
+        vlTOPp->mkMacUnitTop__DOT___theResult___05F_snd_fst___05Fh213252 
+            = vlTOPp->mkMacUnitTop__DOT__result_exponent___05F_1___05Fh213255;
+        vlTOPp->mkMacUnitTop__DOT___theResult___05F_snd_snd___05Fh213253 
+            = vlTOPp->mkMacUnitTop__DOT__aligned_mantissa_A___05F_1___05Fh213254;
+    } else {
+        vlTOPp->mkMacUnitTop__DOT___theResult___05F_snd_fst___05Fh213252 
+            = vlTOPp->mkMacUnitTop__DOT__exponent_A___05Fh175523;
+        vlTOPp->mkMacUnitTop__DOT___theResult___05F_snd_snd___05Fh213253 
+            = vlTOPp->mkMacUnitTop__DOT__mantissa_a___05Fh175521;
+    }
+    vlTOPp->mkMacUnitTop__DOT__round_flag___05F_1___05Fh213317 
+        = ((0x17U >= (0x1fU & (IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh219966))) 
+           & (vlTOPp->mkMacUnitTop__DOT__mantissa_b___05Fh175522 
+              >> (0x1fU & (IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh219966))));
+    vlTOPp->mkMacUnitTop__DOT__IF_IF_IF_bf16_Mac_reg_B_729_BIT_6_732_THEN_IF___05FETC___05F_d2282 
+        = ((IData)(vlTOPp->mkMacUnitTop__DOT__IF_IF_bf16_Mac_reg_B_729_BIT_6_732_THEN_IF_bf1_ETC___05F_d2263)
+            ? vlTOPp->mkMacUnitTop__DOT__mantissa_b___05Fh175522
+            : vlTOPp->mkMacUnitTop__DOT__aligned_mantissa_B___05F_1___05Fh213316);
     vlTOPp->mkMacUnitTop__DOT__y___05Fh77012 = ((IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh76650) 
                                                 & (IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh76649));
+    if (vlTOPp->mkMacUnitTop__DOT__IF_IF_bf16_Mac_reg_B_729_BIT_6_732_THEN_IF_bf1_ETC___05F_d2263) {
+        vlTOPp->mkMacUnitTop__DOT__result_exponent___05Fh175530 
+            = vlTOPp->mkMacUnitTop__DOT___theResult___05F_snd_fst___05Fh213252;
+        vlTOPp->mkMacUnitTop__DOT__IF_IF_IF_bf16_Mac_reg_B_729_BIT_6_732_THEN_IF___05FETC___05F_d2276 
+            = vlTOPp->mkMacUnitTop__DOT___theResult___05F_snd_snd___05Fh213253;
+        vlTOPp->mkMacUnitTop__DOT___theResult___05F_fst___05Fh213218 
+            = vlTOPp->mkMacUnitTop__DOT___theResult___05F_fst___05Fh213250;
+    } else {
+        vlTOPp->mkMacUnitTop__DOT__result_exponent___05Fh175530 
+            = vlTOPp->mkMacUnitTop__DOT__exponent_A___05Fh175523;
+        vlTOPp->mkMacUnitTop__DOT__IF_IF_IF_bf16_Mac_reg_B_729_BIT_6_732_THEN_IF___05FETC___05F_d2276 
+            = vlTOPp->mkMacUnitTop__DOT__mantissa_a___05Fh175521;
+        vlTOPp->mkMacUnitTop__DOT___theResult___05F_fst___05Fh213218 
+            = vlTOPp->mkMacUnitTop__DOT__round_flag___05F_1___05Fh213317;
+    }
     vlTOPp->mkMacUnitTop__DOT__y___05Fh76921 = ((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh77011) 
                                                 | (IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh77012));
+    vlTOPp->mkMacUnitTop__DOT__result_exponent___05F_1___05Fh217019 
+        = (0xffU & ((IData)(1U) + (IData)(vlTOPp->mkMacUnitTop__DOT__result_exponent___05Fh175530)));
+    vlTOPp->mkMacUnitTop__DOT__IF_IF_IF_IF_bf16_Mac_reg_B_729_BIT_6_732_THEN___05FETC___05Fq40 
+        = ((1U & (vlTOPp->mkMacUnitTop__DOT__IF_IF_IF_bf16_Mac_reg_B_729_BIT_6_732_THEN_IF___05FETC___05F_d2276 
+                  ^ vlTOPp->mkMacUnitTop__DOT__IF_IF_IF_bf16_Mac_reg_B_729_BIT_6_732_THEN_IF___05FETC___05F_d2282))
+            ? 1U : 0U);
+    vlTOPp->mkMacUnitTop__DOT__x___05Fh216867 = (1U 
+                                                 & ((vlTOPp->mkMacUnitTop__DOT__IF_IF_IF_bf16_Mac_reg_B_729_BIT_6_732_THEN_IF___05FETC___05F_d2276 
+                                                     & vlTOPp->mkMacUnitTop__DOT__IF_IF_IF_bf16_Mac_reg_B_729_BIT_6_732_THEN_IF___05FETC___05F_d2282) 
+                                                    >> 0x17U));
+    vlTOPp->mkMacUnitTop__DOT__y___05Fh216915 = (1U 
+                                                 & ((vlTOPp->mkMacUnitTop__DOT__IF_IF_IF_bf16_Mac_reg_B_729_BIT_6_732_THEN_IF___05FETC___05F_d2276 
+                                                     ^ vlTOPp->mkMacUnitTop__DOT__IF_IF_IF_bf16_Mac_reg_B_729_BIT_6_732_THEN_IF___05FETC___05F_d2282) 
+                                                    >> 0x17U));
+    vlTOPp->mkMacUnitTop__DOT__x___05Fh216713 = (1U 
+                                                 & ((vlTOPp->mkMacUnitTop__DOT__IF_IF_IF_bf16_Mac_reg_B_729_BIT_6_732_THEN_IF___05FETC___05F_d2276 
+                                                     & vlTOPp->mkMacUnitTop__DOT__IF_IF_IF_bf16_Mac_reg_B_729_BIT_6_732_THEN_IF___05FETC___05F_d2282) 
+                                                    >> 0x16U));
+    vlTOPp->mkMacUnitTop__DOT__y___05Fh216761 = (1U 
+                                                 & ((vlTOPp->mkMacUnitTop__DOT__IF_IF_IF_bf16_Mac_reg_B_729_BIT_6_732_THEN_IF___05FETC___05F_d2276 
+                                                     ^ vlTOPp->mkMacUnitTop__DOT__IF_IF_IF_bf16_Mac_reg_B_729_BIT_6_732_THEN_IF___05FETC___05F_d2282) 
+                                                    >> 0x16U));
+    vlTOPp->mkMacUnitTop__DOT__x___05Fh216559 = (1U 
+                                                 & ((vlTOPp->mkMacUnitTop__DOT__IF_IF_IF_bf16_Mac_reg_B_729_BIT_6_732_THEN_IF___05FETC___05F_d2276 
+                                                     & vlTOPp->mkMacUnitTop__DOT__IF_IF_IF_bf16_Mac_reg_B_729_BIT_6_732_THEN_IF___05FETC___05F_d2282) 
+                                                    >> 0x15U));
+    vlTOPp->mkMacUnitTop__DOT__y___05Fh216607 = (1U 
+                                                 & ((vlTOPp->mkMacUnitTop__DOT__IF_IF_IF_bf16_Mac_reg_B_729_BIT_6_732_THEN_IF___05FETC___05F_d2276 
+                                                     ^ vlTOPp->mkMacUnitTop__DOT__IF_IF_IF_bf16_Mac_reg_B_729_BIT_6_732_THEN_IF___05FETC___05F_d2282) 
+                                                    >> 0x15U));
+    vlTOPp->mkMacUnitTop__DOT__x___05Fh216405 = (1U 
+                                                 & ((vlTOPp->mkMacUnitTop__DOT__IF_IF_IF_bf16_Mac_reg_B_729_BIT_6_732_THEN_IF___05FETC___05F_d2276 
+                                                     & vlTOPp->mkMacUnitTop__DOT__IF_IF_IF_bf16_Mac_reg_B_729_BIT_6_732_THEN_IF___05FETC___05F_d2282) 
+                                                    >> 0x14U));
+    vlTOPp->mkMacUnitTop__DOT__y___05Fh216453 = (1U 
+                                                 & ((vlTOPp->mkMacUnitTop__DOT__IF_IF_IF_bf16_Mac_reg_B_729_BIT_6_732_THEN_IF___05FETC___05F_d2276 
+                                                     ^ vlTOPp->mkMacUnitTop__DOT__IF_IF_IF_bf16_Mac_reg_B_729_BIT_6_732_THEN_IF___05FETC___05F_d2282) 
+                                                    >> 0x14U));
+    vlTOPp->mkMacUnitTop__DOT__x___05Fh216251 = (1U 
+                                                 & ((vlTOPp->mkMacUnitTop__DOT__IF_IF_IF_bf16_Mac_reg_B_729_BIT_6_732_THEN_IF___05FETC___05F_d2276 
+                                                     & vlTOPp->mkMacUnitTop__DOT__IF_IF_IF_bf16_Mac_reg_B_729_BIT_6_732_THEN_IF___05FETC___05F_d2282) 
+                                                    >> 0x13U));
+    vlTOPp->mkMacUnitTop__DOT__y___05Fh216299 = (1U 
+                                                 & ((vlTOPp->mkMacUnitTop__DOT__IF_IF_IF_bf16_Mac_reg_B_729_BIT_6_732_THEN_IF___05FETC___05F_d2276 
+                                                     ^ vlTOPp->mkMacUnitTop__DOT__IF_IF_IF_bf16_Mac_reg_B_729_BIT_6_732_THEN_IF___05FETC___05F_d2282) 
+                                                    >> 0x13U));
+    vlTOPp->mkMacUnitTop__DOT__x___05Fh216097 = (1U 
+                                                 & ((vlTOPp->mkMacUnitTop__DOT__IF_IF_IF_bf16_Mac_reg_B_729_BIT_6_732_THEN_IF___05FETC___05F_d2276 
+                                                     & vlTOPp->mkMacUnitTop__DOT__IF_IF_IF_bf16_Mac_reg_B_729_BIT_6_732_THEN_IF___05FETC___05F_d2282) 
+                                                    >> 0x12U));
+    vlTOPp->mkMacUnitTop__DOT__y___05Fh216145 = (1U 
+                                                 & ((vlTOPp->mkMacUnitTop__DOT__IF_IF_IF_bf16_Mac_reg_B_729_BIT_6_732_THEN_IF___05FETC___05F_d2276 
+                                                     ^ vlTOPp->mkMacUnitTop__DOT__IF_IF_IF_bf16_Mac_reg_B_729_BIT_6_732_THEN_IF___05FETC___05F_d2282) 
+                                                    >> 0x12U));
+    vlTOPp->mkMacUnitTop__DOT__x___05Fh215943 = (1U 
+                                                 & ((vlTOPp->mkMacUnitTop__DOT__IF_IF_IF_bf16_Mac_reg_B_729_BIT_6_732_THEN_IF___05FETC___05F_d2276 
+                                                     & vlTOPp->mkMacUnitTop__DOT__IF_IF_IF_bf16_Mac_reg_B_729_BIT_6_732_THEN_IF___05FETC___05F_d2282) 
+                                                    >> 0x11U));
+    vlTOPp->mkMacUnitTop__DOT__y___05Fh215991 = (1U 
+                                                 & ((vlTOPp->mkMacUnitTop__DOT__IF_IF_IF_bf16_Mac_reg_B_729_BIT_6_732_THEN_IF___05FETC___05F_d2276 
+                                                     ^ vlTOPp->mkMacUnitTop__DOT__IF_IF_IF_bf16_Mac_reg_B_729_BIT_6_732_THEN_IF___05FETC___05F_d2282) 
+                                                    >> 0x11U));
+    vlTOPp->mkMacUnitTop__DOT__x___05Fh215789 = (1U 
+                                                 & ((vlTOPp->mkMacUnitTop__DOT__IF_IF_IF_bf16_Mac_reg_B_729_BIT_6_732_THEN_IF___05FETC___05F_d2276 
+                                                     & vlTOPp->mkMacUnitTop__DOT__IF_IF_IF_bf16_Mac_reg_B_729_BIT_6_732_THEN_IF___05FETC___05F_d2282) 
+                                                    >> 0x10U));
+    vlTOPp->mkMacUnitTop__DOT__y___05Fh215837 = (1U 
+                                                 & ((vlTOPp->mkMacUnitTop__DOT__IF_IF_IF_bf16_Mac_reg_B_729_BIT_6_732_THEN_IF___05FETC___05F_d2276 
+                                                     ^ vlTOPp->mkMacUnitTop__DOT__IF_IF_IF_bf16_Mac_reg_B_729_BIT_6_732_THEN_IF___05FETC___05F_d2282) 
+                                                    >> 0x10U));
+    vlTOPp->mkMacUnitTop__DOT__x___05Fh215635 = (1U 
+                                                 & ((vlTOPp->mkMacUnitTop__DOT__IF_IF_IF_bf16_Mac_reg_B_729_BIT_6_732_THEN_IF___05FETC___05F_d2276 
+                                                     & vlTOPp->mkMacUnitTop__DOT__IF_IF_IF_bf16_Mac_reg_B_729_BIT_6_732_THEN_IF___05FETC___05F_d2282) 
+                                                    >> 0xfU));
+    vlTOPp->mkMacUnitTop__DOT__y___05Fh215683 = (1U 
+                                                 & ((vlTOPp->mkMacUnitTop__DOT__IF_IF_IF_bf16_Mac_reg_B_729_BIT_6_732_THEN_IF___05FETC___05F_d2276 
+                                                     ^ vlTOPp->mkMacUnitTop__DOT__IF_IF_IF_bf16_Mac_reg_B_729_BIT_6_732_THEN_IF___05FETC___05F_d2282) 
+                                                    >> 0xfU));
+    vlTOPp->mkMacUnitTop__DOT__x___05Fh215481 = (1U 
+                                                 & ((vlTOPp->mkMacUnitTop__DOT__IF_IF_IF_bf16_Mac_reg_B_729_BIT_6_732_THEN_IF___05FETC___05F_d2276 
+                                                     & vlTOPp->mkMacUnitTop__DOT__IF_IF_IF_bf16_Mac_reg_B_729_BIT_6_732_THEN_IF___05FETC___05F_d2282) 
+                                                    >> 0xeU));
+    vlTOPp->mkMacUnitTop__DOT__y___05Fh215529 = (1U 
+                                                 & ((vlTOPp->mkMacUnitTop__DOT__IF_IF_IF_bf16_Mac_reg_B_729_BIT_6_732_THEN_IF___05FETC___05F_d2276 
+                                                     ^ vlTOPp->mkMacUnitTop__DOT__IF_IF_IF_bf16_Mac_reg_B_729_BIT_6_732_THEN_IF___05FETC___05F_d2282) 
+                                                    >> 0xeU));
+    vlTOPp->mkMacUnitTop__DOT__x___05Fh215327 = (1U 
+                                                 & ((vlTOPp->mkMacUnitTop__DOT__IF_IF_IF_bf16_Mac_reg_B_729_BIT_6_732_THEN_IF___05FETC___05F_d2276 
+                                                     & vlTOPp->mkMacUnitTop__DOT__IF_IF_IF_bf16_Mac_reg_B_729_BIT_6_732_THEN_IF___05FETC___05F_d2282) 
+                                                    >> 0xdU));
+    vlTOPp->mkMacUnitTop__DOT__y___05Fh215375 = (1U 
+                                                 & ((vlTOPp->mkMacUnitTop__DOT__IF_IF_IF_bf16_Mac_reg_B_729_BIT_6_732_THEN_IF___05FETC___05F_d2276 
+                                                     ^ vlTOPp->mkMacUnitTop__DOT__IF_IF_IF_bf16_Mac_reg_B_729_BIT_6_732_THEN_IF___05FETC___05F_d2282) 
+                                                    >> 0xdU));
+    vlTOPp->mkMacUnitTop__DOT__x___05Fh215173 = (1U 
+                                                 & ((vlTOPp->mkMacUnitTop__DOT__IF_IF_IF_bf16_Mac_reg_B_729_BIT_6_732_THEN_IF___05FETC___05F_d2276 
+                                                     & vlTOPp->mkMacUnitTop__DOT__IF_IF_IF_bf16_Mac_reg_B_729_BIT_6_732_THEN_IF___05FETC___05F_d2282) 
+                                                    >> 0xcU));
+    vlTOPp->mkMacUnitTop__DOT__y___05Fh215221 = (1U 
+                                                 & ((vlTOPp->mkMacUnitTop__DOT__IF_IF_IF_bf16_Mac_reg_B_729_BIT_6_732_THEN_IF___05FETC___05F_d2276 
+                                                     ^ vlTOPp->mkMacUnitTop__DOT__IF_IF_IF_bf16_Mac_reg_B_729_BIT_6_732_THEN_IF___05FETC___05F_d2282) 
+                                                    >> 0xcU));
+    vlTOPp->mkMacUnitTop__DOT__x___05Fh215019 = (1U 
+                                                 & ((vlTOPp->mkMacUnitTop__DOT__IF_IF_IF_bf16_Mac_reg_B_729_BIT_6_732_THEN_IF___05FETC___05F_d2276 
+                                                     & vlTOPp->mkMacUnitTop__DOT__IF_IF_IF_bf16_Mac_reg_B_729_BIT_6_732_THEN_IF___05FETC___05F_d2282) 
+                                                    >> 0xbU));
+    vlTOPp->mkMacUnitTop__DOT__y___05Fh215067 = (1U 
+                                                 & ((vlTOPp->mkMacUnitTop__DOT__IF_IF_IF_bf16_Mac_reg_B_729_BIT_6_732_THEN_IF___05FETC___05F_d2276 
+                                                     ^ vlTOPp->mkMacUnitTop__DOT__IF_IF_IF_bf16_Mac_reg_B_729_BIT_6_732_THEN_IF___05FETC___05F_d2282) 
+                                                    >> 0xbU));
+    vlTOPp->mkMacUnitTop__DOT__x___05Fh214865 = (1U 
+                                                 & ((vlTOPp->mkMacUnitTop__DOT__IF_IF_IF_bf16_Mac_reg_B_729_BIT_6_732_THEN_IF___05FETC___05F_d2276 
+                                                     & vlTOPp->mkMacUnitTop__DOT__IF_IF_IF_bf16_Mac_reg_B_729_BIT_6_732_THEN_IF___05FETC___05F_d2282) 
+                                                    >> 0xaU));
+    vlTOPp->mkMacUnitTop__DOT__y___05Fh214913 = (1U 
+                                                 & ((vlTOPp->mkMacUnitTop__DOT__IF_IF_IF_bf16_Mac_reg_B_729_BIT_6_732_THEN_IF___05FETC___05F_d2276 
+                                                     ^ vlTOPp->mkMacUnitTop__DOT__IF_IF_IF_bf16_Mac_reg_B_729_BIT_6_732_THEN_IF___05FETC___05F_d2282) 
+                                                    >> 0xaU));
+    vlTOPp->mkMacUnitTop__DOT__x___05Fh214711 = (1U 
+                                                 & ((vlTOPp->mkMacUnitTop__DOT__IF_IF_IF_bf16_Mac_reg_B_729_BIT_6_732_THEN_IF___05FETC___05F_d2276 
+                                                     & vlTOPp->mkMacUnitTop__DOT__IF_IF_IF_bf16_Mac_reg_B_729_BIT_6_732_THEN_IF___05FETC___05F_d2282) 
+                                                    >> 9U));
+    vlTOPp->mkMacUnitTop__DOT__y___05Fh214759 = (1U 
+                                                 & ((vlTOPp->mkMacUnitTop__DOT__IF_IF_IF_bf16_Mac_reg_B_729_BIT_6_732_THEN_IF___05FETC___05F_d2276 
+                                                     ^ vlTOPp->mkMacUnitTop__DOT__IF_IF_IF_bf16_Mac_reg_B_729_BIT_6_732_THEN_IF___05FETC___05F_d2282) 
+                                                    >> 9U));
+    vlTOPp->mkMacUnitTop__DOT__x___05Fh214557 = (1U 
+                                                 & ((vlTOPp->mkMacUnitTop__DOT__IF_IF_IF_bf16_Mac_reg_B_729_BIT_6_732_THEN_IF___05FETC___05F_d2276 
+                                                     & vlTOPp->mkMacUnitTop__DOT__IF_IF_IF_bf16_Mac_reg_B_729_BIT_6_732_THEN_IF___05FETC___05F_d2282) 
+                                                    >> 8U));
+    vlTOPp->mkMacUnitTop__DOT__y___05Fh214605 = (1U 
+                                                 & ((vlTOPp->mkMacUnitTop__DOT__IF_IF_IF_bf16_Mac_reg_B_729_BIT_6_732_THEN_IF___05FETC___05F_d2276 
+                                                     ^ vlTOPp->mkMacUnitTop__DOT__IF_IF_IF_bf16_Mac_reg_B_729_BIT_6_732_THEN_IF___05FETC___05F_d2282) 
+                                                    >> 8U));
+    vlTOPp->mkMacUnitTop__DOT__x___05Fh214403 = (1U 
+                                                 & ((vlTOPp->mkMacUnitTop__DOT__IF_IF_IF_bf16_Mac_reg_B_729_BIT_6_732_THEN_IF___05FETC___05F_d2276 
+                                                     & vlTOPp->mkMacUnitTop__DOT__IF_IF_IF_bf16_Mac_reg_B_729_BIT_6_732_THEN_IF___05FETC___05F_d2282) 
+                                                    >> 7U));
+    vlTOPp->mkMacUnitTop__DOT__y___05Fh214451 = (1U 
+                                                 & ((vlTOPp->mkMacUnitTop__DOT__IF_IF_IF_bf16_Mac_reg_B_729_BIT_6_732_THEN_IF___05FETC___05F_d2276 
+                                                     ^ vlTOPp->mkMacUnitTop__DOT__IF_IF_IF_bf16_Mac_reg_B_729_BIT_6_732_THEN_IF___05FETC___05F_d2282) 
+                                                    >> 7U));
+    vlTOPp->mkMacUnitTop__DOT__x___05Fh214249 = (1U 
+                                                 & ((vlTOPp->mkMacUnitTop__DOT__IF_IF_IF_bf16_Mac_reg_B_729_BIT_6_732_THEN_IF___05FETC___05F_d2276 
+                                                     & vlTOPp->mkMacUnitTop__DOT__IF_IF_IF_bf16_Mac_reg_B_729_BIT_6_732_THEN_IF___05FETC___05F_d2282) 
+                                                    >> 6U));
+    vlTOPp->mkMacUnitTop__DOT__y___05Fh214297 = (1U 
+                                                 & ((vlTOPp->mkMacUnitTop__DOT__IF_IF_IF_bf16_Mac_reg_B_729_BIT_6_732_THEN_IF___05FETC___05F_d2276 
+                                                     ^ vlTOPp->mkMacUnitTop__DOT__IF_IF_IF_bf16_Mac_reg_B_729_BIT_6_732_THEN_IF___05FETC___05F_d2282) 
+                                                    >> 6U));
+    vlTOPp->mkMacUnitTop__DOT__x___05Fh214095 = (1U 
+                                                 & ((vlTOPp->mkMacUnitTop__DOT__IF_IF_IF_bf16_Mac_reg_B_729_BIT_6_732_THEN_IF___05FETC___05F_d2276 
+                                                     & vlTOPp->mkMacUnitTop__DOT__IF_IF_IF_bf16_Mac_reg_B_729_BIT_6_732_THEN_IF___05FETC___05F_d2282) 
+                                                    >> 5U));
+    vlTOPp->mkMacUnitTop__DOT__y___05Fh214143 = (1U 
+                                                 & ((vlTOPp->mkMacUnitTop__DOT__IF_IF_IF_bf16_Mac_reg_B_729_BIT_6_732_THEN_IF___05FETC___05F_d2276 
+                                                     ^ vlTOPp->mkMacUnitTop__DOT__IF_IF_IF_bf16_Mac_reg_B_729_BIT_6_732_THEN_IF___05FETC___05F_d2282) 
+                                                    >> 5U));
+    vlTOPp->mkMacUnitTop__DOT__x___05Fh213941 = (1U 
+                                                 & ((vlTOPp->mkMacUnitTop__DOT__IF_IF_IF_bf16_Mac_reg_B_729_BIT_6_732_THEN_IF___05FETC___05F_d2276 
+                                                     & vlTOPp->mkMacUnitTop__DOT__IF_IF_IF_bf16_Mac_reg_B_729_BIT_6_732_THEN_IF___05FETC___05F_d2282) 
+                                                    >> 4U));
+    vlTOPp->mkMacUnitTop__DOT__y___05Fh213989 = (1U 
+                                                 & ((vlTOPp->mkMacUnitTop__DOT__IF_IF_IF_bf16_Mac_reg_B_729_BIT_6_732_THEN_IF___05FETC___05F_d2276 
+                                                     ^ vlTOPp->mkMacUnitTop__DOT__IF_IF_IF_bf16_Mac_reg_B_729_BIT_6_732_THEN_IF___05FETC___05F_d2282) 
+                                                    >> 4U));
+    vlTOPp->mkMacUnitTop__DOT__x___05Fh213787 = (1U 
+                                                 & ((vlTOPp->mkMacUnitTop__DOT__IF_IF_IF_bf16_Mac_reg_B_729_BIT_6_732_THEN_IF___05FETC___05F_d2276 
+                                                     & vlTOPp->mkMacUnitTop__DOT__IF_IF_IF_bf16_Mac_reg_B_729_BIT_6_732_THEN_IF___05FETC___05F_d2282) 
+                                                    >> 3U));
+    vlTOPp->mkMacUnitTop__DOT__y___05Fh213835 = (1U 
+                                                 & ((vlTOPp->mkMacUnitTop__DOT__IF_IF_IF_bf16_Mac_reg_B_729_BIT_6_732_THEN_IF___05FETC___05F_d2276 
+                                                     ^ vlTOPp->mkMacUnitTop__DOT__IF_IF_IF_bf16_Mac_reg_B_729_BIT_6_732_THEN_IF___05FETC___05F_d2282) 
+                                                    >> 3U));
+    vlTOPp->mkMacUnitTop__DOT__x___05Fh213633 = (1U 
+                                                 & ((vlTOPp->mkMacUnitTop__DOT__IF_IF_IF_bf16_Mac_reg_B_729_BIT_6_732_THEN_IF___05FETC___05F_d2276 
+                                                     & vlTOPp->mkMacUnitTop__DOT__IF_IF_IF_bf16_Mac_reg_B_729_BIT_6_732_THEN_IF___05FETC___05F_d2282) 
+                                                    >> 2U));
+    vlTOPp->mkMacUnitTop__DOT__y___05Fh213681 = (1U 
+                                                 & ((vlTOPp->mkMacUnitTop__DOT__IF_IF_IF_bf16_Mac_reg_B_729_BIT_6_732_THEN_IF___05FETC___05F_d2276 
+                                                     ^ vlTOPp->mkMacUnitTop__DOT__IF_IF_IF_bf16_Mac_reg_B_729_BIT_6_732_THEN_IF___05FETC___05F_d2282) 
+                                                    >> 2U));
+    vlTOPp->mkMacUnitTop__DOT__x___05Fh213478 = (1U 
+                                                 & ((vlTOPp->mkMacUnitTop__DOT__IF_IF_IF_bf16_Mac_reg_B_729_BIT_6_732_THEN_IF___05FETC___05F_d2276 
+                                                     & vlTOPp->mkMacUnitTop__DOT__IF_IF_IF_bf16_Mac_reg_B_729_BIT_6_732_THEN_IF___05FETC___05F_d2282) 
+                                                    >> 1U));
+    vlTOPp->mkMacUnitTop__DOT__IF_IF_IF_IF_bf16_Mac_reg_B_729_BIT_6_732_THEN___05FETC___05Fq39 
+        = ((1U & (vlTOPp->mkMacUnitTop__DOT__IF_IF_IF_bf16_Mac_reg_B_729_BIT_6_732_THEN_IF___05FETC___05F_d2276 
+                  & vlTOPp->mkMacUnitTop__DOT__IF_IF_IF_bf16_Mac_reg_B_729_BIT_6_732_THEN_IF___05FETC___05F_d2282))
+            ? 2U : 0U);
+    vlTOPp->mkMacUnitTop__DOT__y___05Fh213526 = (1U 
+                                                 & ((vlTOPp->mkMacUnitTop__DOT__IF_IF_IF_bf16_Mac_reg_B_729_BIT_6_732_THEN_IF___05FETC___05F_d2276 
+                                                     ^ vlTOPp->mkMacUnitTop__DOT__IF_IF_IF_bf16_Mac_reg_B_729_BIT_6_732_THEN_IF___05FETC___05F_d2282) 
+                                                    >> 1U));
     vlTOPp->mkMacUnitTop__DOT__IF_IF_int_Mac_reg_B_BIT_7_THEN_INV_int_Mac_reg_ETC___05F_d595 
         = ((((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh76920) 
              ^ (IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh76921)) 
@@ -1590,12 +3083,28 @@ VL_INLINE_OPT void Vtop::_sequent__TOP__4(Vtop__Syms* __restrict vlSymsp) {
                           << 0x1aU) | vlTOPp->mkMacUnitTop__DOT__IF_IF_int_Mac_reg_B_BIT_7_THEN_INV_int_Mac_reg_ETC___05F_d594));
     vlTOPp->mkMacUnitTop__DOT__y___05Fh77283 = ((IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh76921) 
                                                 & (IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh76920));
+    vlTOPp->mkMacUnitTop__DOT__IF_IF_IF_bf16_Mac_reg_B_729_BIT_6_732_THEN_IF___05FETC___05F_d2466 
+        = (1U & ((IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh213526) 
+                 ^ (vlTOPp->mkMacUnitTop__DOT__IF_IF_IF_IF_bf16_Mac_reg_B_729_BIT_6_732_THEN___05FETC___05Fq39 
+                    >> 1U)));
+    vlTOPp->mkMacUnitTop__DOT__y___05Fh213479 = ((vlTOPp->mkMacUnitTop__DOT__IF_IF_IF_IF_bf16_Mac_reg_B_729_BIT_6_732_THEN___05FETC___05Fq39 
+                                                  >> 1U) 
+                                                 & (IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh213526));
     vlTOPp->mkMacUnitTop__DOT__y___05Fh77192 = ((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh77282) 
                                                 | (IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh77283));
+    vlTOPp->mkMacUnitTop__DOT__x___05Fh213680 = ((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh213478) 
+                                                 | (IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh213479));
     vlTOPp->mkMacUnitTop__DOT__y___05Fh77554 = ((IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh77192) 
                                                 & (IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh77191));
+    vlTOPp->mkMacUnitTop__DOT__IF_IF_IF_bf16_Mac_reg_B_729_BIT_6_732_THEN_IF___05FETC___05F_d2465 
+        = ((IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh213681) 
+           ^ (IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh213680));
+    vlTOPp->mkMacUnitTop__DOT__y___05Fh213634 = ((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh213680) 
+                                                 & (IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh213681));
     vlTOPp->mkMacUnitTop__DOT__y___05Fh77463 = ((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh77553) 
                                                 | (IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh77554));
+    vlTOPp->mkMacUnitTop__DOT__x___05Fh213834 = ((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh213633) 
+                                                 | (IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh213634));
     vlTOPp->mkMacUnitTop__DOT__IF_IF_int_Mac_reg_B_BIT_7_THEN_INV_int_Mac_reg_ETC___05F_d596 
         = ((((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh77462) 
              ^ (IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh77463)) 
@@ -1604,22 +3113,43 @@ VL_INLINE_OPT void Vtop::_sequent__TOP__4(Vtop__Syms* __restrict vlSymsp) {
                           << 0x1cU) | vlTOPp->mkMacUnitTop__DOT__IF_IF_int_Mac_reg_B_BIT_7_THEN_INV_int_Mac_reg_ETC___05F_d595));
     vlTOPp->mkMacUnitTop__DOT__y___05Fh77825 = ((IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh77463) 
                                                 & (IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh77462));
+    vlTOPp->mkMacUnitTop__DOT__IF_IF_IF_bf16_Mac_reg_B_729_BIT_6_732_THEN_IF___05FETC___05F_d2464 
+        = ((IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh213835) 
+           ^ (IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh213834));
+    vlTOPp->mkMacUnitTop__DOT__y___05Fh213788 = ((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh213834) 
+                                                 & (IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh213835));
     vlTOPp->mkMacUnitTop__DOT__y___05Fh77734 = ((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh77824) 
                                                 | (IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh77825));
+    vlTOPp->mkMacUnitTop__DOT__x___05Fh213988 = ((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh213787) 
+                                                 | (IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh213788));
     vlTOPp->mkMacUnitTop__DOT__y___05Fh78096 = ((IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh77734) 
                                                 & (IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh77733));
+    vlTOPp->mkMacUnitTop__DOT__IF_IF_IF_bf16_Mac_reg_B_729_BIT_6_732_THEN_IF___05FETC___05F_d2463 
+        = ((IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh213989) 
+           ^ (IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh213988));
+    vlTOPp->mkMacUnitTop__DOT__y___05Fh213942 = ((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh213988) 
+                                                 & (IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh213989));
     vlTOPp->mkMacUnitTop__DOT__y___05Fh78005 = ((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh78095) 
                                                 | (IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh78096));
+    vlTOPp->mkMacUnitTop__DOT__x___05Fh214142 = ((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh213941) 
+                                                 | (IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh213942));
     vlTOPp->mkMacUnitTop__DOT__result___05Fh18429 = 
         ((((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh78004) 
            ^ (IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh78005)) 
           << 0x1fU) | ((((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh77733) 
                          ^ (IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh77734)) 
                         << 0x1eU) | vlTOPp->mkMacUnitTop__DOT__IF_IF_int_Mac_reg_B_BIT_7_THEN_INV_int_Mac_reg_ETC___05F_d596));
+    vlTOPp->mkMacUnitTop__DOT__IF_IF_IF_bf16_Mac_reg_B_729_BIT_6_732_THEN_IF___05FETC___05F_d2462 
+        = ((IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh214143) 
+           ^ (IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh214142));
+    vlTOPp->mkMacUnitTop__DOT__y___05Fh214096 = ((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh214142) 
+                                                 & (IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh214143));
     vlTOPp->mkMacUnitTop__DOT__IF_IF_int_Mac_reg_B_BIT_7_THEN_INV_int_Mac_reg_ETC___05F_d598 
         = ((4U & (IData)(vlTOPp->mkMacUnitTop__DOT__IF_int_Mac_reg_B_BIT_7_THEN_INV_int_Mac_reg_B___05FETC___05F_d38))
             ? vlTOPp->mkMacUnitTop__DOT__result___05Fh18429
             : vlTOPp->mkMacUnitTop__DOT__IF_IF_int_Mac_reg_B_BIT_7_THEN_INV_int_Mac_reg_ETC___05F_d401);
+    vlTOPp->mkMacUnitTop__DOT__x___05Fh214296 = ((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh214095) 
+                                                 | (IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh214096));
     vlTOPp->mkMacUnitTop__DOT__x___05Fh95717 = (1U 
                                                 & ((vlTOPp->mkMacUnitTop__DOT__IF_IF_int_Mac_reg_B_BIT_7_THEN_INV_int_Mac_reg_ETC___05F_d598 
                                                     >> 0x1fU) 
@@ -1692,7 +3222,7 @@ VL_INLINE_OPT void Vtop::_sequent__TOP__4(Vtop__Syms* __restrict vlSymsp) {
                                                    ^ 
                                                    (vlTOPp->mkMacUnitTop__DOT__IF_int_Mac_reg_A_BIT_7_THEN_INV_SEXT_int_Mac_r_ETC___05F_d163 
                                                     >> 0x16U)));
-    vlTOPp->mkMacUnitTop__DOT__IF_IF_IF_int_Mac_reg_B_BIT_7_THEN_INV_int_Mac___05FETC___05Fq13 
+    vlTOPp->mkMacUnitTop__DOT__IF_IF_IF_int_Mac_reg_B_BIT_7_THEN_INV_int_Mac___05FETC___05Fq14 
         = ((1U & vlTOPp->mkMacUnitTop__DOT__IF_IF_int_Mac_reg_B_BIT_7_THEN_INV_int_Mac_reg_ETC___05F_d598)
             ? 1U : 0U);
     vlTOPp->mkMacUnitTop__DOT__x___05Fh94182 = (1U 
@@ -1920,7 +3450,7 @@ VL_INLINE_OPT void Vtop::_sequent__TOP__4(Vtop__Syms* __restrict vlSymsp) {
                                                     >> 4U) 
                                                    & (vlTOPp->mkMacUnitTop__DOT__IF_int_Mac_reg_A_BIT_7_THEN_INV_SEXT_int_Mac_r_ETC___05F_d163 
                                                       >> 1U)));
-    vlTOPp->mkMacUnitTop__DOT__IF_IF_IF_int_Mac_reg_B_BIT_7_THEN_INV_int_Mac___05FETC___05Fq12 
+    vlTOPp->mkMacUnitTop__DOT__IF_IF_IF_int_Mac_reg_B_BIT_7_THEN_INV_int_Mac___05FETC___05Fq13 
         = ((1U & ((vlTOPp->mkMacUnitTop__DOT__IF_IF_int_Mac_reg_B_BIT_7_THEN_INV_int_Mac_reg_ETC___05F_d598 
                    >> 3U) & vlTOPp->mkMacUnitTop__DOT__IF_int_Mac_reg_A_BIT_7_THEN_INV_SEXT_int_Mac_r_ETC___05F_d163))
             ? 0x10ULL : 0ULL);
@@ -1930,17 +3460,29 @@ VL_INLINE_OPT void Vtop::_sequent__TOP__4(Vtop__Syms* __restrict vlSymsp) {
                                                    ^ 
                                                    (vlTOPp->mkMacUnitTop__DOT__IF_int_Mac_reg_A_BIT_7_THEN_INV_SEXT_int_Mac_r_ETC___05F_d163 
                                                     >> 1U)));
+    vlTOPp->mkMacUnitTop__DOT__IF_IF_IF_bf16_Mac_reg_B_729_BIT_6_732_THEN_IF___05FETC___05F_d2461 
+        = ((IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh214297) 
+           ^ (IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh214296));
+    vlTOPp->mkMacUnitTop__DOT__y___05Fh214250 = ((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh214296) 
+                                                 & (IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh214297));
     vlTOPp->mkMacUnitTop__DOT__y___05Fh88762 = ((IData)(
-                                                        (vlTOPp->mkMacUnitTop__DOT__IF_IF_IF_int_Mac_reg_B_BIT_7_THEN_INV_int_Mac___05FETC___05Fq12 
+                                                        (vlTOPp->mkMacUnitTop__DOT__IF_IF_IF_int_Mac_reg_B_BIT_7_THEN_INV_int_Mac___05FETC___05Fq13 
                                                          >> 4U)) 
                                                 & (IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh88402));
+    vlTOPp->mkMacUnitTop__DOT__x___05Fh214450 = ((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh214249) 
+                                                 | (IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh214250));
     vlTOPp->mkMacUnitTop__DOT__y___05Fh88671 = ((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh88761) 
                                                 | (IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh88762));
+    vlTOPp->mkMacUnitTop__DOT__IF_IF_IF_bf16_Mac_reg_B_729_BIT_6_732_THEN_IF___05FETC___05F_d2460 
+        = ((IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh214451) 
+           ^ (IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh214450));
+    vlTOPp->mkMacUnitTop__DOT__y___05Fh214404 = ((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh214450) 
+                                                 & (IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh214451));
     vlTOPp->mkMacUnitTop__DOT__IF_IF_int_Mac_reg_B_BIT_7_THEN_INV_int_Mac_reg_ETC___05F_d774 
         = ((((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh88670) 
              ^ (IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh88671)) 
             << 5U) | ((0x10U & (((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh88402) 
-                                 ^ (IData)((vlTOPp->mkMacUnitTop__DOT__IF_IF_IF_int_Mac_reg_B_BIT_7_THEN_INV_int_Mac___05FETC___05Fq12 
+                                 ^ (IData)((vlTOPp->mkMacUnitTop__DOT__IF_IF_IF_int_Mac_reg_B_BIT_7_THEN_INV_int_Mac___05FETC___05Fq13 
                                             >> 4U))) 
                                 << 4U)) | ((8U & ((0xfffffff8U 
                                                    & vlTOPp->mkMacUnitTop__DOT__IF_IF_int_Mac_reg_B_BIT_7_THEN_INV_int_Mac_reg_ETC___05F_d598) 
@@ -1949,15 +3491,29 @@ VL_INLINE_OPT void Vtop::_sequent__TOP__4(Vtop__Syms* __restrict vlSymsp) {
                                                    << 3U))) 
                                            | ((6U & vlTOPp->mkMacUnitTop__DOT__IF_IF_int_Mac_reg_B_BIT_7_THEN_INV_int_Mac_reg_ETC___05F_d598) 
                                               | (1U 
-                                                 & vlTOPp->mkMacUnitTop__DOT__IF_IF_IF_int_Mac_reg_B_BIT_7_THEN_INV_int_Mac___05FETC___05Fq13)))));
+                                                 & vlTOPp->mkMacUnitTop__DOT__IF_IF_IF_int_Mac_reg_B_BIT_7_THEN_INV_int_Mac___05FETC___05Fq14)))));
     vlTOPp->mkMacUnitTop__DOT__y___05Fh89034 = ((IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh88671) 
                                                 & (IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh88670));
+    vlTOPp->mkMacUnitTop__DOT__x___05Fh214604 = ((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh214403) 
+                                                 | (IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh214404));
     vlTOPp->mkMacUnitTop__DOT__y___05Fh88943 = ((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh89033) 
                                                 | (IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh89034));
+    vlTOPp->mkMacUnitTop__DOT__IF_IF_IF_bf16_Mac_reg_B_729_BIT_6_732_THEN_IF___05FETC___05F_d2459 
+        = ((IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh214605) 
+           ^ (IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh214604));
+    vlTOPp->mkMacUnitTop__DOT__y___05Fh214558 = ((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh214604) 
+                                                 & (IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh214605));
     vlTOPp->mkMacUnitTop__DOT__y___05Fh89305 = ((IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh88943) 
                                                 & (IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh88942));
+    vlTOPp->mkMacUnitTop__DOT__x___05Fh214758 = ((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh214557) 
+                                                 | (IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh214558));
     vlTOPp->mkMacUnitTop__DOT__y___05Fh89214 = ((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh89304) 
                                                 | (IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh89305));
+    vlTOPp->mkMacUnitTop__DOT__IF_IF_IF_bf16_Mac_reg_B_729_BIT_6_732_THEN_IF___05FETC___05F_d2458 
+        = ((IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh214759) 
+           ^ (IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh214758));
+    vlTOPp->mkMacUnitTop__DOT__y___05Fh214712 = ((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh214758) 
+                                                 & (IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh214759));
     vlTOPp->mkMacUnitTop__DOT__IF_IF_int_Mac_reg_B_BIT_7_THEN_INV_int_Mac_reg_ETC___05F_d775 
         = ((((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh89213) 
              ^ (IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh89214)) 
@@ -1966,12 +3522,26 @@ VL_INLINE_OPT void Vtop::_sequent__TOP__4(Vtop__Syms* __restrict vlSymsp) {
                        << 6U) | (IData)(vlTOPp->mkMacUnitTop__DOT__IF_IF_int_Mac_reg_B_BIT_7_THEN_INV_int_Mac_reg_ETC___05F_d774)));
     vlTOPp->mkMacUnitTop__DOT__y___05Fh89576 = ((IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh89214) 
                                                 & (IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh89213));
+    vlTOPp->mkMacUnitTop__DOT__x___05Fh214912 = ((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh214711) 
+                                                 | (IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh214712));
     vlTOPp->mkMacUnitTop__DOT__y___05Fh89485 = ((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh89575) 
                                                 | (IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh89576));
+    vlTOPp->mkMacUnitTop__DOT__IF_IF_IF_bf16_Mac_reg_B_729_BIT_6_732_THEN_IF___05FETC___05F_d2457 
+        = ((IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh214913) 
+           ^ (IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh214912));
+    vlTOPp->mkMacUnitTop__DOT__y___05Fh214866 = ((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh214912) 
+                                                 & (IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh214913));
     vlTOPp->mkMacUnitTop__DOT__y___05Fh89847 = ((IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh89485) 
                                                 & (IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh89484));
+    vlTOPp->mkMacUnitTop__DOT__x___05Fh215066 = ((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh214865) 
+                                                 | (IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh214866));
     vlTOPp->mkMacUnitTop__DOT__y___05Fh89756 = ((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh89846) 
                                                 | (IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh89847));
+    vlTOPp->mkMacUnitTop__DOT__IF_IF_IF_bf16_Mac_reg_B_729_BIT_6_732_THEN_IF___05FETC___05F_d2456 
+        = ((IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh215067) 
+           ^ (IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh215066));
+    vlTOPp->mkMacUnitTop__DOT__y___05Fh215020 = ((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh215066) 
+                                                 & (IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh215067));
     vlTOPp->mkMacUnitTop__DOT__IF_IF_int_Mac_reg_B_BIT_7_THEN_INV_int_Mac_reg_ETC___05F_d776 
         = ((((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh89755) 
              ^ (IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh89756)) 
@@ -1980,12 +3550,26 @@ VL_INLINE_OPT void Vtop::_sequent__TOP__4(Vtop__Syms* __restrict vlSymsp) {
                        << 8U) | (IData)(vlTOPp->mkMacUnitTop__DOT__IF_IF_int_Mac_reg_B_BIT_7_THEN_INV_int_Mac_reg_ETC___05F_d775)));
     vlTOPp->mkMacUnitTop__DOT__y___05Fh90118 = ((IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh89756) 
                                                 & (IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh89755));
+    vlTOPp->mkMacUnitTop__DOT__x___05Fh215220 = ((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh215019) 
+                                                 | (IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh215020));
     vlTOPp->mkMacUnitTop__DOT__y___05Fh90027 = ((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh90117) 
                                                 | (IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh90118));
+    vlTOPp->mkMacUnitTop__DOT__IF_IF_IF_bf16_Mac_reg_B_729_BIT_6_732_THEN_IF___05FETC___05F_d2455 
+        = ((IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh215221) 
+           ^ (IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh215220));
+    vlTOPp->mkMacUnitTop__DOT__y___05Fh215174 = ((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh215220) 
+                                                 & (IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh215221));
     vlTOPp->mkMacUnitTop__DOT__y___05Fh90389 = ((IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh90027) 
                                                 & (IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh90026));
+    vlTOPp->mkMacUnitTop__DOT__x___05Fh215374 = ((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh215173) 
+                                                 | (IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh215174));
     vlTOPp->mkMacUnitTop__DOT__y___05Fh90298 = ((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh90388) 
                                                 | (IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh90389));
+    vlTOPp->mkMacUnitTop__DOT__IF_IF_IF_bf16_Mac_reg_B_729_BIT_6_732_THEN_IF___05FETC___05F_d2454 
+        = ((IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh215375) 
+           ^ (IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh215374));
+    vlTOPp->mkMacUnitTop__DOT__y___05Fh215328 = ((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh215374) 
+                                                 & (IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh215375));
     vlTOPp->mkMacUnitTop__DOT__IF_IF_int_Mac_reg_B_BIT_7_THEN_INV_int_Mac_reg_ETC___05F_d777 
         = ((((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh90297) 
              ^ (IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh90298)) 
@@ -1994,12 +3578,26 @@ VL_INLINE_OPT void Vtop::_sequent__TOP__4(Vtop__Syms* __restrict vlSymsp) {
                          << 0xaU) | (IData)(vlTOPp->mkMacUnitTop__DOT__IF_IF_int_Mac_reg_B_BIT_7_THEN_INV_int_Mac_reg_ETC___05F_d776)));
     vlTOPp->mkMacUnitTop__DOT__y___05Fh90660 = ((IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh90298) 
                                                 & (IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh90297));
+    vlTOPp->mkMacUnitTop__DOT__x___05Fh215528 = ((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh215327) 
+                                                 | (IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh215328));
     vlTOPp->mkMacUnitTop__DOT__y___05Fh90569 = ((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh90659) 
                                                 | (IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh90660));
+    vlTOPp->mkMacUnitTop__DOT__IF_IF_IF_bf16_Mac_reg_B_729_BIT_6_732_THEN_IF___05FETC___05F_d2453 
+        = ((IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh215529) 
+           ^ (IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh215528));
+    vlTOPp->mkMacUnitTop__DOT__y___05Fh215482 = ((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh215528) 
+                                                 & (IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh215529));
     vlTOPp->mkMacUnitTop__DOT__y___05Fh90931 = ((IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh90569) 
                                                 & (IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh90568));
+    vlTOPp->mkMacUnitTop__DOT__x___05Fh215682 = ((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh215481) 
+                                                 | (IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh215482));
     vlTOPp->mkMacUnitTop__DOT__y___05Fh90840 = ((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh90930) 
                                                 | (IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh90931));
+    vlTOPp->mkMacUnitTop__DOT__IF_IF_IF_bf16_Mac_reg_B_729_BIT_6_732_THEN_IF___05FETC___05F_d2452 
+        = ((IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh215683) 
+           ^ (IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh215682));
+    vlTOPp->mkMacUnitTop__DOT__y___05Fh215636 = ((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh215682) 
+                                                 & (IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh215683));
     vlTOPp->mkMacUnitTop__DOT__IF_IF_int_Mac_reg_B_BIT_7_THEN_INV_int_Mac_reg_ETC___05F_d778 
         = ((((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh90839) 
              ^ (IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh90840)) 
@@ -2008,12 +3606,26 @@ VL_INLINE_OPT void Vtop::_sequent__TOP__4(Vtop__Syms* __restrict vlSymsp) {
                          << 0xcU) | (IData)(vlTOPp->mkMacUnitTop__DOT__IF_IF_int_Mac_reg_B_BIT_7_THEN_INV_int_Mac_reg_ETC___05F_d777)));
     vlTOPp->mkMacUnitTop__DOT__y___05Fh91202 = ((IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh90840) 
                                                 & (IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh90839));
+    vlTOPp->mkMacUnitTop__DOT__x___05Fh215836 = ((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh215635) 
+                                                 | (IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh215636));
     vlTOPp->mkMacUnitTop__DOT__y___05Fh91111 = ((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh91201) 
                                                 | (IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh91202));
+    vlTOPp->mkMacUnitTop__DOT__IF_IF_IF_bf16_Mac_reg_B_729_BIT_6_732_THEN_IF___05FETC___05F_d2451 
+        = ((IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh215837) 
+           ^ (IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh215836));
+    vlTOPp->mkMacUnitTop__DOT__y___05Fh215790 = ((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh215836) 
+                                                 & (IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh215837));
     vlTOPp->mkMacUnitTop__DOT__y___05Fh91473 = ((IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh91111) 
                                                 & (IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh91110));
+    vlTOPp->mkMacUnitTop__DOT__x___05Fh215990 = ((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh215789) 
+                                                 | (IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh215790));
     vlTOPp->mkMacUnitTop__DOT__y___05Fh91382 = ((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh91472) 
                                                 | (IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh91473));
+    vlTOPp->mkMacUnitTop__DOT__IF_IF_IF_bf16_Mac_reg_B_729_BIT_6_732_THEN_IF___05FETC___05F_d2450 
+        = ((IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh215991) 
+           ^ (IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh215990));
+    vlTOPp->mkMacUnitTop__DOT__y___05Fh215944 = ((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh215990) 
+                                                 & (IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh215991));
     vlTOPp->mkMacUnitTop__DOT__IF_IF_int_Mac_reg_B_BIT_7_THEN_INV_int_Mac_reg_ETC___05F_d779 
         = ((((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh91381) 
              ^ (IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh91382)) 
@@ -2022,12 +3634,26 @@ VL_INLINE_OPT void Vtop::_sequent__TOP__4(Vtop__Syms* __restrict vlSymsp) {
                          << 0xeU) | (IData)(vlTOPp->mkMacUnitTop__DOT__IF_IF_int_Mac_reg_B_BIT_7_THEN_INV_int_Mac_reg_ETC___05F_d778)));
     vlTOPp->mkMacUnitTop__DOT__y___05Fh91744 = ((IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh91382) 
                                                 & (IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh91381));
+    vlTOPp->mkMacUnitTop__DOT__x___05Fh216144 = ((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh215943) 
+                                                 | (IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh215944));
     vlTOPp->mkMacUnitTop__DOT__y___05Fh91653 = ((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh91743) 
                                                 | (IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh91744));
+    vlTOPp->mkMacUnitTop__DOT__IF_IF_IF_bf16_Mac_reg_B_729_BIT_6_732_THEN_IF___05FETC___05F_d2449 
+        = ((IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh216145) 
+           ^ (IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh216144));
+    vlTOPp->mkMacUnitTop__DOT__y___05Fh216098 = ((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh216144) 
+                                                 & (IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh216145));
     vlTOPp->mkMacUnitTop__DOT__y___05Fh92015 = ((IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh91653) 
                                                 & (IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh91652));
+    vlTOPp->mkMacUnitTop__DOT__x___05Fh216298 = ((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh216097) 
+                                                 | (IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh216098));
     vlTOPp->mkMacUnitTop__DOT__y___05Fh91924 = ((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh92014) 
                                                 | (IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh92015));
+    vlTOPp->mkMacUnitTop__DOT__IF_IF_IF_bf16_Mac_reg_B_729_BIT_6_732_THEN_IF___05FETC___05F_d2448 
+        = ((IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh216299) 
+           ^ (IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh216298));
+    vlTOPp->mkMacUnitTop__DOT__y___05Fh216252 = ((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh216298) 
+                                                 & (IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh216299));
     vlTOPp->mkMacUnitTop__DOT__IF_IF_int_Mac_reg_B_BIT_7_THEN_INV_int_Mac_reg_ETC___05F_d780 
         = ((((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh91923) 
              ^ (IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh91924)) 
@@ -2036,12 +3662,26 @@ VL_INLINE_OPT void Vtop::_sequent__TOP__4(Vtop__Syms* __restrict vlSymsp) {
                           << 0x10U) | (IData)(vlTOPp->mkMacUnitTop__DOT__IF_IF_int_Mac_reg_B_BIT_7_THEN_INV_int_Mac_reg_ETC___05F_d779)));
     vlTOPp->mkMacUnitTop__DOT__y___05Fh92286 = ((IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh91924) 
                                                 & (IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh91923));
+    vlTOPp->mkMacUnitTop__DOT__x___05Fh216452 = ((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh216251) 
+                                                 | (IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh216252));
     vlTOPp->mkMacUnitTop__DOT__y___05Fh92195 = ((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh92285) 
                                                 | (IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh92286));
+    vlTOPp->mkMacUnitTop__DOT__IF_IF_IF_bf16_Mac_reg_B_729_BIT_6_732_THEN_IF___05FETC___05F_d2447 
+        = ((IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh216453) 
+           ^ (IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh216452));
+    vlTOPp->mkMacUnitTop__DOT__y___05Fh216406 = ((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh216452) 
+                                                 & (IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh216453));
     vlTOPp->mkMacUnitTop__DOT__y___05Fh92557 = ((IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh92195) 
                                                 & (IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh92194));
+    vlTOPp->mkMacUnitTop__DOT__x___05Fh216606 = ((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh216405) 
+                                                 | (IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh216406));
     vlTOPp->mkMacUnitTop__DOT__y___05Fh92466 = ((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh92556) 
                                                 | (IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh92557));
+    vlTOPp->mkMacUnitTop__DOT__IF_IF_IF_bf16_Mac_reg_B_729_BIT_6_732_THEN_IF___05FETC___05F_d2446 
+        = ((IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh216607) 
+           ^ (IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh216606));
+    vlTOPp->mkMacUnitTop__DOT__y___05Fh216560 = ((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh216606) 
+                                                 & (IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh216607));
     vlTOPp->mkMacUnitTop__DOT__IF_IF_int_Mac_reg_B_BIT_7_THEN_INV_int_Mac_reg_ETC___05F_d781 
         = ((((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh92465) 
              ^ (IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh92466)) 
@@ -2050,12 +3690,26 @@ VL_INLINE_OPT void Vtop::_sequent__TOP__4(Vtop__Syms* __restrict vlSymsp) {
                           << 0x12U) | vlTOPp->mkMacUnitTop__DOT__IF_IF_int_Mac_reg_B_BIT_7_THEN_INV_int_Mac_reg_ETC___05F_d780));
     vlTOPp->mkMacUnitTop__DOT__y___05Fh92828 = ((IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh92466) 
                                                 & (IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh92465));
+    vlTOPp->mkMacUnitTop__DOT__x___05Fh216760 = ((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh216559) 
+                                                 | (IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh216560));
     vlTOPp->mkMacUnitTop__DOT__y___05Fh92737 = ((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh92827) 
                                                 | (IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh92828));
+    vlTOPp->mkMacUnitTop__DOT__IF_IF_IF_bf16_Mac_reg_B_729_BIT_6_732_THEN_IF___05FETC___05F_d2445 
+        = ((IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh216761) 
+           ^ (IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh216760));
+    vlTOPp->mkMacUnitTop__DOT__y___05Fh216714 = ((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh216760) 
+                                                 & (IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh216761));
     vlTOPp->mkMacUnitTop__DOT__y___05Fh93099 = ((IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh92737) 
                                                 & (IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh92736));
+    vlTOPp->mkMacUnitTop__DOT__x___05Fh216914 = ((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh216713) 
+                                                 | (IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh216714));
     vlTOPp->mkMacUnitTop__DOT__y___05Fh93008 = ((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh93098) 
                                                 | (IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh93099));
+    vlTOPp->mkMacUnitTop__DOT__IF_IF_IF_bf16_Mac_reg_B_729_BIT_6_732_THEN_IF___05FETC___05F_d2443 
+        = ((IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh216915) 
+           ^ (IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh216914));
+    vlTOPp->mkMacUnitTop__DOT__y___05Fh216868 = ((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh216914) 
+                                                 & (IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh216915));
     vlTOPp->mkMacUnitTop__DOT__IF_IF_int_Mac_reg_B_BIT_7_THEN_INV_int_Mac_reg_ETC___05F_d782 
         = ((((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh93007) 
              ^ (IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh93008)) 
@@ -2064,12 +3718,117 @@ VL_INLINE_OPT void Vtop::_sequent__TOP__4(Vtop__Syms* __restrict vlSymsp) {
                           << 0x14U) | vlTOPp->mkMacUnitTop__DOT__IF_IF_int_Mac_reg_B_BIT_7_THEN_INV_int_Mac_reg_ETC___05F_d781));
     vlTOPp->mkMacUnitTop__DOT__y___05Fh93370 = ((IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh93008) 
                                                 & (IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh93007));
+    vlTOPp->mkMacUnitTop__DOT__IF_IF_IF_bf16_Mac_reg_B_729_BIT_6_732_THEN_IF___05FETC___05F_d2424 
+        = ((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh216867) 
+           | (IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh216868));
     vlTOPp->mkMacUnitTop__DOT__y___05Fh93279 = ((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh93369) 
                                                 | (IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh93370));
+    if (vlTOPp->mkMacUnitTop__DOT__IF_IF_IF_bf16_Mac_reg_B_729_BIT_6_732_THEN_IF___05FETC___05F_d2424) {
+        vlTOPp->mkMacUnitTop__DOT___theResult___05F___05F_2_snd_fst___05Fh217015 
+            = vlTOPp->mkMacUnitTop__DOT__result_exponent___05F_1___05Fh217019;
+        vlTOPp->mkMacUnitTop__DOT__IF_IF_IF_IF_bf16_Mac_reg_B_729_BIT_6_732_THEN___05FETC___05F_d2489 
+            = (((IData)(vlTOPp->mkMacUnitTop__DOT__IF_IF_IF_bf16_Mac_reg_B_729_BIT_6_732_THEN_IF___05FETC___05F_d2443) 
+                << 0x16U) | (((IData)(vlTOPp->mkMacUnitTop__DOT__IF_IF_IF_bf16_Mac_reg_B_729_BIT_6_732_THEN_IF___05FETC___05F_d2445) 
+                              << 0x15U) | (((IData)(vlTOPp->mkMacUnitTop__DOT__IF_IF_IF_bf16_Mac_reg_B_729_BIT_6_732_THEN_IF___05FETC___05F_d2446) 
+                                            << 0x14U) 
+                                           | (((IData)(vlTOPp->mkMacUnitTop__DOT__IF_IF_IF_bf16_Mac_reg_B_729_BIT_6_732_THEN_IF___05FETC___05F_d2447) 
+                                               << 0x13U) 
+                                              | (((IData)(vlTOPp->mkMacUnitTop__DOT__IF_IF_IF_bf16_Mac_reg_B_729_BIT_6_732_THEN_IF___05FETC___05F_d2448) 
+                                                  << 0x12U) 
+                                                 | (((IData)(vlTOPp->mkMacUnitTop__DOT__IF_IF_IF_bf16_Mac_reg_B_729_BIT_6_732_THEN_IF___05FETC___05F_d2449) 
+                                                     << 0x11U) 
+                                                    | (((IData)(vlTOPp->mkMacUnitTop__DOT__IF_IF_IF_bf16_Mac_reg_B_729_BIT_6_732_THEN_IF___05FETC___05F_d2450) 
+                                                        << 0x10U) 
+                                                       | (((IData)(vlTOPp->mkMacUnitTop__DOT__IF_IF_IF_bf16_Mac_reg_B_729_BIT_6_732_THEN_IF___05FETC___05F_d2451) 
+                                                           << 0xfU) 
+                                                          | (((IData)(vlTOPp->mkMacUnitTop__DOT__IF_IF_IF_bf16_Mac_reg_B_729_BIT_6_732_THEN_IF___05FETC___05F_d2452) 
+                                                              << 0xeU) 
+                                                             | (((IData)(vlTOPp->mkMacUnitTop__DOT__IF_IF_IF_bf16_Mac_reg_B_729_BIT_6_732_THEN_IF___05FETC___05F_d2453) 
+                                                                 << 0xdU) 
+                                                                | (((IData)(vlTOPp->mkMacUnitTop__DOT__IF_IF_IF_bf16_Mac_reg_B_729_BIT_6_732_THEN_IF___05FETC___05F_d2454) 
+                                                                    << 0xcU) 
+                                                                   | (((IData)(vlTOPp->mkMacUnitTop__DOT__IF_IF_IF_bf16_Mac_reg_B_729_BIT_6_732_THEN_IF___05FETC___05F_d2455) 
+                                                                       << 0xbU) 
+                                                                      | (((IData)(vlTOPp->mkMacUnitTop__DOT__IF_IF_IF_bf16_Mac_reg_B_729_BIT_6_732_THEN_IF___05FETC___05F_d2456) 
+                                                                          << 0xaU) 
+                                                                         | (((IData)(vlTOPp->mkMacUnitTop__DOT__IF_IF_IF_bf16_Mac_reg_B_729_BIT_6_732_THEN_IF___05FETC___05F_d2457) 
+                                                                             << 9U) 
+                                                                            | (((IData)(vlTOPp->mkMacUnitTop__DOT__IF_IF_IF_bf16_Mac_reg_B_729_BIT_6_732_THEN_IF___05FETC___05F_d2458) 
+                                                                                << 8U) 
+                                                                               | (((IData)(vlTOPp->mkMacUnitTop__DOT__IF_IF_IF_bf16_Mac_reg_B_729_BIT_6_732_THEN_IF___05FETC___05F_d2459) 
+                                                                                << 7U) 
+                                                                                | (((IData)(vlTOPp->mkMacUnitTop__DOT__IF_IF_IF_bf16_Mac_reg_B_729_BIT_6_732_THEN_IF___05FETC___05F_d2460) 
+                                                                                << 6U) 
+                                                                                | (((IData)(vlTOPp->mkMacUnitTop__DOT__IF_IF_IF_bf16_Mac_reg_B_729_BIT_6_732_THEN_IF___05FETC___05F_d2461) 
+                                                                                << 5U) 
+                                                                                | (((IData)(vlTOPp->mkMacUnitTop__DOT__IF_IF_IF_bf16_Mac_reg_B_729_BIT_6_732_THEN_IF___05FETC___05F_d2462) 
+                                                                                << 4U) 
+                                                                                | (((IData)(vlTOPp->mkMacUnitTop__DOT__IF_IF_IF_bf16_Mac_reg_B_729_BIT_6_732_THEN_IF___05FETC___05F_d2463) 
+                                                                                << 3U) 
+                                                                                | (((IData)(vlTOPp->mkMacUnitTop__DOT__IF_IF_IF_bf16_Mac_reg_B_729_BIT_6_732_THEN_IF___05FETC___05F_d2464) 
+                                                                                << 2U) 
+                                                                                | (((IData)(vlTOPp->mkMacUnitTop__DOT__IF_IF_IF_bf16_Mac_reg_B_729_BIT_6_732_THEN_IF___05FETC___05F_d2465) 
+                                                                                << 1U) 
+                                                                                | (IData)(vlTOPp->mkMacUnitTop__DOT__IF_IF_IF_bf16_Mac_reg_B_729_BIT_6_732_THEN_IF___05FETC___05F_d2466)))))))))))))))))))))));
+    } else {
+        vlTOPp->mkMacUnitTop__DOT___theResult___05F___05F_2_snd_fst___05Fh217015 
+            = vlTOPp->mkMacUnitTop__DOT__result_exponent___05Fh175530;
+        vlTOPp->mkMacUnitTop__DOT__IF_IF_IF_IF_bf16_Mac_reg_B_729_BIT_6_732_THEN___05FETC___05F_d2489 
+            = (((IData)(vlTOPp->mkMacUnitTop__DOT__IF_IF_IF_bf16_Mac_reg_B_729_BIT_6_732_THEN_IF___05FETC___05F_d2445) 
+                << 0x16U) | (((IData)(vlTOPp->mkMacUnitTop__DOT__IF_IF_IF_bf16_Mac_reg_B_729_BIT_6_732_THEN_IF___05FETC___05F_d2446) 
+                              << 0x15U) | (((IData)(vlTOPp->mkMacUnitTop__DOT__IF_IF_IF_bf16_Mac_reg_B_729_BIT_6_732_THEN_IF___05FETC___05F_d2447) 
+                                            << 0x14U) 
+                                           | (((IData)(vlTOPp->mkMacUnitTop__DOT__IF_IF_IF_bf16_Mac_reg_B_729_BIT_6_732_THEN_IF___05FETC___05F_d2448) 
+                                               << 0x13U) 
+                                              | (((IData)(vlTOPp->mkMacUnitTop__DOT__IF_IF_IF_bf16_Mac_reg_B_729_BIT_6_732_THEN_IF___05FETC___05F_d2449) 
+                                                  << 0x12U) 
+                                                 | (((IData)(vlTOPp->mkMacUnitTop__DOT__IF_IF_IF_bf16_Mac_reg_B_729_BIT_6_732_THEN_IF___05FETC___05F_d2450) 
+                                                     << 0x11U) 
+                                                    | (((IData)(vlTOPp->mkMacUnitTop__DOT__IF_IF_IF_bf16_Mac_reg_B_729_BIT_6_732_THEN_IF___05FETC___05F_d2451) 
+                                                        << 0x10U) 
+                                                       | (((IData)(vlTOPp->mkMacUnitTop__DOT__IF_IF_IF_bf16_Mac_reg_B_729_BIT_6_732_THEN_IF___05FETC___05F_d2452) 
+                                                           << 0xfU) 
+                                                          | (((IData)(vlTOPp->mkMacUnitTop__DOT__IF_IF_IF_bf16_Mac_reg_B_729_BIT_6_732_THEN_IF___05FETC___05F_d2453) 
+                                                              << 0xeU) 
+                                                             | (((IData)(vlTOPp->mkMacUnitTop__DOT__IF_IF_IF_bf16_Mac_reg_B_729_BIT_6_732_THEN_IF___05FETC___05F_d2454) 
+                                                                 << 0xdU) 
+                                                                | (((IData)(vlTOPp->mkMacUnitTop__DOT__IF_IF_IF_bf16_Mac_reg_B_729_BIT_6_732_THEN_IF___05FETC___05F_d2455) 
+                                                                    << 0xcU) 
+                                                                   | (((IData)(vlTOPp->mkMacUnitTop__DOT__IF_IF_IF_bf16_Mac_reg_B_729_BIT_6_732_THEN_IF___05FETC___05F_d2456) 
+                                                                       << 0xbU) 
+                                                                      | (((IData)(vlTOPp->mkMacUnitTop__DOT__IF_IF_IF_bf16_Mac_reg_B_729_BIT_6_732_THEN_IF___05FETC___05F_d2457) 
+                                                                          << 0xaU) 
+                                                                         | (((IData)(vlTOPp->mkMacUnitTop__DOT__IF_IF_IF_bf16_Mac_reg_B_729_BIT_6_732_THEN_IF___05FETC___05F_d2458) 
+                                                                             << 9U) 
+                                                                            | (((IData)(vlTOPp->mkMacUnitTop__DOT__IF_IF_IF_bf16_Mac_reg_B_729_BIT_6_732_THEN_IF___05FETC___05F_d2459) 
+                                                                                << 8U) 
+                                                                               | (((IData)(vlTOPp->mkMacUnitTop__DOT__IF_IF_IF_bf16_Mac_reg_B_729_BIT_6_732_THEN_IF___05FETC___05F_d2460) 
+                                                                                << 7U) 
+                                                                                | (((IData)(vlTOPp->mkMacUnitTop__DOT__IF_IF_IF_bf16_Mac_reg_B_729_BIT_6_732_THEN_IF___05FETC___05F_d2461) 
+                                                                                << 6U) 
+                                                                                | (((IData)(vlTOPp->mkMacUnitTop__DOT__IF_IF_IF_bf16_Mac_reg_B_729_BIT_6_732_THEN_IF___05FETC___05F_d2462) 
+                                                                                << 5U) 
+                                                                                | (((IData)(vlTOPp->mkMacUnitTop__DOT__IF_IF_IF_bf16_Mac_reg_B_729_BIT_6_732_THEN_IF___05FETC___05F_d2463) 
+                                                                                << 4U) 
+                                                                                | (((IData)(vlTOPp->mkMacUnitTop__DOT__IF_IF_IF_bf16_Mac_reg_B_729_BIT_6_732_THEN_IF___05FETC___05F_d2464) 
+                                                                                << 3U) 
+                                                                                | (((IData)(vlTOPp->mkMacUnitTop__DOT__IF_IF_IF_bf16_Mac_reg_B_729_BIT_6_732_THEN_IF___05FETC___05F_d2465) 
+                                                                                << 2U) 
+                                                                                | (((IData)(vlTOPp->mkMacUnitTop__DOT__IF_IF_IF_bf16_Mac_reg_B_729_BIT_6_732_THEN_IF___05FETC___05F_d2466) 
+                                                                                << 1U) 
+                                                                                | (1U 
+                                                                                & vlTOPp->mkMacUnitTop__DOT__IF_IF_IF_IF_bf16_Mac_reg_B_729_BIT_6_732_THEN___05FETC___05Fq40)))))))))))))))))))))));
+    }
     vlTOPp->mkMacUnitTop__DOT__y___05Fh93641 = ((IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh93279) 
                                                 & (IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh93278));
+    vlTOPp->mkMacUnitTop__DOT__result_mantissa1___05Fh175541 
+        = ((((~ (IData)(vlTOPp->mkMacUnitTop__DOT__IF_IF_IF_bf16_Mac_reg_B_729_BIT_6_732_THEN_IF___05FETC___05F_d2424)) 
+             & (IData)(vlTOPp->mkMacUnitTop__DOT__IF_IF_IF_bf16_Mac_reg_B_729_BIT_6_732_THEN_IF___05FETC___05F_d2443)) 
+            << 0x17U) | vlTOPp->mkMacUnitTop__DOT__IF_IF_IF_IF_bf16_Mac_reg_B_729_BIT_6_732_THEN___05FETC___05F_d2489);
     vlTOPp->mkMacUnitTop__DOT__y___05Fh93550 = ((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh93640) 
                                                 | (IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh93641));
+    vlTOPp->mkMacUnitTop__DOT__result_mantissa1___05F_1___05Fh220004 
+        = (0xffffffU & ((IData)(1U) + vlTOPp->mkMacUnitTop__DOT__result_mantissa1___05Fh175541));
     vlTOPp->mkMacUnitTop__DOT__IF_IF_int_Mac_reg_B_BIT_7_THEN_INV_int_Mac_reg_ETC___05F_d783 
         = ((((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh93549) 
              ^ (IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh93550)) 
@@ -2078,8 +3837,18 @@ VL_INLINE_OPT void Vtop::_sequent__TOP__4(Vtop__Syms* __restrict vlSymsp) {
                           << 0x16U) | vlTOPp->mkMacUnitTop__DOT__IF_IF_int_Mac_reg_B_BIT_7_THEN_INV_int_Mac_reg_ETC___05F_d782));
     vlTOPp->mkMacUnitTop__DOT__y___05Fh93912 = ((IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh93550) 
                                                 & (IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh93549));
+    vlTOPp->mkMacUnitTop__DOT__IF_IF_IF_IF_IF_bf16_Mac_reg_B_729_BIT_6_732_TH_ETC___05F_d2492 
+        = ((1U & ((IData)(vlTOPp->mkMacUnitTop__DOT__IF_IF_IF_bf16_Mac_reg_B_729_BIT_6_732_THEN_IF___05FETC___05F_d2424)
+                   ? vlTOPp->mkMacUnitTop__DOT__IF_IF_IF_IF_bf16_Mac_reg_B_729_BIT_6_732_THEN___05FETC___05Fq40
+                   : (IData)(vlTOPp->mkMacUnitTop__DOT___theResult___05F_fst___05Fh213218)))
+            ? vlTOPp->mkMacUnitTop__DOT__result_mantissa1___05F_1___05Fh220004
+            : vlTOPp->mkMacUnitTop__DOT__result_mantissa1___05Fh175541);
     vlTOPp->mkMacUnitTop__DOT__y___05Fh93821 = ((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh93911) 
                                                 | (IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh93912));
+    vlTOPp->mkMacUnitTop__DOT__bf16_Mac_result_D_IN 
+        = (((IData)(vlTOPp->mkMacUnitTop__DOT__sign_A___05Fh175519) 
+            << 0x1fU) | (((IData)(vlTOPp->mkMacUnitTop__DOT___theResult___05F___05F_2_snd_fst___05Fh217015) 
+                          << 0x17U) | (0x7fffffU & vlTOPp->mkMacUnitTop__DOT__IF_IF_IF_IF_IF_bf16_Mac_reg_B_729_BIT_6_732_TH_ETC___05F_d2492)));
     vlTOPp->mkMacUnitTop__DOT__y___05Fh94183 = ((IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh93821) 
                                                 & (IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh93820));
     vlTOPp->mkMacUnitTop__DOT__y___05Fh94092 = ((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh94182) 
@@ -2208,7 +3977,7 @@ VL_INLINE_OPT void Vtop::_sequent__TOP__4(Vtop__Syms* __restrict vlSymsp) {
                                                     ^ 
                                                     (vlTOPp->mkMacUnitTop__DOT__IF_int_Mac_reg_A_BIT_7_THEN_INV_SEXT_int_Mac_r_ETC___05F_d163 
                                                      >> 0x15U)));
-    vlTOPp->mkMacUnitTop__DOT__IF_IF_IF_int_Mac_reg_B_BIT_7_THEN_INV_int_Mac___05FETC___05Fq15 
+    vlTOPp->mkMacUnitTop__DOT__IF_IF_IF_int_Mac_reg_B_BIT_7_THEN_INV_int_Mac___05FETC___05Fq16 
         = ((1U & vlTOPp->mkMacUnitTop__DOT__IF_IF_int_Mac_reg_B_BIT_7_THEN_INV_int_Mac_reg_ETC___05F_d788)
             ? 1U : 0U);
     vlTOPp->mkMacUnitTop__DOT__x___05Fh111890 = (1U 
@@ -2425,7 +4194,7 @@ VL_INLINE_OPT void Vtop::_sequent__TOP__4(Vtop__Syms* __restrict vlSymsp) {
                                                      >> 5U) 
                                                     & (vlTOPp->mkMacUnitTop__DOT__IF_int_Mac_reg_A_BIT_7_THEN_INV_SEXT_int_Mac_r_ETC___05F_d163 
                                                        >> 1U)));
-    vlTOPp->mkMacUnitTop__DOT__IF_IF_IF_int_Mac_reg_B_BIT_7_THEN_INV_int_Mac___05FETC___05Fq14 
+    vlTOPp->mkMacUnitTop__DOT__IF_IF_IF_int_Mac_reg_B_BIT_7_THEN_INV_int_Mac___05FETC___05Fq15 
         = ((1U & ((vlTOPp->mkMacUnitTop__DOT__IF_IF_int_Mac_reg_B_BIT_7_THEN_INV_int_Mac_reg_ETC___05F_d788 
                    >> 4U) & vlTOPp->mkMacUnitTop__DOT__IF_int_Mac_reg_A_BIT_7_THEN_INV_SEXT_int_Mac_r_ETC___05F_d163))
             ? 0x20ULL : 0ULL);
@@ -2437,14 +4206,14 @@ VL_INLINE_OPT void Vtop::_sequent__TOP__4(Vtop__Syms* __restrict vlSymsp) {
                                                      >> 1U)));
     vlTOPp->mkMacUnitTop__DOT__IF_IF_int_Mac_reg_B_BIT_7_THEN_INV_int_Mac_reg_ETC___05F_d958 
         = ((0x20U & (((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh106381) 
-                      ^ (IData)((vlTOPp->mkMacUnitTop__DOT__IF_IF_IF_int_Mac_reg_B_BIT_7_THEN_INV_int_Mac___05FETC___05Fq14 
+                      ^ (IData)((vlTOPp->mkMacUnitTop__DOT__IF_IF_IF_int_Mac_reg_B_BIT_7_THEN_INV_int_Mac___05FETC___05Fq15 
                                  >> 5U))) << 5U)) | 
            ((0x10U & ((0xfffffff0U & vlTOPp->mkMacUnitTop__DOT__IF_IF_int_Mac_reg_B_BIT_7_THEN_INV_int_Mac_reg_ETC___05F_d788) 
                       ^ (vlTOPp->mkMacUnitTop__DOT__IF_int_Mac_reg_A_BIT_7_THEN_INV_SEXT_int_Mac_r_ETC___05F_d163 
                          << 4U))) | ((0xeU & vlTOPp->mkMacUnitTop__DOT__IF_IF_int_Mac_reg_B_BIT_7_THEN_INV_int_Mac_reg_ETC___05F_d788) 
-                                     | (1U & vlTOPp->mkMacUnitTop__DOT__IF_IF_IF_int_Mac_reg_B_BIT_7_THEN_INV_int_Mac___05FETC___05Fq15))));
+                                     | (1U & vlTOPp->mkMacUnitTop__DOT__IF_IF_IF_int_Mac_reg_B_BIT_7_THEN_INV_int_Mac___05FETC___05Fq16))));
     vlTOPp->mkMacUnitTop__DOT__y___05Fh106741 = ((IData)(
-                                                         (vlTOPp->mkMacUnitTop__DOT__IF_IF_IF_int_Mac_reg_B_BIT_7_THEN_INV_int_Mac___05FETC___05Fq14 
+                                                         (vlTOPp->mkMacUnitTop__DOT__IF_IF_IF_int_Mac_reg_B_BIT_7_THEN_INV_int_Mac___05FETC___05Fq15 
                                                           >> 5U)) 
                                                  & (IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh106381));
     vlTOPp->mkMacUnitTop__DOT__y___05Fh106650 = ((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh106740) 
@@ -2697,7 +4466,7 @@ VL_INLINE_OPT void Vtop::_sequent__TOP__4(Vtop__Syms* __restrict vlSymsp) {
                                                      >> 0x19U) 
                                                     & (vlTOPp->mkMacUnitTop__DOT__IF_int_Mac_reg_A_BIT_7_THEN_INV_SEXT_int_Mac_r_ETC___05F_d163 
                                                        >> 0x14U)));
-    vlTOPp->mkMacUnitTop__DOT__IF_IF_IF_int_Mac_reg_B_BIT_7_THEN_INV_int_Mac___05FETC___05Fq17 
+    vlTOPp->mkMacUnitTop__DOT__IF_IF_IF_int_Mac_reg_B_BIT_7_THEN_INV_int_Mac___05FETC___05Fq18 
         = ((1U & vlTOPp->mkMacUnitTop__DOT__IF_IF_int_Mac_reg_B_BIT_7_THEN_INV_int_Mac_reg_ETC___05F_d972)
             ? 1U : 0U);
     vlTOPp->mkMacUnitTop__DOT__x___05Fh129502 = (1U 
@@ -2909,7 +4678,7 @@ VL_INLINE_OPT void Vtop::_sequent__TOP__4(Vtop__Syms* __restrict vlSymsp) {
                                                      >> 6U) 
                                                     & (vlTOPp->mkMacUnitTop__DOT__IF_int_Mac_reg_A_BIT_7_THEN_INV_SEXT_int_Mac_r_ETC___05F_d163 
                                                        >> 1U)));
-    vlTOPp->mkMacUnitTop__DOT__IF_IF_IF_int_Mac_reg_B_BIT_7_THEN_INV_int_Mac___05FETC___05Fq16 
+    vlTOPp->mkMacUnitTop__DOT__IF_IF_IF_int_Mac_reg_B_BIT_7_THEN_INV_int_Mac___05FETC___05Fq17 
         = ((1U & ((vlTOPp->mkMacUnitTop__DOT__IF_IF_int_Mac_reg_B_BIT_7_THEN_INV_int_Mac_reg_ETC___05F_d972 
                    >> 5U) & vlTOPp->mkMacUnitTop__DOT__IF_int_Mac_reg_A_BIT_7_THEN_INV_SEXT_int_Mac_r_ETC___05F_d163))
             ? 0x40ULL : 0ULL);
@@ -2920,7 +4689,7 @@ VL_INLINE_OPT void Vtop::_sequent__TOP__4(Vtop__Syms* __restrict vlSymsp) {
                                                     (vlTOPp->mkMacUnitTop__DOT__IF_int_Mac_reg_A_BIT_7_THEN_INV_SEXT_int_Mac_r_ETC___05F_d163 
                                                      >> 1U)));
     vlTOPp->mkMacUnitTop__DOT__y___05Fh124715 = ((IData)(
-                                                         (vlTOPp->mkMacUnitTop__DOT__IF_IF_IF_int_Mac_reg_B_BIT_7_THEN_INV_int_Mac___05FETC___05Fq16 
+                                                         (vlTOPp->mkMacUnitTop__DOT__IF_IF_IF_int_Mac_reg_B_BIT_7_THEN_INV_int_Mac___05FETC___05Fq17 
                                                           >> 6U)) 
                                                  & (IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh124355));
     vlTOPp->mkMacUnitTop__DOT__y___05Fh124624 = ((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh124714) 
@@ -2929,7 +4698,7 @@ VL_INLINE_OPT void Vtop::_sequent__TOP__4(Vtop__Syms* __restrict vlSymsp) {
         = ((((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh124623) 
              ^ (IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh124624)) 
             << 7U) | ((0x40U & (((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh124355) 
-                                 ^ (IData)((vlTOPp->mkMacUnitTop__DOT__IF_IF_IF_int_Mac_reg_B_BIT_7_THEN_INV_int_Mac___05FETC___05Fq16 
+                                 ^ (IData)((vlTOPp->mkMacUnitTop__DOT__IF_IF_IF_int_Mac_reg_B_BIT_7_THEN_INV_int_Mac___05FETC___05Fq17 
                                             >> 6U))) 
                                 << 6U)) | ((0x20U & 
                                             ((0xffffffe0U 
@@ -2939,7 +4708,7 @@ VL_INLINE_OPT void Vtop::_sequent__TOP__4(Vtop__Syms* __restrict vlSymsp) {
                                            | ((0x1eU 
                                                & vlTOPp->mkMacUnitTop__DOT__IF_IF_int_Mac_reg_B_BIT_7_THEN_INV_int_Mac_reg_ETC___05F_d972) 
                                               | (1U 
-                                                 & vlTOPp->mkMacUnitTop__DOT__IF_IF_IF_int_Mac_reg_B_BIT_7_THEN_INV_int_Mac___05FETC___05Fq17)))));
+                                                 & vlTOPp->mkMacUnitTop__DOT__IF_IF_IF_int_Mac_reg_B_BIT_7_THEN_INV_int_Mac___05FETC___05Fq18)))));
     vlTOPp->mkMacUnitTop__DOT__y___05Fh124987 = ((IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh124624) 
                                                  & (IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh124623));
     vlTOPp->mkMacUnitTop__DOT__y___05Fh124896 = ((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh124986) 
@@ -3178,7 +4947,7 @@ VL_INLINE_OPT void Vtop::_sequent__TOP__4(Vtop__Syms* __restrict vlSymsp) {
                                                      >> 0x19U) 
                                                     & (vlTOPp->mkMacUnitTop__DOT__IF_int_Mac_reg_A_BIT_7_THEN_INV_SEXT_int_Mac_r_ETC___05F_d163 
                                                        >> 0x13U)));
-    vlTOPp->mkMacUnitTop__DOT__IF_IF_IF_int_Mac_reg_B_BIT_7_THEN_INV_int_Mac___05FETC___05Fq19 
+    vlTOPp->mkMacUnitTop__DOT__IF_IF_IF_int_Mac_reg_B_BIT_7_THEN_INV_int_Mac___05FETC___05Fq20 
         = ((1U & vlTOPp->mkMacUnitTop__DOT__IF_IF_int_Mac_reg_B_BIT_7_THEN_INV_int_Mac_reg_ETC___05F_d1149)
             ? 1U : 0U);
     vlTOPp->mkMacUnitTop__DOT__x___05Fh147200 = (1U 
@@ -3379,7 +5148,7 @@ VL_INLINE_OPT void Vtop::_sequent__TOP__4(Vtop__Syms* __restrict vlSymsp) {
                                                      >> 7U) 
                                                     & (vlTOPp->mkMacUnitTop__DOT__IF_int_Mac_reg_A_BIT_7_THEN_INV_SEXT_int_Mac_r_ETC___05F_d163 
                                                        >> 1U)));
-    vlTOPp->mkMacUnitTop__DOT__IF_IF_IF_int_Mac_reg_B_BIT_7_THEN_INV_int_Mac___05FETC___05Fq18 
+    vlTOPp->mkMacUnitTop__DOT__IF_IF_IF_int_Mac_reg_B_BIT_7_THEN_INV_int_Mac___05FETC___05Fq19 
         = ((1U & ((vlTOPp->mkMacUnitTop__DOT__IF_IF_int_Mac_reg_B_BIT_7_THEN_INV_int_Mac_reg_ETC___05F_d1149 
                    >> 6U) & vlTOPp->mkMacUnitTop__DOT__IF_int_Mac_reg_A_BIT_7_THEN_INV_SEXT_int_Mac_r_ETC___05F_d163))
             ? 0x80ULL : 0ULL);
@@ -3391,14 +5160,14 @@ VL_INLINE_OPT void Vtop::_sequent__TOP__4(Vtop__Syms* __restrict vlSymsp) {
                                                      >> 1U)));
     vlTOPp->mkMacUnitTop__DOT__IF_IF_int_Mac_reg_B_BIT_7_THEN_INV_int_Mac_reg_ETC___05F_d1307 
         = ((0x80U & (((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh142324) 
-                      ^ (IData)((vlTOPp->mkMacUnitTop__DOT__IF_IF_IF_int_Mac_reg_B_BIT_7_THEN_INV_int_Mac___05FETC___05Fq18 
+                      ^ (IData)((vlTOPp->mkMacUnitTop__DOT__IF_IF_IF_int_Mac_reg_B_BIT_7_THEN_INV_int_Mac___05FETC___05Fq19 
                                  >> 7U))) << 7U)) | 
            ((0x40U & ((0xffffffc0U & vlTOPp->mkMacUnitTop__DOT__IF_IF_int_Mac_reg_B_BIT_7_THEN_INV_int_Mac_reg_ETC___05F_d1149) 
                       ^ (vlTOPp->mkMacUnitTop__DOT__IF_int_Mac_reg_A_BIT_7_THEN_INV_SEXT_int_Mac_r_ETC___05F_d163 
                          << 6U))) | ((0x3eU & vlTOPp->mkMacUnitTop__DOT__IF_IF_int_Mac_reg_B_BIT_7_THEN_INV_int_Mac_reg_ETC___05F_d1149) 
-                                     | (1U & vlTOPp->mkMacUnitTop__DOT__IF_IF_IF_int_Mac_reg_B_BIT_7_THEN_INV_int_Mac___05FETC___05Fq19))));
+                                     | (1U & vlTOPp->mkMacUnitTop__DOT__IF_IF_IF_int_Mac_reg_B_BIT_7_THEN_INV_int_Mac___05FETC___05Fq20))));
     vlTOPp->mkMacUnitTop__DOT__y___05Fh142684 = ((IData)(
-                                                         (vlTOPp->mkMacUnitTop__DOT__IF_IF_IF_int_Mac_reg_B_BIT_7_THEN_INV_int_Mac___05FETC___05Fq18 
+                                                         (vlTOPp->mkMacUnitTop__DOT__IF_IF_IF_int_Mac_reg_B_BIT_7_THEN_INV_int_Mac___05FETC___05Fq19 
                                                           >> 7U)) 
                                                  & (IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh142324));
     vlTOPp->mkMacUnitTop__DOT__y___05Fh142593 = ((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh142683) 
@@ -3632,7 +5401,7 @@ VL_INLINE_OPT void Vtop::_sequent__TOP__4(Vtop__Syms* __restrict vlSymsp) {
                                                     ^ 
                                                     (vlTOPp->mkMacUnitTop__DOT__IF_int_Mac_reg_A_BIT_7_THEN_INV_SEXT_int_Mac_r_ETC___05F_d163 
                                                      >> 0x13U)));
-    vlTOPp->mkMacUnitTop__DOT__IF_IF_IF_int_Mac_reg_B_BIT_7_THEN_INV_int_Mac___05FETC___05Fq21 
+    vlTOPp->mkMacUnitTop__DOT__IF_IF_IF_int_Mac_reg_B_BIT_7_THEN_INV_int_Mac___05FETC___05Fq22 
         = ((1U & vlTOPp->mkMacUnitTop__DOT__IF_IF_int_Mac_reg_B_BIT_7_THEN_INV_int_Mac_reg_ETC___05F_d1320)
             ? 1U : 0U);
     vlTOPp->mkMacUnitTop__DOT__x___05Fh165255 = (1U 
@@ -3827,7 +5596,7 @@ VL_INLINE_OPT void Vtop::_sequent__TOP__4(Vtop__Syms* __restrict vlSymsp) {
                                                      >> 8U) 
                                                     & (vlTOPp->mkMacUnitTop__DOT__IF_int_Mac_reg_A_BIT_7_THEN_INV_SEXT_int_Mac_r_ETC___05F_d163 
                                                        >> 1U)));
-    vlTOPp->mkMacUnitTop__DOT__IF_IF_IF_int_Mac_reg_B_BIT_7_THEN_INV_int_Mac___05FETC___05Fq20 
+    vlTOPp->mkMacUnitTop__DOT__IF_IF_IF_int_Mac_reg_B_BIT_7_THEN_INV_int_Mac___05FETC___05Fq21 
         = ((1U & ((vlTOPp->mkMacUnitTop__DOT__IF_IF_int_Mac_reg_B_BIT_7_THEN_INV_int_Mac_reg_ETC___05F_d1320 
                    >> 7U) & vlTOPp->mkMacUnitTop__DOT__IF_int_Mac_reg_A_BIT_7_THEN_INV_SEXT_int_Mac_r_ETC___05F_d163))
             ? 0x100ULL : 0ULL);
@@ -3838,7 +5607,7 @@ VL_INLINE_OPT void Vtop::_sequent__TOP__4(Vtop__Syms* __restrict vlSymsp) {
                                                     (vlTOPp->mkMacUnitTop__DOT__IF_int_Mac_reg_A_BIT_7_THEN_INV_SEXT_int_Mac_r_ETC___05F_d163 
                                                      >> 1U)));
     vlTOPp->mkMacUnitTop__DOT__y___05Fh160648 = ((IData)(
-                                                         (vlTOPp->mkMacUnitTop__DOT__IF_IF_IF_int_Mac_reg_B_BIT_7_THEN_INV_int_Mac___05FETC___05Fq20 
+                                                         (vlTOPp->mkMacUnitTop__DOT__IF_IF_IF_int_Mac_reg_B_BIT_7_THEN_INV_int_Mac___05FETC___05Fq21 
                                                           >> 8U)) 
                                                  & (IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh160288));
     vlTOPp->mkMacUnitTop__DOT__y___05Fh160557 = ((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh160647) 
@@ -3847,7 +5616,7 @@ VL_INLINE_OPT void Vtop::_sequent__TOP__4(Vtop__Syms* __restrict vlSymsp) {
         = ((((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh160556) 
              ^ (IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh160557)) 
             << 9U) | ((0x100U & (((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh160288) 
-                                  ^ (IData)((vlTOPp->mkMacUnitTop__DOT__IF_IF_IF_int_Mac_reg_B_BIT_7_THEN_INV_int_Mac___05FETC___05Fq20 
+                                  ^ (IData)((vlTOPp->mkMacUnitTop__DOT__IF_IF_IF_int_Mac_reg_B_BIT_7_THEN_INV_int_Mac___05FETC___05Fq21 
                                              >> 8U))) 
                                  << 8U)) | ((0x80U 
                                              & ((0xffffff80U 
@@ -3857,7 +5626,7 @@ VL_INLINE_OPT void Vtop::_sequent__TOP__4(Vtop__Syms* __restrict vlSymsp) {
                                             | ((0x7eU 
                                                 & vlTOPp->mkMacUnitTop__DOT__IF_IF_int_Mac_reg_B_BIT_7_THEN_INV_int_Mac_reg_ETC___05F_d1320) 
                                                | (1U 
-                                                  & vlTOPp->mkMacUnitTop__DOT__IF_IF_IF_int_Mac_reg_B_BIT_7_THEN_INV_int_Mac___05FETC___05Fq21)))));
+                                                  & vlTOPp->mkMacUnitTop__DOT__IF_IF_IF_int_Mac_reg_B_BIT_7_THEN_INV_int_Mac___05FETC___05Fq22)))));
     vlTOPp->mkMacUnitTop__DOT__y___05Fh160920 = ((IData)(vlTOPp->mkMacUnitTop__DOT__y___05Fh160557) 
                                                  & (IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh160556));
     vlTOPp->mkMacUnitTop__DOT__y___05Fh160829 = ((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh160919) 
@@ -4083,7 +5852,7 @@ VL_INLINE_OPT void Vtop::_sequent__TOP__4(Vtop__Syms* __restrict vlSymsp) {
                                                  & ((vlTOPp->mkMacUnitTop__DOT__IF_NOT_int_Mac_reg_A_BIT_7_EQ_int_Mac_reg_B_BI_ETC___05F_d1487 
                                                      ^ vlTOPp->mkMacUnitTop__DOT__int_Mac_reg_C) 
                                                     >> 0x18U));
-    vlTOPp->mkMacUnitTop__DOT__IF_IF_NOT_int_Mac_reg_A_BIT_7_EQ_int_Mac_reg_B_ETC___05Fq23 
+    vlTOPp->mkMacUnitTop__DOT__IF_IF_NOT_int_Mac_reg_A_BIT_7_EQ_int_Mac_reg_B_ETC___05Fq41 
         = ((1U & (vlTOPp->mkMacUnitTop__DOT__IF_NOT_int_Mac_reg_A_BIT_7_EQ_int_Mac_reg_B_BI_ETC___05F_d1487 
                   ^ vlTOPp->mkMacUnitTop__DOT__int_Mac_reg_C))
             ? 1U : 0U);
@@ -4267,7 +6036,7 @@ VL_INLINE_OPT void Vtop::_sequent__TOP__4(Vtop__Syms* __restrict vlSymsp) {
                                                  & ((vlTOPp->mkMacUnitTop__DOT__IF_NOT_int_Mac_reg_A_BIT_7_EQ_int_Mac_reg_B_BI_ETC___05F_d1487 
                                                      & vlTOPp->mkMacUnitTop__DOT__int_Mac_reg_C) 
                                                     >> 1U));
-    vlTOPp->mkMacUnitTop__DOT__IF_IF_NOT_int_Mac_reg_A_BIT_7_EQ_int_Mac_reg_B_ETC___05Fq22 
+    vlTOPp->mkMacUnitTop__DOT__IF_IF_NOT_int_Mac_reg_A_BIT_7_EQ_int_Mac_reg_B_ETC___05Fq23 
         = ((1U & (vlTOPp->mkMacUnitTop__DOT__IF_NOT_int_Mac_reg_A_BIT_7_EQ_int_Mac_reg_B_BI_ETC___05F_d1487 
                   & vlTOPp->mkMacUnitTop__DOT__int_Mac_reg_C))
             ? 2ULL : 0ULL);
@@ -4277,11 +6046,11 @@ VL_INLINE_OPT void Vtop::_sequent__TOP__4(Vtop__Syms* __restrict vlSymsp) {
                                                     >> 1U));
     vlTOPp->mkMacUnitTop__DOT__IF_NOT_int_Mac_reg_A_BIT_7_EQ_int_Mac_reg_B_BI_ETC___05F_d1711 
         = ((2U & (((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh166860) 
-                   ^ (IData)((vlTOPp->mkMacUnitTop__DOT__IF_IF_NOT_int_Mac_reg_A_BIT_7_EQ_int_Mac_reg_B_ETC___05Fq22 
+                   ^ (IData)((vlTOPp->mkMacUnitTop__DOT__IF_IF_NOT_int_Mac_reg_A_BIT_7_EQ_int_Mac_reg_B_ETC___05Fq23 
                               >> 1U))) << 1U)) | (1U 
-                                                  & vlTOPp->mkMacUnitTop__DOT__IF_IF_NOT_int_Mac_reg_A_BIT_7_EQ_int_Mac_reg_B_ETC___05Fq23));
+                                                  & vlTOPp->mkMacUnitTop__DOT__IF_IF_NOT_int_Mac_reg_A_BIT_7_EQ_int_Mac_reg_B_ETC___05Fq41));
     vlTOPp->mkMacUnitTop__DOT__y___05Fh167224 = ((IData)(
-                                                         (vlTOPp->mkMacUnitTop__DOT__IF_IF_NOT_int_Mac_reg_A_BIT_7_EQ_int_Mac_reg_B_ETC___05Fq22 
+                                                         (vlTOPp->mkMacUnitTop__DOT__IF_IF_NOT_int_Mac_reg_A_BIT_7_EQ_int_Mac_reg_B_ETC___05Fq23 
                                                           >> 1U)) 
                                                  & (IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh166860));
     vlTOPp->mkMacUnitTop__DOT__y___05Fh167132 = ((IData)(vlTOPp->mkMacUnitTop__DOT__x___05Fh167223) 
@@ -4498,15 +6267,15 @@ VL_INLINE_OPT void Vtop::_combo__TOP__5(Vtop__Syms* __restrict vlSymsp) {
     VL_DEBUG_IF(VL_DBG_MSGF("+    Vtop::_combo__TOP__5\n"); );
     Vtop* const __restrict vlTOPp VL_ATTR_UNUSED = vlSymsp->TOPp;
     // Body
-    vlTOPp->mkMacUnitTop__DOT__bf16_Mac_reg_B_D_IN 
-        = vlTOPp->load_B_b;
-    vlTOPp->mkMacUnitTop__DOT__bf16_Mac_reg_C_D_IN 
-        = vlTOPp->load_C_c;
     vlTOPp->mkMacUnitTop__DOT__reg_s1_or_s2_EN = vlTOPp->EN_load_s1_or_s2;
     vlTOPp->mkMacUnitTop__DOT__reg_s1_or_s2_D_IN = vlTOPp->load_s1_or_s2_sel;
+    vlTOPp->mkMacUnitTop__DOT__bf16_Mac_reg_C_D_IN 
+        = vlTOPp->load_C_c;
+    vlTOPp->mkMacUnitTop__DOT__int_Mac_reg_C_D_IN = vlTOPp->load_C_c;
+    vlTOPp->mkMacUnitTop__DOT__bf16_Mac_reg_B_D_IN 
+        = vlTOPp->load_B_b;
     vlTOPp->mkMacUnitTop__DOT__bf16_Mac_reg_A_D_IN 
         = vlTOPp->load_A_a;
-    vlTOPp->mkMacUnitTop__DOT__int_Mac_reg_C_D_IN = vlTOPp->load_C_c;
     vlTOPp->mkMacUnitTop__DOT__int_Mac_reg_B_D_IN = 
         (0xffU & (IData)(vlTOPp->load_B_b));
     vlTOPp->mkMacUnitTop__DOT__int_Mac_reg_A_D_IN = 

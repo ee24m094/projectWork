@@ -40,6 +40,10 @@ Rule: int_Mac_rl_Compute_Int_Mac
 Predicate: True
 Blocking rules: (none)
  
+Rule: bf16_Mac_rl_compute_bf16_mac
+Predicate: True
+Blocking rules: (none)
+ 
 Rule: rl_select_mac_output
 Predicate: True
 Blocking rules: (none)
@@ -47,6 +51,7 @@ Blocking rules: (none)
 Logical execution order: get_MAC,
 			 rl_select_mac_output,
 			 int_Mac_rl_Compute_Int_Mac,
+			 bf16_Mac_rl_compute_bf16_mac,
 			 load_A,
 			 load_B,
 			 load_C,
