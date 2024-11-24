@@ -1,0 +1,8 @@
+<testsuites name="results">
+  <testsuite name="all" package="all">
+    <property name="random_seed" value="1732382532" />
+    <testcase name="test_mmUnit_integer" classname="test_mmUnit" file="/home/shakti/Downloads/bluespec_demo_examples-main/counter/mmUnit_verif/test_mmUnit.py" lineno="52" time="0.11981415748596191" sim_time_ns="25000.001" ratio_time="208656.48538178083">
+      <failure />
+    </testcase>
+  </testsuite>
+</testsuites>

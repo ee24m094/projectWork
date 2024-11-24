@@ -1,0 +1,15 @@
+SIM ?= verilator
+TOPLEVEL_LANG ?= verilog
+
+PWD=$(shell pwd)
+
+export PYTHONPATH:=$(PWD)/mmUnit_verif:$(PYTHONPATH)
+
+VERILOG_SOURCES=$(PWD)/verilog/mkMmUnit.v
+
+EXTRA_ARGS = --trace --trace-structs
+
+TOPLEVEL = mkMmUnit
+MODULE   := test_mmUnit
+
+include $(shell cocotb-config --makefiles)/Makefile.sim

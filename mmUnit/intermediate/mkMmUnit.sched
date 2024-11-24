@@ -1,0 +1,285 @@
+=== Generated schedule for mkMmUnit ===
+
+Method schedule
+---------------
+Method: load_A_row
+Ready signal: True
+Conflict-free: load_B_col, load_C
+Sequenced before: load_s1_or_s2
+Sequenced before (restricted): load_A_row
+Sequenced after (restricted): get_results
+ 
+Method: load_B_col
+Ready signal: True
+Conflict-free: load_A_row, load_C
+Sequenced before: load_s1_or_s2
+Sequenced before (restricted): load_B_col
+Sequenced after (restricted): get_results
+ 
+Method: load_C
+Ready signal: True
+Conflict-free: load_A_row, load_B_col
+Sequenced before: load_s1_or_s2
+Sequenced before (restricted): load_C
+Sequenced after (restricted): get_results
+ 
+Method: load_s1_or_s2
+Ready signal: True
+Sequenced before (restricted): load_s1_or_s2
+Sequenced after: load_A_row, load_B_col, load_C
+Sequenced after (restricted): get_results
+ 
+Method: get_results
+Ready signal: True
+Conflict-free: get_results
+Sequenced before (restricted): load_A_row, load_B_col, load_C, load_s1_or_s2
+ 
+Rule schedule
+-------------
+Rule: pes_0_0_macunit_int_Mac_rl_Compute_Int_Mac
+Predicate: True
+Blocking rules: (none)
+ 
+Rule: pes_0_0_macunit_bf16_Mac_rl_compute_bf16_mac
+Predicate: True
+Blocking rules: (none)
+ 
+Rule: pes_0_0_macunit_rl_select_mac_output
+Predicate: True
+Blocking rules: (none)
+ 
+Rule: pes_0_1_macunit_int_Mac_rl_Compute_Int_Mac
+Predicate: True
+Blocking rules: (none)
+ 
+Rule: pes_0_1_macunit_bf16_Mac_rl_compute_bf16_mac
+Predicate: True
+Blocking rules: (none)
+ 
+Rule: pes_0_1_macunit_rl_select_mac_output
+Predicate: True
+Blocking rules: (none)
+ 
+Rule: pes_0_2_macunit_int_Mac_rl_Compute_Int_Mac
+Predicate: True
+Blocking rules: (none)
+ 
+Rule: pes_0_2_macunit_bf16_Mac_rl_compute_bf16_mac
+Predicate: True
+Blocking rules: (none)
+ 
+Rule: pes_0_2_macunit_rl_select_mac_output
+Predicate: True
+Blocking rules: (none)
+ 
+Rule: pes_0_3_macunit_int_Mac_rl_Compute_Int_Mac
+Predicate: True
+Blocking rules: (none)
+ 
+Rule: pes_0_3_macunit_bf16_Mac_rl_compute_bf16_mac
+Predicate: True
+Blocking rules: (none)
+ 
+Rule: pes_0_3_macunit_rl_select_mac_output
+Predicate: True
+Blocking rules: (none)
+ 
+Rule: pes_1_0_macunit_int_Mac_rl_Compute_Int_Mac
+Predicate: True
+Blocking rules: (none)
+ 
+Rule: pes_1_0_macunit_bf16_Mac_rl_compute_bf16_mac
+Predicate: True
+Blocking rules: (none)
+ 
+Rule: pes_1_0_macunit_rl_select_mac_output
+Predicate: True
+Blocking rules: (none)
+ 
+Rule: pes_1_1_macunit_int_Mac_rl_Compute_Int_Mac
+Predicate: True
+Blocking rules: (none)
+ 
+Rule: pes_1_1_macunit_bf16_Mac_rl_compute_bf16_mac
+Predicate: True
+Blocking rules: (none)
+ 
+Rule: pes_1_1_macunit_rl_select_mac_output
+Predicate: True
+Blocking rules: (none)
+ 
+Rule: pes_1_2_macunit_int_Mac_rl_Compute_Int_Mac
+Predicate: True
+Blocking rules: (none)
+ 
+Rule: pes_1_2_macunit_bf16_Mac_rl_compute_bf16_mac
+Predicate: True
+Blocking rules: (none)
+ 
+Rule: pes_1_2_macunit_rl_select_mac_output
+Predicate: True
+Blocking rules: (none)
+ 
+Rule: pes_1_3_macunit_int_Mac_rl_Compute_Int_Mac
+Predicate: True
+Blocking rules: (none)
+ 
+Rule: pes_1_3_macunit_bf16_Mac_rl_compute_bf16_mac
+Predicate: True
+Blocking rules: (none)
+ 
+Rule: pes_1_3_macunit_rl_select_mac_output
+Predicate: True
+Blocking rules: (none)
+ 
+Rule: pes_2_0_macunit_int_Mac_rl_Compute_Int_Mac
+Predicate: True
+Blocking rules: (none)
+ 
+Rule: pes_2_0_macunit_bf16_Mac_rl_compute_bf16_mac
+Predicate: True
+Blocking rules: (none)
+ 
+Rule: pes_2_0_macunit_rl_select_mac_output
+Predicate: True
+Blocking rules: (none)
+ 
+Rule: pes_2_1_macunit_int_Mac_rl_Compute_Int_Mac
+Predicate: True
+Blocking rules: (none)
+ 
+Rule: pes_2_1_macunit_bf16_Mac_rl_compute_bf16_mac
+Predicate: True
+Blocking rules: (none)
+ 
+Rule: pes_2_1_macunit_rl_select_mac_output
+Predicate: True
+Blocking rules: (none)
+ 
+Rule: pes_2_2_macunit_int_Mac_rl_Compute_Int_Mac
+Predicate: True
+Blocking rules: (none)
+ 
+Rule: pes_2_2_macunit_bf16_Mac_rl_compute_bf16_mac
+Predicate: True
+Blocking rules: (none)
+ 
+Rule: pes_2_2_macunit_rl_select_mac_output
+Predicate: True
+Blocking rules: (none)
+ 
+Rule: pes_2_3_macunit_int_Mac_rl_Compute_Int_Mac
+Predicate: True
+Blocking rules: (none)
+ 
+Rule: pes_2_3_macunit_bf16_Mac_rl_compute_bf16_mac
+Predicate: True
+Blocking rules: (none)
+ 
+Rule: pes_2_3_macunit_rl_select_mac_output
+Predicate: True
+Blocking rules: (none)
+ 
+Rule: pes_3_0_macunit_int_Mac_rl_Compute_Int_Mac
+Predicate: True
+Blocking rules: (none)
+ 
+Rule: pes_3_0_macunit_bf16_Mac_rl_compute_bf16_mac
+Predicate: True
+Blocking rules: (none)
+ 
+Rule: pes_3_0_macunit_rl_select_mac_output
+Predicate: True
+Blocking rules: (none)
+ 
+Rule: pes_3_1_macunit_int_Mac_rl_Compute_Int_Mac
+Predicate: True
+Blocking rules: (none)
+ 
+Rule: pes_3_1_macunit_bf16_Mac_rl_compute_bf16_mac
+Predicate: True
+Blocking rules: (none)
+ 
+Rule: pes_3_1_macunit_rl_select_mac_output
+Predicate: True
+Blocking rules: (none)
+ 
+Rule: pes_3_2_macunit_int_Mac_rl_Compute_Int_Mac
+Predicate: True
+Blocking rules: (none)
+ 
+Rule: pes_3_2_macunit_bf16_Mac_rl_compute_bf16_mac
+Predicate: True
+Blocking rules: (none)
+ 
+Rule: pes_3_2_macunit_rl_select_mac_output
+Predicate: True
+Blocking rules: (none)
+ 
+Rule: pes_3_3_macunit_int_Mac_rl_Compute_Int_Mac
+Predicate: True
+Blocking rules: (none)
+ 
+Rule: pes_3_3_macunit_bf16_Mac_rl_compute_bf16_mac
+Predicate: True
+Blocking rules: (none)
+ 
+Rule: pes_3_3_macunit_rl_select_mac_output
+Predicate: True
+Blocking rules: (none)
+ 
+Logical execution order: get_results,
+			 pes_0_0_macunit_rl_select_mac_output,
+			 pes_0_0_macunit_int_Mac_rl_Compute_Int_Mac,
+			 pes_0_0_macunit_bf16_Mac_rl_compute_bf16_mac,
+			 pes_0_1_macunit_rl_select_mac_output,
+			 pes_0_1_macunit_int_Mac_rl_Compute_Int_Mac,
+			 pes_0_1_macunit_bf16_Mac_rl_compute_bf16_mac,
+			 pes_0_2_macunit_rl_select_mac_output,
+			 pes_0_2_macunit_int_Mac_rl_Compute_Int_Mac,
+			 pes_0_2_macunit_bf16_Mac_rl_compute_bf16_mac,
+			 pes_0_3_macunit_rl_select_mac_output,
+			 pes_0_3_macunit_int_Mac_rl_Compute_Int_Mac,
+			 pes_0_3_macunit_bf16_Mac_rl_compute_bf16_mac,
+			 pes_1_0_macunit_rl_select_mac_output,
+			 pes_1_0_macunit_int_Mac_rl_Compute_Int_Mac,
+			 pes_1_0_macunit_bf16_Mac_rl_compute_bf16_mac,
+			 pes_1_1_macunit_rl_select_mac_output,
+			 pes_1_1_macunit_int_Mac_rl_Compute_Int_Mac,
+			 pes_1_1_macunit_bf16_Mac_rl_compute_bf16_mac,
+			 pes_1_2_macunit_rl_select_mac_output,
+			 pes_1_2_macunit_int_Mac_rl_Compute_Int_Mac,
+			 pes_1_2_macunit_bf16_Mac_rl_compute_bf16_mac,
+			 pes_1_3_macunit_rl_select_mac_output,
+			 pes_1_3_macunit_int_Mac_rl_Compute_Int_Mac,
+			 pes_1_3_macunit_bf16_Mac_rl_compute_bf16_mac,
+			 pes_2_0_macunit_rl_select_mac_output,
+			 pes_2_0_macunit_int_Mac_rl_Compute_Int_Mac,
+			 pes_2_0_macunit_bf16_Mac_rl_compute_bf16_mac,
+			 pes_2_1_macunit_rl_select_mac_output,
+			 pes_2_1_macunit_int_Mac_rl_Compute_Int_Mac,
+			 pes_2_1_macunit_bf16_Mac_rl_compute_bf16_mac,
+			 pes_2_2_macunit_rl_select_mac_output,
+			 pes_2_2_macunit_int_Mac_rl_Compute_Int_Mac,
+			 pes_2_2_macunit_bf16_Mac_rl_compute_bf16_mac,
+			 pes_2_3_macunit_rl_select_mac_output,
+			 pes_2_3_macunit_int_Mac_rl_Compute_Int_Mac,
+			 pes_2_3_macunit_bf16_Mac_rl_compute_bf16_mac,
+			 pes_3_0_macunit_rl_select_mac_output,
+			 pes_3_0_macunit_int_Mac_rl_Compute_Int_Mac,
+			 pes_3_0_macunit_bf16_Mac_rl_compute_bf16_mac,
+			 pes_3_1_macunit_rl_select_mac_output,
+			 pes_3_1_macunit_int_Mac_rl_Compute_Int_Mac,
+			 pes_3_1_macunit_bf16_Mac_rl_compute_bf16_mac,
+			 pes_3_2_macunit_rl_select_mac_output,
+			 pes_3_2_macunit_int_Mac_rl_Compute_Int_Mac,
+			 pes_3_2_macunit_bf16_Mac_rl_compute_bf16_mac,
+			 pes_3_3_macunit_rl_select_mac_output,
+			 pes_3_3_macunit_int_Mac_rl_Compute_Int_Mac,
+			 pes_3_3_macunit_bf16_Mac_rl_compute_bf16_mac,
+			 load_A_row,
+			 load_B_col,
+			 load_C,
+			 load_s1_or_s2
+
+========================================

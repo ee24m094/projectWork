@@ -1,7 +1,7 @@
 <testsuites name="results">
   <testsuite name="all" package="all">
-    <property name="random_seed" value="1730138930" />
-    <testcase name="test_macUnit_integer" classname="test_macUnit" file="/home/shakti/Executeprograms/bluespec_demo_examples/git-ws/projectWork/unpipelined/macunit_verif/test_macUnit.py" lineno="38" time="1.7957282066345215" sim_time_ns="52645000.001" ratio_time="29316797.38977039" />
-    <testcase name="test_macUnit_float" classname="test_macUnit" file="/home/shakti/Executeprograms/bluespec_demo_examples/git-ws/projectWork/unpipelined/macunit_verif/test_macUnit.py" lineno="93" time="1.9599096775054932" sim_time_ns="60005000.001" ratio_time="30616206.80263814" />
+    <property name="random_seed" value="1732371961" />
+    <testcase name="test_macUnit_integer" classname="test_macUnit" file="/home/shakti/Executeprograms/bluespec_demo_examples/git-ws/projectWork/unpipelined/macunit_verif/test_macUnit.py" lineno="38" time="1.3326172828674316" sim_time_ns="52645000.001" ratio_time="39504965.662551075" />
+    <testcase name="test_macUnit_float" classname="test_macUnit" file="/home/shakti/Executeprograms/bluespec_demo_examples/git-ws/projectWork/unpipelined/macunit_verif/test_macUnit.py" lineno="93" time="1.3416674137115479" sim_time_ns="60005000.001" ratio_time="44724198.700633265" />
   </testsuite>
 </testsuites>
